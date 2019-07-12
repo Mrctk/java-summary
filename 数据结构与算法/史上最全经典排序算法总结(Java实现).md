@@ -46,7 +46,7 @@
 
  
 
-下面的排序算法统一使用的测试代码如下，具体代码请上我的GitHub查看
+下面的排序算法统一使用的测试代码如下，[源码GitHub链接](https://github.com/JourWon/sort-algorithm)
 
 ```java
 public static void main(String[] args) {
