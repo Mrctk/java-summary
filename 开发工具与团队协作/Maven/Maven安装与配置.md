@@ -8,26 +8,28 @@
 ![Maven安装包](https://raw.githubusercontent.com/JourWon/image/master/Maven安装与配置/Maven安装包.png)
 
 > 注意：Maven软件依赖于Java，请先安装与配置好jdk
+>
+> 可参考[JDK安装与环境变量配置-CSDN版](https://blog.csdn.net/ThinkWon/article/details/94353907) 或 [JDK安装与环境变量配置-简书版](https://www.jianshu.com/p/633f4aaf9049)
 
 #### 2. 直接解压apache-maven-3.6.0-bin.zip即可
 
-   Maven目录结构
+Maven目录结构
 
 ![Maven目录结构](https://raw.githubusercontent.com/JourWon/image/master/Maven安装与配置/Maven目录结构.png)
 
 #### 3. 把Maven的bin目录配置到环境变量中
 
-   新建系统变量
+新建系统变量
 
-   变量名：M2_HOME
+变量名：M2_HOME
 
-   变量值：C:\develop\Maven\apache-maven-3.6.0
+变量值：C:\develop\Maven\apache-maven-3.6.0
 
 ![新建系统变量](https://raw.githubusercontent.com/JourWon/image/master/Maven安装与配置/新建系统变量.png)
 
 
 
-​	在Path系统变量新增环境变量%M2_HOME%\bin，然后保存
+在Path系统变量新增环境变量%M2_HOME%\bin，然后保存
 
 ![新建环境变量](https://raw.githubusercontent.com/JourWon/image/master/Maven安装与配置/新增环境变量.png)
 
@@ -41,7 +43,7 @@ Default locale: zh_CN, platform encoding: GBK
 OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
 ```
 
-​	 如果你看到类似消息，说明 Apache Maven 在 Windows 上已安装成功。
+如果你看到类似消息，说明 Apache Maven 在 Windows 上已安装成功。
 
 
 
