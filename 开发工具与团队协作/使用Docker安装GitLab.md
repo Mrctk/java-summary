@@ -53,6 +53,7 @@ docker run -d  -p 443:443 -p 80:80 --name gitlab --restart always -v /opt/gitlab
 # -d：后台运行
 # -p：将容器内部端口向外映射，第一个参数是宿主机端口，第二个参数容器端口
 # --name：命名容器名称
+# --restart always在容器退出时总是重启容器
 # -v：将容器内配置、日志、数据文件等文件夹挂载到宿主机指定目录
 ```
 
