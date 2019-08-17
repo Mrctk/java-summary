@@ -45,6 +45,8 @@ OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
 
 如果你看到类似消息，说明 Apache Maven 在 Windows 上已安装成功。
 
+> 注：Maven简介可参考[Maven简介-CSDN版](https://blog.csdn.net/ThinkWon/article/details/94346090) 或 [Maven简介-简书版](https://www.jianshu.com/p/da6341c0747e)
+
 
 
 ## Maven配置

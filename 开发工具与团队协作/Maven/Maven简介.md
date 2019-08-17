@@ -42,7 +42,7 @@ Maven是跨平台的项目管理工具。主要服务于基于Java平台的项�
 3. jar包不用再每个项目保存，只需要放在仓库即可
 4. maven可以指定jar包的依赖范围
 
-
+>  注：Maven安装与配置参考[Maven安装与配置-CSDN版](https://blog.csdn.net/ThinkWon/article/details/94346569) 或 [Maven安装与配置-简书版](https://www.jianshu.com/p/34f27de30571)
 
 ## Maven标准目录结构
 若要使用Maven，那么项目的目录结构必须符合Maven的规范，其目录结构如下：
@@ -93,6 +93,8 @@ Maven管理资源的位置。仓库里面包含依赖（jar包）和插件（plu
 #### 远程仓库
 ##### 私服
 私服是一种特殊的远程仓库，搭建在局域网内的仓库，私服代理广域网的仓库，提供给局域网内的用户使用，可用减少局域网内的用户与外界仓库的传输，每一个jar包只需要拉取一次就可以提供给局域网内所有的用户使用，并且也更加稳定。
+
+>  注：Maven私服Nexus安装可参考[Maven私服Nexus安装与使用-CSDN版](https://blog.csdn.net/ThinkWon/article/details/94346681) 或 [Maven私服Nexus安装与使用-简书版](https://www.jianshu.com/p/88fbca59b963)
 
 ##### 中央仓库
 
@@ -331,7 +333,7 @@ true：不可以向下传递
 
 Maven有三套相互独立的生命周期，请注意这里说的是“三套”，而且“相互独立”，初学者容易将Maven的生命周期看成一个整体，其实不然。这三套生命周期分别是：
 
-**① Clean Lifecycle 在进行真正的构建之前进行一些清理工作。**Clean生命周期一共包含了三个阶段：
+**① Clean Lifecycle 在进行真正的构建之前进行一些清理工作。 **Clean生命周期一共包含了三个阶段：
 
 - pre-clean 执行一些需要在clean之前完成的工作
 - clean 移除所有上一次构建生成的文件
@@ -364,9 +366,9 @@ Maven有三套相互独立的生命周期，请注意这里说的是“三套”
 - install 将包安装至本地仓库，以让其它项目依赖。
 - deploy 将最终的包复制到远程的仓库，以让其它开发人员与项目共享
 
-**总结：**不论你要执行生命周期的哪一个阶段，maven都是从这个生命周期的开始执行
+**总结**：不论你要执行生命周期的哪一个阶段，maven都是从这个生命周期的开始执行
 
-**插件：**每个阶段都有插件（plugin）。插件的职责就是执行它对应的命令。
+**插件**：每个阶段都有插件（plugin）。插件的职责就是执行它对应的命令。
 
 
 
@@ -414,7 +416,6 @@ mvn install:install-file -DgroupId=com.oracle -DartifactId=ojdbc7 -Dversion=12.1
 ```xml
 <servers>
 	<server>
-        <!-- 与私服的仓库id一致 -->
 		<id>releases</id>
 		<username>admin</username>
 		<password>admin123</password>
@@ -431,24 +432,27 @@ mvn install:install-file -DgroupId=com.oracle -DartifactId=ojdbc7 -Dversion=12.1
 
 私服的一大作用是部署第三方构件，包括组织内部生成的构件以及一些无法从外部仓库直接获取的构件。无论是日常开发中生成的构件，还是正式版本发布的构件，都需要部署到仓库中，供其他团队成员使用。
 
+
 Maven除了能对项目进行编译、测试、打包之外，还能将项目生成的构建部署到仓库中。首先，需要编写项目的pom.xml文件。配置distributionManagement元素见下面。
+
+> 注意：repository里的id需要和第一步里的server id名称保持一致
 
 ```xml
 <project>
 ...
     <distributionManagement>
         <repository>
-            <!-- 唯一标识符 -->
-            <id>prok-releases</id>
-            <!-- 仓库名称 -->
-            <name>Proj Release Repository</name>
-            <!-- 仓库地址 -->
-            <url>http://192.168.1.100/content/repository/proj-releases</url>
+            <!--repository里的id需要和第一步里的server id名称保持一致-->
+            <id>releases</id>
+            <!--仓库名称-->
+            <name>Releases</name>
+            <!--私服仓库地址-->
+            <url>http://10.172.0.201:8081/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
-            <id>proj-snapshots</id>
-            <name>Proj Snapshot Repository</name>
-            <url>http://192.168.1.100/content/repository/proj-snapshots</url>
+            <id>snapshots</id>
+            <name>Snapshot</name>
+            <url>http://10.172.0.201:8081/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 ...
@@ -497,7 +501,7 @@ distributionManagement包含repository和snapshotRepository子元素，前者表
 </dependency>
 ```
 
-会发现A模块和B模块对junit和log4j库依赖的版本是不同的，出现这种情况是十分危险的，因为依赖不同版本的库可能会造成很多未知的风险。怎么解决不同模块之间对同一个库的依赖版本一样呢？Maven提供了优雅的解决办法，**使用继承机制以及dependencyManagement元素来解决这个问题。**如果你在父模块中配置dependencies，那么所有的子模块都自动继承，不仅达到了依赖一致的目的，还省了大段的代码，但这样来做会存在问题的。比如B模块需要spring-aop模块，但是C模块不需要spring-aop模块，如果用dependencies在父类中统一配置，C模块中也会包含有spring-aop模块，不符合我们的要求。但是用dependencyManagement就没有这样的问题。**dependencyManagement只会影响现有依赖的配置，但不会引入依赖。**这样我们在父模块中的配置可以更改为如下所示：
+会发现A模块和B模块对junit和log4j库依赖的版本是不同的，出现这种情况是十分危险的，因为依赖不同版本的库可能会造成很多未知的风险。怎么解决不同模块之间对同一个库的依赖版本一样呢？Maven提供了优雅的解决办法，**使用继承机制以及dependencyManagement元素来解决这个问题。** 如果你在父模块中配置dependencies，那么所有的子模块都自动继承，不仅达到了依赖一致的目的，还省了大段的代码，但这样来做会存在问题的。比如B模块需要spring-aop模块，但是C模块不需要spring-aop模块，如果用dependencies在父类中统一配置，C模块中也会包含有spring-aop模块，不符合我们的要求。但是用dependencyManagement就没有这样的问题。**dependencyManagement只会影响现有依赖的配置，但不会引入依赖。** 这样我们在父模块中的配置可以更改为如下所示：
 
 ```java
 <!-- dependencyManagement只会影响现有依赖的配置，但不会引入依赖。 -->
