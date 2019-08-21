@@ -1,6 +1,6 @@
 # Redis总结
 
-![Redis Logo](https://raw.githubusercontent.com/JourWon/image/master/Redis总结/Redis Logo.jpg)
+![Redis Logo](https://raw.githubusercontent.com/JourWon/image/master/Redis总结/Redis图标.jpg)
 
 ## Redis简介
 
