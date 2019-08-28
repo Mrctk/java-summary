@@ -6,7 +6,7 @@
 
 ### 定义
 
-**Java反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意方法和属性。**这种动态获取信息以及动态调用对象方法的功能称为Java语言的反射机制。
+**Java反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意方法和属性**。这种动态获取信息以及动态调用对象方法的功能称为Java语言的反射机制。
 
 
 
@@ -16,7 +16,7 @@
 
 很多人都认为反射在实际Java中开发应用中并不广泛，其实不然。当我们在使用 IDE（如 IDEA/Eclipse）时，当我们输入一个对象或者类并调用它的属性和方法时，一按 (“.”)点号，编译器就会自动列出她的属性或方法，这里就会用到反射。
 
-**反射最重要的用途就是开发各种通用框架。**
+**反射最重要的用途就是开发各种通用框架**
 
 很多框架（比如 Spring）都是配置化的（比如Spring 通过 XML 配置模式装载 Bean），为了保证框架的通用性，他们可能根据配置文件加载不同的对象或类，调用不同的方法，这个时候就必须用到反射——运行时动态加载需要加载的对象。
 
@@ -370,7 +370,7 @@ public class ReflectClass {
 [main] INFO com.jourwon.reflect.ReflectClass - I am declaredMethod 0 ! 
 ```
 
-**通过反射获取私有属性，方法和构造方法时，需要进行暴力反射，设置setAccessible(true)。**否则会报错说无法获取私有属性，方法和构造方法
+**通过反射获取私有属性，方法和构造方法时，需要进行暴力反射，设置setAccessible(true)**。否则会报错说无法获取私有属性，方法和构造方法
 
 
 
@@ -378,5 +378,5 @@ public class ReflectClass {
 
 本文列举了反射机制使用过程中常用的、重要的一些类及其方法，更多信息和用法，反射原理和源码分析需要近一步的阅读反射相关资料。
 
-在阅读Class类文档时发现一个特点，以通过反射获得Method对象为例，一般会提供四种方法，getMethod(parameterTypes)、getMethods()、getDeclaredMethod(parameterTypes)和getDeclaredMethods()。getMethod(parameterTypes)用来获取某个公有的方法的对象，getMethods()获得该类所有公有的方法，getDeclaredMethod(parameterTypes)获得该类某个方法，getDeclaredMethods()获得该类所有方法。**带有Declared修饰的方法可以反射到私有的方法，没有Declared修饰的只能用来反射公有的方法。**其他的Annotation、Field、Constructor也是如此。
+在阅读Class类文档时发现一个特点，以通过反射获得Method对象为例，一般会提供四种方法，getMethod(parameterTypes)、getMethods()、getDeclaredMethod(parameterTypes)和getDeclaredMethods()。getMethod(parameterTypes)用来获取某个公有的方法的对象，getMethods()获得该类所有公有的方法，getDeclaredMethod(parameterTypes)获得该类某个方法，getDeclaredMethods()获得该类所有方法。**带有Declared修饰的方法可以反射到私有的方法，没有Declared修饰的只能用来反射公有的方法**。其他的Annotation、Field、Constructor也是如此。
 
