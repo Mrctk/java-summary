@@ -1,6 +1,8 @@
 # YML简介
 
-在接触springboot的时候遇到了一种特殊的配置文件 .yml，本文对yml作简单介绍，快速入手yml。
+> 在接触springboot的时候遇到了一种特殊的配置文件 .yml，本文对yml作简单介绍，快速入手yml。
+
+[TOC]
 
 ## 一、YML是什么
 

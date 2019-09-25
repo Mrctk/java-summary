@@ -1,5 +1,7 @@
 # JDK安装与环境变量配置
 
+[TOC]
+
 ## 下载JDK
 
  [到Oracle官网下载JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html)

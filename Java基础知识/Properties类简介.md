@@ -1,5 +1,7 @@
 # Properties类简介
 
+[TOC]
+
 ## 概述
 
 Properties 继承于 Hashtable。表示一个持久的属性集，属性列表以key-value的形式存在，key和value都是字符串。

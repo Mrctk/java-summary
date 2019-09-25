@@ -2,6 +2,8 @@
 
 ![Java图标](https://raw.githubusercontent.com/JourWon/image/master/Java简介/Java图标.png)
 
+[toc]
+
 ## Java语言是简单的
 
 1. Java语言的语法与C语言和C++语言很接近，从某种意义上讲，它是由C和C++演变而来，使得大多数程序员很容易学习和使用。

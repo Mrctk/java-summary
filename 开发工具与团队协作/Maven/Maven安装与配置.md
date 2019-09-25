@@ -1,5 +1,7 @@
 # Maven安装与配置
 
+[TOC]
+
 ## Maven安装
 
 #### 1. 到Maven官网(http://maven.apache.org)下载软件
@@ -9,7 +11,7 @@
 
 > 注意：Maven软件依赖于Java，请先安装与配置好jdk
 >
-> 可参考[JDK安装与环境变量配置-CSDN版](https://blog.csdn.net/ThinkWon/article/details/94353907) 或 [JDK安装与环境变量配置-简书版](https://www.jianshu.com/p/633f4aaf9049)
+> 可参考[JDK安装与环境变量配置](https://blog.csdn.net/ThinkWon/article/details/94353907) 
 
 #### 2. 直接解压apache-maven-3.6.0-bin.zip即可
 
@@ -45,7 +47,7 @@ OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
 
 如果你看到类似消息，说明 Apache Maven 在 Windows 上已安装成功。
 
-> 注：Maven简介可参考[Maven简介-CSDN版](https://blog.csdn.net/ThinkWon/article/details/94346090) 或 [Maven简介-简书版](https://www.jianshu.com/p/da6341c0747e)
+> 注：Maven简介可参考[Maven简介](https://blog.csdn.net/ThinkWon/article/details/94346090) 
 
 
 
@@ -75,7 +77,7 @@ Maven安装好之后默认配置了本地仓库，在%user%/.m2/respository目�
     <!--镜像名称-->
     <name>Nexus aliyun</name>
     <!--该镜像的URL。构建系统会优先考虑使用该URL，而非使用默认的服务器URL-->
-    <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+ 	<url>http://maven.aliyun.com/nexus/content/groups/public</url>
 </mirror> 
 ```
 

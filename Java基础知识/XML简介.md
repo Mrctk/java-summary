@@ -2,6 +2,8 @@
 
 ![xml](https://raw.githubusercontent.com/JourWon/image/master/XML简介/xml.jpg)
 
+[TOC]
+
 ## 什么是 XML
 
 - XML 是可扩展标记语言（EXtensible Markup Language）。
