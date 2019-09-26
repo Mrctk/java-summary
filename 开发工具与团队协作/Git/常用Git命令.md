@@ -1,19 +1,16 @@
-# 常用 Git 命令
+# 常用Git命令
+
+[TOC]
 
 ## Git简介
+
 * Git是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。 
 * Git是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。 
 * Git与常用的版本控制工具 CVS, Subversion 等不同，它采用了分布式版本库的方式，不必服务器端软件支持。
 
-## Git与SVN的区别
-Git不仅仅是个版本控制系统，它也是个内容管理系统(CMS),工作管理系统等。
-如果你是一个具有使用SVN背景的人，你需要做一定的思想转换，来适应Git提供的一些概念和特征。
-Git 与 SVN 区别点：
-1. Git是分布式的，SVN不是：这是Git和其它非分布式的版本控制系统，例如SVN，CVS等，最核心的区别。
-2. Git把内容按元数据方式存储，而SVN是按文件：所有的资源控制系统都是把文件的元信息隐藏在一个类似.svn,.cvs等的文件夹里。
-3. Git分支和SVN的分支不同：分支在SVN中一点不特别，就是版本库中的另外的一个目录。
-4. Git没有一个全局的版本号，而SVN有：目前为止这是跟SVN相比GIT缺少的最大的一个特征。
-5. Git的内容完整性要优于SVN：Git的内容存储使用的是SHA-1哈希算法。这能确保代码内容的完整性，确保在遇到磁盘故障和网络问题时降低对版本库的破坏。
+
+
+有关Git的详细介绍可以参考[Git简介](https://blog.csdn.net/ThinkWon/article/details/94346816)
 
 经常使用 Git ，但是很多命令还是记不住。一般来说，日常使用只要记住下图7个命令就可以了。但要熟练掌握，恐怕要记住40~60个命令，所以整理了一份常用Git命令清单。
 
@@ -23,6 +20,8 @@ Git 与 SVN 区别点：
 * Index / Stage：暂存区
 * Repository：仓库区（或本地仓库）
 * Remote：远程仓库
+
+
 
 ## 配置用户名和邮箱
 
@@ -39,7 +38,10 @@ $ git config --global user.email 'email'
 # 获取Git配置信息，执行以下命令：
 $ git config –list
 ```
+
+
 ## 配置https和ssh推送时保存用户名和密码
+
 ```shell
 # https提交保存用户名和密码
 $ git config --global credential.helper store
@@ -49,7 +51,10 @@ $ ssh-keygen -t rsa
 # 查看已生成的公钥
 $ cat ~/.ssh/id_rsa.pub
 ```
+
+
 ## 推送到远程仓库正确流程
+
 ```shell
 1. git init # 初始化仓库
 2. git add .(文件name) # 添加文件到暂存区
@@ -58,7 +63,10 @@ $ cat ~/.ssh/id_rsa.pub
 5. git pull origin master --allow-unrelated-histories # 把本地仓库的变化连接到远程仓库主分支
 6. git push -u origin master # 把本地仓库的文件推送到远程仓库
 ```
+
+
 ## 一、新建本地仓库
+
 ```shell
 # 创建一个文件夹
 $ mkdir GitRepositories    # 创建文件夹GitRepositories
@@ -70,7 +78,10 @@ $ git init [project-name]
 # 下载一个项目和它的整个代码历史
 $ git clone [url]
 ```
+
+
 ## 二、配置(全局和项目)
+
 ```shell
 # Git的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。
 # 显示当前的Git配置
@@ -81,7 +92,10 @@ $ git config -e [--global]
 $ git config [--global] user.name "[name]"
 $ git config [--global] user.email "[email address]"
 ```
+
+
 ## 三、增加/删除文件
+
 ```shell
 # 添加指定文件到暂存区
 $ git add [file1][file2] ...
@@ -100,7 +114,10 @@ $ git rm --cached [file]
 $ git mv [file-original] [file-renamed]
 ```
 
+
+
 ## 四、代码提交
+
 ```shell
 # 提交暂存区到仓库区
 $ git commit -m [message]
@@ -116,7 +133,10 @@ $ git commit --amend -m [message]
 # 重做上一次commit，并包括指定文件的新变化
 $ git commit --amend [file1] [file2] ...
 ```
+
+
 ## 五、分支
+
 ```shell
 # 列出所有本地分支
 $ git branch
@@ -148,7 +168,10 @@ $ git branch -d [branch-name]
 $ git push origin --delete [branch-name]
 $ git branch -dr [remote/branch]
 ```
+
+
 ## 六、标签
+
 ```shell
 # 列出所有tag
 $ git tag
@@ -169,7 +192,10 @@ $ git push [remote] --tags
 # 新建一个分支，指向某个tag
 $ git checkout -b [branch] [tag]
 ```
+
+
 ## 七、查看信息
+
 ```shell
 # 查看目录
 $ ls -al	或者$ ll
@@ -215,7 +241,10 @@ $ git show [commit]:[filename]
 # 显示当前分支的最近几次提交
 $ git reflog
 ```
+
+
 ## 八、远程同步
+
 ```shell
 # 下载远程仓库的所有变动
 $ git fetch [remote]
@@ -234,7 +263,10 @@ $ git push [remote] --force
 # 推送所有分支到远程仓库
 $ git push [remote] --all
 ```
+
+
 ## 九、撤销
+
 ```shell
 # 恢复暂存区的指定文件到工作区
 $ git checkout [file]
@@ -259,7 +291,10 @@ $ git revert [commit]
 $ git stash
 $ git stash pop
 ```
+
+
 ## 十、其他
+
 ```shell
 # 从当前目录的所有文件中查找文本内容：
 $ git grep "Hello"
@@ -268,6 +303,8 @@ $ git grep "Hello" v2.5
 # 生成一个可供发布的压缩包
 $ git archive
 ```
+
+
 ## 附：Git常用命令速查表
 
 ![Git常用命令速查表](https://raw.githubusercontent.com/JourWon/image/master/git/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E8%A1%A8.jpg)
@@ -277,7 +314,10 @@ $ git archive
 ![Git指令速查表1](https://raw.githubusercontent.com/JourWon/image/master/git/Git%E6%8C%87%E4%BB%A4%E9%80%9F%E6%9F%A5%E8%A1%A81.jpg)
 ![Git指令速查表2](https://raw.githubusercontent.com/JourWon/image/master/git/Git%E6%8C%87%E4%BB%A4%E9%80%9F%E6%9F%A5%E8%A1%A82.jpg)
 
+
+
 ## 附：资料链接
+
 [Git 常用命令总结](https://blog.csdn.net/tomatozaitian/article/details/73515849)
 [Git常用命令，很全很详细讲解的也不错](https://blog.csdn.net/afei__/article/details/51476529)
 [Git详细使用教程](https://blog.csdn.net/tgbus18990140382/article/details/52886786)
