@@ -292,7 +292,7 @@ maven配置私服下载有两种方式
 
 
 
-## **配置Maven连接私服打包上传项目**
+## 配置Maven连接私服打包上传项目
 
 第一步，修改setting.xml文件，指定releases和snapshots server的用户名和密码
 
