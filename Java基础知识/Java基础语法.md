@@ -744,13 +744,11 @@ public class BreakDemo {
 ```
 ###### continue
 
-continue的使用场景
+continue的使用场景：在循环语句中
+注意：离开使用场景的存在是没有意义的
+continue的作用：结束一次循环，继续下一次的循环
 
-continue的使用场景：
-在循环语句中
-离开使用场景的存在是没有意义的
-continue的作用：
-单层循环对比break，然后总结两个的区别
+continue与break区别：
 break  退出当前循环
 continue  退出本次循环
 
