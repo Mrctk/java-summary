@@ -1,5 +1,7 @@
 # Java集合源码详解之HashMap
 
+[TOC]
+
 ## 简介
 
 在JDK1.8之前，HashMap采用数组+链表实现，即使用链表处理冲突，同一hash值的节点都存储在一个链表里。但是当位于一个桶中的元素较多，即hash值相等的元素较多时，通过key值依次查找的效率较低。而JDK1.8中，为了解决hash碰撞过于频繁的问题，HashMap采用数组+链表+红黑树实现，当链表长度超过阈值（8）时，将链表(查询时间复杂度为O(n))转换为红黑树(时间复杂度为O(lg n))，极大的提高了查询效率。**以下没有特别说明的均为JDK1.8中的HashMap。**
@@ -169,7 +171,7 @@ static final int tableSizeFor(int cap) {
 
 ## 静态内部类
 
-### Node<K,V>
+### Node
 
 HashMap将hash，key，value，next已经封装到一个静态内部类Node上。它实现了`Map.Entry<K,V>`接口。
 
@@ -225,7 +227,7 @@ static class Node<K,V> implements Map.Entry<K,V> {
 
 
 
-### TreeNode<K,V>
+### TreeNode
 
 继承于LinkedHashMap.Entry<K,V>，而LinkedHashMap.Entry<K,V>是Node<K,V>的子类，因此HashMap的底层数组数据类型即为Node<K,V>
 

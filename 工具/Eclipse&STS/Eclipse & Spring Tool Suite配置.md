@@ -10,6 +10,8 @@ Spring Tool Suite的官方下载地址是：[https://spring.io/tools](https://sp
 
 
 
+[TOC]
+
 ## 配置jdk
 
 默认情况下，MyEclipse会自动关联环境变量中配置的JDK，如果我们安装了多个版本的JDK，也可以手工进行配置，方法如下： “Window”–“Preferences”–“Java”–“Installed JREs”–“Add”–“Standard VM”–选择jdk安装目录。

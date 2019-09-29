@@ -4,20 +4,7 @@
 
 本文给出几个被很多团队使用的异常处理最佳实践。
 
-- 在 finally 块中清理资源或者使用 try-with-resource 语句
-- 优先明确的异常
-- 对异常进行文档说明
-- 使用描述性消息抛出异常
-- 优先捕获最具体的异常
-- 不要捕获 Throwable 类
-- 不要忽略异常
-- 不要记录并抛出异常
-- 包装异常时不要抛弃原始的异常
-- 不要使用异常控制程序的流程
-- 使用标准异常
-- 异常会影响性能
-- 总结
-- 异常处理-阿里巴巴Java开发手册
+[TOC]
 
 
 
@@ -288,7 +275,7 @@ public void wrapException(String input) throws MyBusinessException {
 
 
 
-### **异常处理-阿里巴巴Java开发手册**
+### 异常处理-阿里巴巴Java开发手册
 
 1. 【强制】Java 类库中定义的可以通过预检查方式规避的RuntimeException异常不应该通过catch 的方式来处理，比如：NullPointerException，IndexOutOfBoundsException等等。 说明：无法通过预检查的异常除外，比如，在解析字符串形式的数字时，不得不通过catch NumberFormatException来实现。 正例：if (obj != null) {...} 反例：try { obj.method(); } catch (NullPointerException e) {…} 
 

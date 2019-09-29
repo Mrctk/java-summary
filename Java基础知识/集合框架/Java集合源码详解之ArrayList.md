@@ -18,6 +18,8 @@
 
 
 
+[TOC]
+
 ## 简介
 **ArrayList 是 Java 集合框架中 List 接口的一个实现类。底层是数组，相当于动态数组。与 Java 中的数组相比，它的容量能动态增长。**
 
@@ -556,11 +558,11 @@ public <T> T[] toArray(T[] a) {
 
 
 
-## `System.arraycopy()` 和 `Arrays.copyOf()`方法
+## System.arraycopy()和Arrays.copyOf()方法
 
 阅读源码的话，我们就会发现 ArrayList 中大量调用了这两个方法。比如：我们上面讲的扩容操作以及`add(int index, E element)`、`E remove(int index)`、`toArray()` 等方法中都用到了该方法！
 
-### `System.arraycopy()` 方法
+### System.arraycopy()方法
 
 System.arraycopy(...)：将指定源数组中的数组从指定位置开始复制到目标数组的指定位置。
 
@@ -604,7 +606,7 @@ public class ArraycopyTest {
 
 
 
-### `Arrays.copyOf()`方法
+### Arrays.copyOf()方法
 
 Array.copyOf() 选择指定的数组，截断或填充空值（如果需要），使副本具有指定的长度。以达到扩容的目的
 
