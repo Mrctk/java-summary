@@ -10,6 +10,8 @@ JSON不管是在Web开发还是服务器开发中是相当常见的数据传输�
 
 这4个JSON类库分别为：Gson，FastJson，Jackson，Json-lib。
 
+[TOC]
+
 ## 简单介绍
 
 选择一个合适的JSON库要从多个方面进行考虑：

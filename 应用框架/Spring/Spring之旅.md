@@ -1,5 +1,7 @@
 # Spring之旅
 
+[TOC]
+
 ## Spring的使命
 
 Spring是一个开源框架，最早由**Rod Johnson**创建，并在《Expert Oneon-One：J2EE Design and Development》这本著作中进行了介绍。
@@ -13,6 +15,8 @@ Spring可以做很多事情，它为企业级开发提供给了丰富的功能�
 * **基于切面和惯例进行声明式编程；**
 * **通过切面和模板减少样板式代码。**
 
+
+
 ## 激发POJO的潜能
 
 很多框架通过强迫应用继承它们的类或实现它们的接口从而导致应用与框架绑死。一个典型的例子是EJB 2时代的无状态会话bean。早期的EJB是一个很容易想到的例子，不过这种侵入式的编程方式在早期版本的Struts、WebWork、Tapestry以及无数其他的Java规范和框架中都能看到。
@@ -20,6 +24,8 @@ Spring可以做很多事情，它为企业级开发提供给了丰富的功能�
 Spring竭力避免因自身的API而弄乱你的应用代码。Spring不会强迫你实现Spring规范的接口或继承Spring规范的类，相反，在基于Spring构建的应用中，它的类通常没有任何痕迹表明你使用了Spring。最坏的场景是，一个类或许会使用Spring注解，但它依旧是POJO。
 
 Spring的非侵入编程模型意味着这个类在Spring应用和非Spring应用中都可以发挥同样的作用。
+
+
 
 ## 依赖注入
 
@@ -33,6 +39,8 @@ Spring的非侵入编程模型意味着这个类在Spring应用和非Spring应�
 **创建应用组件之间协作的行为通常称为装配（wiring）。**Spring有多种装配bean的方式，采用XML是很常见的一种装配方式。如果XML配置不符合你的喜好的话，Spring还支持使用Java来描述配置。
 
 Spring通过应用上下文（Application Context）装载bean的定义并把它们组装起来。Spring应用上下文全权负责对象的创建和组装。Spring自带了多种应用上下文的实现，它们之间主要的区别仅仅在于如何加载配置。
+
+
 
 ## 面向切面编程
 
@@ -54,6 +62,8 @@ AOP能够使这些服务模块化，并以声明的方式将它们应用到它�
 
 <img src="https://raw.githubusercontent.com/JourWon/image/master/spring/chapter1/%E5%85%B3%E6%B3%A8%E7%82%B9%E8%A6%86%E7%9B%96%E6%89%80%E5%BD%B1%E5%93%8D%E7%9A%84%E7%BB%84%E4%BB%B6.png" width="50%" height="50%" />
 
+
+
 ## 使用模板消除样板式代码
 
 你是否写过这样的代码，当编写的时候总会感觉以前曾经这么写过？我的朋友，这不是似曾相识。这是样板式的代码（boilerplate code）。通常为了实现通用的和简单的任务，你不得不一遍遍地重复编写这样的代码。
@@ -61,6 +71,8 @@ AOP能够使这些服务模块化，并以声明的方式将它们应用到它�
 遗憾的是，它们中的很多是因为使用Java API而导致的样板式代码。样板式代码的一个常见范例是使用JDBC访问数据库查询数据。
 
 Spring旨在通过模板封装来消除样板式代码。
+
+
 
 ## 容纳你的Bean
 
@@ -72,6 +84,8 @@ Spring容器并不是只有一个。Spring自带了多个容器实现，可以�
 （由org.springframework.context.ApplicationContext接口定义）基于BeanFactory构建，并提供应用框架级别的服务，例如从属性文件解析文本信息以及发布应用事件给感兴趣的事件监听者。
 
 虽然我们可以在bean工厂和应用上下文之间任选一种，但bean工厂对大多数应用来说往往太低级了，因此，应用上下文要比bean工厂更受欢迎。我们会把精力集中在应用上下文的使用上，不再浪费时间讨论bean工厂。
+
+
 
 ## bean的生命周期
 
@@ -95,9 +109,13 @@ bean在Spring容器中从创建到销毁经历了若干阶段，每一阶段都�
 
 现在你已经了解了如何创建和加载一个Spring容器。但是一个空的容器并没有太大的价值，在你把东西放进去之前，它里面什么都没有。为了从Spring的DI中受益，我们必须将应用对象装配进Spring容器中。
 
+
+
 ## Spring模块
 
 <img src="https://raw.githubusercontent.com/JourWon/image/master/spring/chapter1/Spring%E6%A8%A1%E5%9D%97%E7%BB%84%E6%88%90.png" width="50%" height="50%" />
+
+
 
 ## 小结
 
