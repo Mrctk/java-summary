@@ -1,4 +1,4 @@
-# Java集合源码详解之HashMap
+# HashMap(JDK1.8)源码解析
 
 [TOC]
 
