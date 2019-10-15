@@ -80,13 +80,22 @@ Java的枚举类型用法介绍
 
 
 
-### 集合
+### 集合框架
 
 迭代器、增强for、泛型
 
 LinkedList、HashSet、Collection集合体系
 
 Map、可变参数、Collections、Arrays
+
+| 序号 | 内容                          | 链接地址                                                 |
+| ---- | ----------------------------- | -------------------------------------------------------- |
+| 1    | Java集合框架总结              | https://blog.csdn.net/ThinkWon/article/details/98844796  |
+| 2    | ArrayList(JDK1.8)源码解析     | https://blog.csdn.net/ThinkWon/article/details/98845119  |
+| 3    | HashMap(JDK1.8)源码解析       | https://blog.csdn.net/ThinkWon/article/details/98845487  |
+| 4    | LinkedHashMap(JDK1.8)源码解析 | https://blog.csdn.net/ThinkWon/article/details/102574293 |
+| 5    | LinkedList(JDK1.8)源码解析    | https://blog.csdn.net/ThinkWon/article/details/102573923 |
+| 6    | TreeMap(JDK1.8)源码解析       | https://blog.csdn.net/ThinkWon/article/details/102571883 |
 
 
 
@@ -375,6 +384,12 @@ JUnit
 ## 数据结构与算法
 
 ### 数据结构
+
+| 序号 | 内容           | 链接地址                                                 |
+| ---- | -------------- | -------------------------------------------------------- |
+| 1    | 红黑树详细分析 | https://blog.csdn.net/ThinkWon/article/details/102571535 |
+
+
 
 ```text
 1、数组
