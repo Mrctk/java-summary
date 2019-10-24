@@ -8,7 +8,7 @@
 
 ### 下载Tomcat压缩包
 
-Tomcat有Tomcat7，Tomcat8和Tomcat9，目前企业使用较多的是Tomcat8，所以这里以Tomcat8为列
+Tomcat有Tomcat7，Tomcat8和Tomcat9等版本，目前企业使用较多的是Tomcat8，所以这里以Tomcat8为列
 
 进入Tomcat8下载网址：[Tomcat8下载网址https://tomcat.apache.org/download-80.cgi](https://tomcat.apache.org/download-80.cgi)
 
@@ -109,7 +109,7 @@ systemctl disable firewalld.service #禁止firewall开机启动
 
 ## 设置Tomcat为开机启动项
 
-按照上面的方式启动Tomcat，如果我们的虚拟机或者服务器关闭了，重启后服务器后Tomcat是关闭的，但是我们希望虚拟机或者服务器重启后，Tomcat可以自己启动，所以我们需要设置Tomcat为开机启动项
+按照上面的方式启动Tomcat，如果我们的虚拟机或者服务器关闭了，重启服务器后Tomcat是关闭的，但是我们希望虚拟机或者服务器重启后，Tomcat可以自己启动，所以我们需要设置Tomcat为开机启动项
 
 
 
@@ -126,7 +126,7 @@ JAVA_OPTS="-server -XX:PermSize=256M -XX:MaxPermSize=1024m -Xms512M -Xmx1024M -X
 
 
 
-在`/usr/local/tomcat/apache-tomcat-8.5.47/bin/catalina.sh`文件开头添加`JAVA_HOME`和`JRE_HOME`
+在`/usr/local/tomcat/apache-tomcat-8.5.47/bin/catalina.sh`文件开头添加`JAVA_HOME`和`JRE_HOME`，其中`/usr/local/jdk1.8.0_152`为jdk的安装目录
 
 ```sh
 export JAVA_HOME=/usr/local/jdk1.8.0_152
