@@ -1,4 +1,4 @@
-# Linux（CentOS7）安装Tomcat与设置Tomcat为开机启动项
+# Linux(CentOS7)安装Tomcat与设置Tomcat为开机启动项
 
 [toc]
 
