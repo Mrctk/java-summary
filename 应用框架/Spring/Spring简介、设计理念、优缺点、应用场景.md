@@ -14,6 +14,8 @@ Spring最根本的使命是**解决企业级应用开发的复杂性，即简化
 
 Spring可以做很多事情，它为企业级开发提供给了丰富的功能，但是这些功能的底层都依赖于它的两个核心特性，也就是**依赖注入（dependency injection，DI）**和**面向切面编程（aspect-oriented programming，AOP）**。
 
+Spring框架的模块组成可参考[这篇文章](https://blog.csdn.net/ThinkWon/article/details/102810819)
+
 为了降低Java开发的复杂性，Spring采取了以下**4种关键策略**：
 
 * 基于POJO的轻量级和最小侵入性编程；
@@ -29,7 +31,7 @@ Spring可以做很多事情，它为企业级开发提供给了丰富的功能�
 
 **Spring设计理念**：在JavaEE开发中，支持POJO和JavaBean开发方式，使应用面向接口开发，充分支持OO（面向对象）设计方法；Spring通过IoC容器实现对象耦合关系的管理，并实现依赖反转，将对象之间的依赖关系交个IoC容器，实现解耦；
 
-**Spring体系的核心**：IoC容器和AOP模块。通过IoC容器管理POJO对象以及他们之间的相互耦合关系；通过AOP以动态非侵入的方式增强服务。
+**Spring框架的核心**：IoC容器和AOP模块。通过IoC容器管理POJO对象以及他们之间的相互耦合关系；通过AOP以动态非侵入的方式增强服务。
 
 
 

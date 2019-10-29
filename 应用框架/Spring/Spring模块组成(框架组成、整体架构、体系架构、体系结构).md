@@ -4,6 +4,10 @@
 
 
 
+Spring是**一个轻量级Java开发框架**，致力于简化Java开发。更多有关Spring框架的简介、设计理念、优缺点和应用场景请参考[这篇文章](https://blog.csdn.net/ThinkWon/article/details/102810748)
+
+
+
 Spring 总共大约有 20 个模块， 由 1300 多个不同的文件构成。 而这些组件被分别整合在`核心容器（Core Container）` 、 `AOP（Aspect Oriented Programming）和设备支持（Instrmentation）` 、`数据访问与集成（Data Access/Integeration）` 、 `Web`、 `消息（Messaging）` 、 `Test`等 6 个模块中。 以下是 Spring 5 的模块结构图：
 
 ![img](https://raw.githubusercontent.com/JourWon/image/master/Spring模块组成(框架组成、整体架构、体系架构、体系结构)/Spring模块组成.png)
