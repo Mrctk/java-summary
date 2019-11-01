@@ -10,7 +10,7 @@ Spring是**一个轻量级Java开发框架**，致力于简化Java开发。更�
 
 Spring 总共大约有 20 个模块， 由 1300 多个不同的文件构成。 而这些组件被分别整合在`核心容器（Core Container）` 、 `AOP（Aspect Oriented Programming）和设备支持（Instrmentation）` 、`数据访问与集成（Data Access/Integeration）` 、 `Web`、 `消息（Messaging）` 、 `Test`等 6 个模块中。 以下是 Spring 5 的模块结构图：
 
-![img](https://raw.githubusercontent.com/JourWon/image/master/Spring模块组成(框架组成、整体架构、体系架构、体系结构)/Spring模块组成.png)
+![img](https://raw.githubusercontent.com/JourWon/image/master/Spring/Spring模块组成(框架组成、整体架构、体系架构、体系结构)/Spring模块组成.png)
 
 组成 Spring 框架的每个模块集合或者模块都可以单独存在， 也可以一个或多个模块联合实现。 每个模
 块的组成和功能如下：
@@ -95,5 +95,5 @@ spring-test 模块主要为测试提供支持的，支持使用JUnit或TestNG对
 
 该图是 Spring5 的包结构， 可以从中清楚看出 Spring 各个模块(jar包)之间的依赖关系。
 
-![img](https://raw.githubusercontent.com/JourWon/image/master/Spring模块组成(框架组成、整体架构、体系架构、体系结构)/Spring各模块(jar包)之间的依赖关系.png)
+![img](https://raw.githubusercontent.com/JourWon/image/master/Spring/Spring模块组成(框架组成、整体架构、体系架构、体系结构)/Spring各模块(jar包)之间的依赖关系.png)
 
