@@ -29,9 +29,9 @@ Spring框架的模块组成可参考[这篇文章](https://blog.csdn.net/ThinkWo
 
 **Spring设计目标**：Spring为开发者提供一个一站式轻量级应用开发平台；
 
-**Spring设计理念**：在JavaEE开发中，支持POJO和JavaBean开发方式，使应用面向接口开发，充分支持OO（面向对象）设计方法；Spring通过IoC容器实现对象耦合关系的管理，并实现依赖反转，将对象之间的依赖关系交个IoC容器，实现解耦；
+**Spring设计理念**：在JavaEE开发中，支持POJO和JavaBean开发方式，使应用面向接口开发，充分支持OO（面向对象）设计方法；Spring通过IoC容器实现对象耦合关系的管理，并实现依赖反转，将对象之间的依赖关系交给IoC容器，实现解耦；
 
-**Spring框架的核心**：IoC容器和AOP模块。通过IoC容器管理POJO对象以及他们之间的相互耦合关系；通过AOP以动态非侵入的方式增强服务。
+**Spring框架的核心**：IoC容器和AOP模块。通过IoC容器管理POJO对象以及他们之间的耦合关系；通过AOP以动态非侵入的方式增强服务。
 
 
 
@@ -41,7 +41,7 @@ Spring框架的模块组成可参考[这篇文章](https://blog.csdn.net/ThinkWo
 
 - 方便解耦，简化开发
 
-  Spring就是一个大工厂，可以将所有对象创建和依赖的关系维护，交给Spring管理。
+  Spring就是一个大工厂，可以将所有对象的创建和依赖关系的维护，交给Spring管理。
 
 - AOP编程的支持
 
