@@ -45,44 +45,41 @@ IoC是一个很大的概念，可以用不同的方式来实现。其主要实�
 接口注入代码：
 
 ```java
+
 package com.tyyd.dao;
-
+ 
 /**
-
  *  DAO接口
-    */
-    public interface IndexDao {
+ */
+public interface IndexDao {
     void createIndexDao(IndexDao indexDao);
-    }
-
+}
 ```
 
 ```java
-    package com.tyyd.service.impl;
-
+package com.tyyd.service.impl;
+ 
 import com.tyyd.dao.IndexDao;
 import com.tyyd.service.IndexService;
-
+ 
 /**
-
- * 测试Sercice实现类
-   */
-   public class IndexServiceImpl implements IndexService, IndexDao {
-
-   private IndexDao indexDao;
-
-   /**
-
-    * 测试方法
-      */
-      public void test() {
-      indexDao.test();
-      }
-
-   public void createIndexDao(IndexDao indexDao) {
-       this.indexDao = indexDao
-   }
-   }
+ *  测试Sercice实现类
+ */
+public class IndexServiceImpl implements IndexService, IndexDao {
+ 
+    private IndexDao indexDao;
+ 
+    /**
+     * 测试方法
+     */
+    public void test() {
+        indexDao.test();
+    }
+ 
+    public void createIndexDao(IndexDao indexDao) {
+        this.indexDao = indexDao
+    }
+}
 ```
 
 
@@ -92,36 +89,34 @@ import com.tyyd.service.IndexService;
 设置注入代码：
 
 ```java
-package com.tyyd.service.impl;
 
+package com.tyyd.service.impl;
+ 
 import com.tyyd.dao.IndexDao;
 import com.tyyd.service.IndexService;
-
+ 
 /**
-
- * 测试Sercice实现类
-   */
-   public class IndexServiceImpl implements IndexService {
-
-   private IndexDao indexDao;
-
-   /**
-
-    * 测试方法
-      */
-      public void test() {
-      indexDao.test();
-      }
-
-   /**
-
-    * IOC Set方法注入
-    * @param indexDao
-      */
-      public void setIndexDao(IndexDao indexDao) {
-      this.indexDao = indexDao;
-      }
-      }
+ *  测试Sercice实现类
+ */
+public class IndexServiceImpl implements IndexService {
+ 
+    private IndexDao indexDao;
+ 
+    /**
+     * 测试方法
+     */
+    public void test() {
+        indexDao.test();
+    }
+ 
+    /**
+     * IOC Set方法注入
+     * @param indexDao
+     */
+    public void setIndexDao(IndexDao indexDao) {
+        this.indexDao = indexDao;
+    }
+}
 ```
 
 
@@ -129,40 +124,36 @@ import com.tyyd.service.IndexService;
 构造方法注入代码：
 
 ```java
-package com.tyyd.service.impl;
 
+package com.tyyd.service.impl;
+ 
 import com.tyyd.dao.IndexDao;
 import com.tyyd.service.IndexService;
-
+ 
 /**
-
- * 测试Sercice实现类
-   */
-   public class IndexServiceImpl implements IndexService {
-
-   @Autowired
-   private IndexDao indexDao;
-
-   /**
-
-    * IOC 构造方法注入
-    * @param indexDao
-      */
-      public IndexServiceImpl(IndexDao indexDao) {
-      this.indexDao = indexDao;
-      }
-
-   /**
-
-    * 测试方法
-      */
-      public void test() {
-      indexDao.test();
-      }
-      }
+ *  测试Sercice实现类
+ */
+public class IndexServiceImpl implements IndexService {
+ 
+    @Autowired
+    private IndexDao indexDao;
+ 
+    /**
+     * IOC 构造方法注入
+     * @param indexDao
+     */
+    public IndexServiceImpl(IndexDao indexDao) {
+        this.indexDao = indexDao;
+    }
+ 
+    /**
+     * 测试方法
+     */
+    public void test() {
+        indexDao.test();
+    }
+}
 ```
-
-
 
 
 
@@ -176,25 +167,6 @@ import com.tyyd.service.IndexService;
 
 依赖查找也有两种类型：依赖拖拽（DP）和上下文化依赖查找(CDL)。
 
-```java
-public class PigServiceImpl {
-    private DataSource dataSource;
-    private PigDao pigDao;
-public PigServiceImpl(){
-    Context context = null;
-    try{
-        context = new InitialContext();
-        dataSource = (DataSource)context.lookup(“java:comp/env/dataSourceName”);
-        pigDao = (PigDao) context.lookup(“java:comp/env/PigDaoName”);
-    } catch (Exception e) {
-    
-    }
-}
-}
-```
-
-
-
 
 
 #### 上下文依赖查找(Contextualized Dependency Lookup) 
@@ -207,16 +179,17 @@ public PigServiceImpl(){
 public class PigServiceImpl {
     private DataSource dataSource;
     private PigDao pigDao;
-public PigServiceImpl(){
-    Context context = null;
-    try{
-        context = new InitialContext();
-        dataSource = (DataSource)context.lookup(“java:comp/env/dataSourceName”);
-        pigDao = (PigDao) context.lookup(“java:comp/env/PigDaoName”);
-    } catch (Exception e) {
-    
+ 
+    public PigServiceImpl(){
+        Context context = null;
+        try{
+            context = new InitialContext();
+            dataSource = (DataSource)context.lookup(“java:comp/env/dataSourceName”);
+            pigDao = (PigDao) context.lookup(“java:comp/env/PigDaoName”);
+        } catch (Exception e) {
+        
+        }
     }
-}
 }
 ```
 
@@ -245,8 +218,6 @@ public class Test {
     }
 }
 ```
-
-
 
 通常我们对注入对象的配置可以通过一个xml文件完成。并使用这种方式对对象进行集中管理，使用依赖拖拽与依赖查找本质的区别是，依赖查找是在业务组件代码中进行的，而不是从一个集中的注册处，特定的地点执行。
 
