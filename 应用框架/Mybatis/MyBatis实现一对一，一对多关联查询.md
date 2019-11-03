@@ -2,6 +2,8 @@
 
 [TOC]
 
+
+
 MyBatis如何实现一对一，一对多查询的？
 
 可以通过关联查询实现。关联查询是几个表联合查询，只查询一次，通过在resultMap里面的association，collection节点配置一对一，一对多的类就可以完成

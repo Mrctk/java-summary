@@ -2,8 +2,9 @@
 
 [TOC]
 
-## FutureTask简介 ##
 
+
+## FutureTask简介
 在Executors框架体系中，FutureTask用来表示可获取结果的异步任务。FutureTask实现了Future接口，FutureTask提供了启动和取消异步任务，查询异步任务是否计算结束以及获取最终的异步任务的结果的一些常用的方法。通过`get()`方法来获取异步任务的结果，但是会阻塞当前线程直至异步任务执行结束。一旦任务执行结束，任务不能重新启动或取消，除非调用`runAndReset()`方法。在FutureTask的源码中为其定义了这些状态：
 
 ```java
@@ -26,9 +27,7 @@ private static final int INTERRUPTED  = 6;
 
      
 
-下图总结了FutureTask的状态变化的过程：
-
-![FutureTask状态迁移图.jpg](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-线程池/FutureTask状态迁移图.png)
+![在这里插入图片描述](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-线程池/FutureTask状态迁移图.png)
 
 
 由于FutureTask具有这三种状态，因此执行FutureTask的get方法和cancel方法，当前处于不同的状态对应的结果也是大不相同。这里对get方法和cancel方法做个总结：
@@ -47,7 +46,7 @@ private static final int INTERRUPTED  = 6;
 
 对Future的get()方法和cancel()方法用下图进行总结
 
-![FutureTask的get和cancel的执行示意图.jpg](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-线程池/FutureTask的get和cancel的执行示意图.png)
+![在这里插入图片描述](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-线程池/FutureTask的get和cancel的执行示意图.png)
 
 
 

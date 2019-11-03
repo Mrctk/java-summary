@@ -2,6 +2,8 @@
 
 [TOC]
 
+
+
 ## volatile简介
 
 在上一篇文章中我们深入理解了[Java关键字-synchronized](https://blog.csdn.net/ThinkWon/article/details/102243189)，我们知道在java中还有一大神器就是关键volatile，可以说是和synchronized各领风骚，其中奥妙，我们来共同探讨下。

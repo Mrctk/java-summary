@@ -2,6 +2,8 @@
 
 [TOC]
 
+
+
 `Policy`是用来控制日志文件何时(When)进行滚动的；`Strategy`是用来控制日志文件如何(How)进行滚动的。
 
 如果配置的是`RollingFile`或`RollingRandomAccessFile`，则必须配置一个`Policy`。

@@ -1,4 +1,4 @@
-# Spring简介、设计理念、优缺点、应用场景
+# Spring简介、框架核心、优缺点、应用场景
 
 [toc]
 
@@ -25,7 +25,7 @@ Spring框架的模块组成可参考[这篇文章](https://blog.csdn.net/ThinkWo
 
 
 
-## Spring的设计目标
+## Spring框架核心
 
 **Spring设计目标**：Spring为开发者提供一个一站式轻量级应用开发平台；
 

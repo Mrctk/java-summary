@@ -2,6 +2,8 @@
 
 [TOC]
 
+
+
 ## ScheduledThreadPoolExecutor简介 ##
 
 ScheduledThreadPoolExecutor可以用来在给定延时后执行异步任务或者周期性执行任务，相对于任务调度的Timer来说，其功能更加强大，Timer只能使用一个后台线程执行任务，而ScheduledThreadPoolExecutor则可以通过构造函数来指定后台线程的个数。ScheduledThreadPoolExecutor类的UML图如下：
@@ -21,18 +23,19 @@ ScheduledThreadPoolExecutor有如下几个构造方法：
 	public ScheduledThreadPoolExecutor(int corePoolSize) {
 	    super(corePoolSize, Integer.MAX_VALUE, 0, NANOSECONDS,
 	          new DelayedWorkQueue());
-	}；
+	}
 	
 	public ScheduledThreadPoolExecutor(int corePoolSize,
 	                                   ThreadFactory threadFactory) {
 	    super(corePoolSize, Integer.MAX_VALUE, 0, NANOSECONDS,
 	          new DelayedWorkQueue(), threadFactory);
-	}；
+	}
+	
 	public ScheduledThreadPoolExecutor(int corePoolSize,
 	                                   RejectedExecutionHandler handler) {
 	    super(corePoolSize, Integer.MAX_VALUE, 0, NANOSECONDS,
 	          new DelayedWorkQueue(), handler);
-	}；
+	}
 	
 	public ScheduledThreadPoolExecutor(int corePoolSize,
 	                                   ThreadFactory threadFactory,

@@ -2,6 +2,8 @@
 
 [toc]
 
+
+
 Apache Tomcat是一个开源软件实现了Java Servlet和Java Server Pages技术。不同版本的Servlet和JSP规范可使用不同版本的Apache Tomcat。Tomcat与JDK版本对应关系为：
 
 | **Servlet规格** | **JSP规范** | **EL规格** | **WebSocket规范** | **JASPIC规格** | **Apache Tomcat版本** | **最新发行版本** | **支持的Java版本**                     |

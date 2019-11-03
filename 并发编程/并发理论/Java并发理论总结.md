@@ -11,6 +11,8 @@
 
 [TOC]
 
+
+
 ## JMM的设计 ##
 
 ![JMM层级图](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发理论/JMM层级图.png)

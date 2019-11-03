@@ -1,4 +1,4 @@
-# Windows环境Tomcat服务器安装与环境变量配置
+# Win10安装Tomcat服务器与配置环境变量
 
 [toc]
 

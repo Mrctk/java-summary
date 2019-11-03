@@ -1,4 +1,4 @@
-# Java并发之Condition源码分析与等待通知机制
+# Condition源码分析与等待通知机制
 
 [TOC]
 

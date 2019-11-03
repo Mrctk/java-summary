@@ -1,6 +1,8 @@
-# Java并发工具类之CountDownLatch与CyclicBarrier
+# 并发工具之CountDownLatch与CyclicBarrier
 
 [toc]
+
+
 
 ## 倒计时器CountDownLatch ##
 

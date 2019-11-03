@@ -2,6 +2,8 @@
 
 [TOC]
 
+
+
 ## BlockingQueue简介 ##
 
 在实际编程中，会经常使用到JDK中Collection集合框架中的各种容器类如实现List,Map,Queue接口的容器类，但是这些容器类基本上不是线程安全的，除了使用Collections可以将其转换为线程安全的容器，Doug Lea大师为我们都准备了对应的线程安全的容器，如实现List接口的CopyOnWriteArrayList（[关于CopyOnWriteArrayList可以看这篇文章](https://blog.csdn.net/ThinkWon/article/details/102508258)），实现Map接口的ConcurrentHashMap（[关于ConcurrentHashMap可以看这篇文章](https://blog.csdn.net/ThinkWon/article/details/102506447)），实现Queue接口的ConcurrentLinkedQueue（[关于ConcurrentLinkedQueue可以看这篇文章](https://blog.csdn.net/ThinkWon/article/details/102508089)）。

@@ -2,6 +2,8 @@
 
 [TOC]
 
+
+
 Redis主要有5种数据类型，包括String，List，Set，Zset，Hash，满足大部分的使用要求，Redis各数据类型的使用场景可以参考[Redis使用场景](https://blog.csdn.net/ThinkWon/article/details/101521497)
 
 | 数据类型 |      可以存储的值      |                             操作                             |

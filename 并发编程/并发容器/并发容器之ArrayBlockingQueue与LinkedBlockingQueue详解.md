@@ -2,6 +2,8 @@
 
 [TOC]
 
+
+
 ## ArrayBlockingQueue简介 ##
 
 在多线程编程过程中，为了业务解耦和架构设计，经常会使用并发容器用于存储多线程间的共享数据，这样不仅可以保证线程安全，还可以简化各个线程操作。例如在“生产者-消费者”问题中，会使用阻塞队列（BlockingQueue）作为数据容器，关于BlockingQueue可以[看这篇文章](https://blog.csdn.net/ThinkWon/article/details/102508901)。为了加深对阻塞队列的理解，唯一的方式是对其实验原理进行理解，这篇文章就主要来看看ArrayBlockingQueue和LinkedBlockingQueue的实现原理。

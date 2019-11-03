@@ -1,4 +1,4 @@
-# Eclipse & Spring Tool Suite配置
+# Eclipse & Spring Tool Suite常用配置
 
 Eclipse 是一个开放源代码的、基于Java的可扩展开发平台。Eclipse 是Java开发人员常用的开发工具，虽然现在很多人转向使用IDEA，但是Eclipse给我们还是留下了一段美好的回忆。
 
