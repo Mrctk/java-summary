@@ -1,9 +1,10 @@
 # AQS(AbstractQueuedSynchronizer)详解与源码分析
 
-[TOC]
+[toc]
+
+
 
 ## AQS简介
-
 
 在[上一篇文章](https://blog.csdn.net/ThinkWon/article/details/102468837)中我们对lock和AbstractQueuedSynchronizer(AQS)有了初步的认识。在同步组件的实现中，AQS是核心部分，同步组件的实现者通过使用AQS提供的模板方法实现同步组件语义，AQS则实现了对**同步状态的管理，以及对阻塞线程进行排队，等待通知**等等一些底层的实现处理。AQS的核心也包括了这些方面：**同步队列，独占式锁的获取和释放，共享锁的获取和释放以及可中断锁，超时等待锁获取这些特性的实现**，而这些实际上则是AQS提供出来的模板方法，归纳整理如下：
 
@@ -85,7 +86,7 @@ public class LockDemo {
 实例代码中开启了5个线程，先获取锁之后再睡眠10S中，实际上这里让线程睡眠是想模拟出当线程无法获取锁时进入同步队列的情况。通过debug，当Thread-4（在本例中最后一个线程）获取锁失败后进入同步时，AQS时现在的同步队列如图所示：
 
 
-![LockDemo debug下.png](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-Lock体系/LockDemo debug下.png)
+![LockDemo debug下.png](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItTG9jayVFNCVCRCU5MyVFNyVCMyVCQi9Mb2NrRGVtbyUyMGRlYnVnJUU0JUI4JThCLnBuZw)
 
 
 Thread-0先获得锁后进行睡眠，其他线程（Thread-1,Thread-2,Thread-3,Thread-4）获取锁失败进入同步队列，同时也可以很清楚的看出来每个节点有两个域：prev(前驱)和next(后继)，并且每个节点用来保存获取同步状态失败的线程引用以及等待状态等信息。另外AQS中有两个重要的成员变量：
@@ -97,7 +98,7 @@ private transient volatile Node tail;
 
 也就是说AQS实际上通过头尾指针来管理同步队列，同时实现包括获取锁失败的线程进行入队，释放锁时对同步队列中的线程进行通知等核心方法。其示意图如下：
 
-![队列示意图.png](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-Lock体系/队列示意图.png)
+![队列示意图.png](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItTG9jayVFNCVCRCU5MyVFNyVCMyVCQi8lRTklOTglOUYlRTUlODglOTclRTclQTQlQkElRTYlODQlOEYlRTUlOUIlQkUucG5n)
 
 
 通过对源码的理解以及做实验的方式，现在我们可以清楚的知道这样几点：
@@ -152,7 +153,7 @@ private Node addWaiter(Node mode) {
 }
 ```
 
-分析可以看上面的注释。程序的逻辑主要分为两个部分：**1. 当前同步队列的尾节点为null，调用方法enq()插入;2. 当前队列的尾节点不为null，则采用尾插入（compareAndSetTail（）方法）的方式入队。**另外还会有另外一个问题：如果 `if (compareAndSetTail(pred, node))`为false怎么办？会继续执行到enq()方法，同时很明显compareAndSetTail是一个CAS操作，通常来说如果CAS操作失败会继续自旋（死循环）进行重试。因此，经过我们这样的分析，enq()方法可能承担两个任务：**1. 处理当前同步队列尾节点为null时进行入队操作；2. 如果CAS尾插入节点失败后负责自旋进行尝试。**那么是不是真的就像我们分析的一样了？只有源码会告诉我们答案，enq()源码如下：
+分析可以看上面的注释。程序的逻辑主要分为两个部分：**1. 当前同步队列的尾节点为null，调用方法enq()插入;2. 当前队列的尾节点不为null，则采用尾插入（compareAndSetTail（）方法）的方式入队**。另外还会有另外一个问题：如果 `if (compareAndSetTail(pred, node))`为false怎么办？会继续执行到enq()方法，同时很明显compareAndSetTail是一个CAS操作，通常来说如果CAS操作失败会继续自旋（死循环）进行重试。因此，经过我们这样的分析，enq()方法可能承担两个任务：**1. 处理当前同步队列尾节点为null时进行入队操作；2. 如果CAS尾插入节点失败后负责自旋进行尝试**。那么是不是真的就像我们分析的一样了？只有源码会告诉我们答案，enq()源码如下：
 
 ```java
 private Node enq(final Node node) {
@@ -213,7 +214,7 @@ final boolean acquireQueued(final Node node, int arg) {
 
 程序逻辑通过注释已经标出，整体来看这是一个这又是一个自旋的过程（for循环），代码首先获取当前节点的先驱节点，**如果先驱节点是头结点的并且成功获得同步状态的时候（if (p == head && tryAcquire(arg))），当前节点所指向的线程能够获取锁**。反之，获取锁失败进入等待状态。整体示意图为下图：
 
-![自旋获取锁整体示意图.png](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-Lock体系/自旋获取锁整体示意图.png)
+![自旋获取锁整体示意图.png](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItTG9jayVFNCVCRCU5MyVFNyVCMyVCQi8lRTglODclQUElRTYlOTclOEIlRTglOEUlQjclRTUlOEYlOTYlRTklOTQlODElRTYlOTUlQjQlRTQlQkQlOTMlRTclQTQlQkElRTYlODQlOEYlRTUlOUIlQkUucG5n)
 
 
 
@@ -242,7 +243,7 @@ private void setHead(Node node) {
 
 将当前节点通过setHead()方法设置为队列的头结点，然后将之前的头结点的next域设置为null并且pre域也为null，即与队列断开，无任何引用方便GC时能够将内存进行回收。示意图如下：
 
-![当前节点引用线程获取锁，当前节点设置为队列头结点.png](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-Lock体系/当前节点引用线程获取锁，当前节点设置为队列头结点.png)
+![当前节点引用线程获取锁，当前节点设置为队列头结点.png](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItTG9jayVFNCVCRCU5MyVFNyVCMyVCQi8lRTUlQkQlOTMlRTUlODklOEQlRTglOEElODIlRTclODIlQjklRTUlQkMlOTUlRTclOTQlQTglRTclQkElQkYlRTclQTglOEIlRTglOEUlQjclRTUlOEYlOTYlRTklOTQlODElRUYlQkMlOEMlRTUlQkQlOTMlRTUlODklOEQlRTglOEElODIlRTclODIlQjklRTglQUUlQkUlRTclQkQlQUUlRTQlQjglQkElRTklOTglOUYlRTUlODglOTclRTUlQTQlQjQlRTclQkIlOTMlRTclODIlQjkucG5n)
 
 
 那么当获取锁失败的时候会调用shouldParkAfterFailedAcquire()方法和parkAndCheckInterrupt()方法，看看他们做了什么事情。shouldParkAfterFailedAcquire()方法源码为：
@@ -294,7 +295,7 @@ private final boolean parkAndCheckInterrupt() {
 
 经过上面的分析，独占式锁的获取过程也就是acquire()方法的执行流程如下图所示：
 
-![独占式锁获取（acquire()方法）流程图.png](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-Lock体系/独占式锁获取acquire方法流程图.png)
+![独占式锁获取（acquire()方法）流程图.png](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItTG9jayVFNCVCRCU5MyVFNyVCMyVCQi8lRTclOEIlQUMlRTUlOEQlQTAlRTUlQkMlOEYlRTklOTQlODElRTglOEUlQjclRTUlOEYlOTZhY3F1aXJlJUU2JTk2JUI5JUU2JUIzJTk1JUU2JUI1JTgxJUU3JUE4JThCJUU1JTlCJUJFLnBuZw)
 
 
 ### 独占锁的释放（release()方法） ###
@@ -475,7 +476,7 @@ private boolean doAcquireNanos(int arg, long nanosTimeout)
 
 程序逻辑如图所示：
 
-![超时等待式获取锁doAcquireNanos方法](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-Lock体系/超时等待式获取锁doAcquireNanos方法.png)
+![超时等待式获取锁doAcquireNanos方法](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItTG9jayVFNCVCRCU5MyVFNyVCMyVCQi8lRTglQjYlODUlRTYlOTclQjYlRTclQUQlODklRTUlQkUlODUlRTUlQkMlOEYlRTglOEUlQjclRTUlOEYlOTYlRTklOTQlODFkb0FjcXVpcmVOYW5vcyVFNiU5NiVCOSVFNiVCMyU5NS5wbmc)
 
 
 
@@ -592,5 +593,3 @@ private void doReleaseShared() {
 通过这篇，加深了对AQS的底层实现更加清楚了，也对了解并发组件的实现原理打下了基础，学无止境，继续加油，如果觉得不错，请给赞，嘿嘿。
 
 > 参考文献 《Java并发编程的艺术》
-
-

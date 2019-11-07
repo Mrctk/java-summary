@@ -1,14 +1,13 @@
 # Maven私服Nexus安装与使用
 
-[TOC]
+[toc]
+
+
 
 ## Nexus介绍
-
 Nexus是Maven仓库管理器，如果你使用Maven，你可以从Maven中央仓库下载所需要的构件（artifact），但这通常不是一个好的做法，你应该在本地架设一个Maven仓库服务器，在代理远程仓库的同时维护本地仓库，以节省带宽和时间，Nexus就可以满足这样的需要。此外，他还提供了强大的仓库管理功能，构件搜索功能，它基于REST，友好的UI是一个extjs的REST客户端，它占用较少的内存，基于简单文件系统而非数据库。这些优点使其日趋成为最流行的Maven仓库管理器。除此之外，Nexus还可以管理Docker镜像。
 
 > 注：Maven简介可参考[Maven简介](https://blog.csdn.net/ThinkWon/article/details/94346090) 
-
-
 
 ## 私服的好处
 
@@ -84,7 +83,7 @@ OpenJDK 64-Bit Server VM warning: Cannot open file ../sonatype-work/nexus3/log/j
 
 访问web地址：http://ip:8081
 
-![Nexus首次登录界面](https://raw.githubusercontent.com/JourWon/image/master/Maven私服Nexus安装与使用/Nexus首次登录界面.png)
+![Nexus首次登录界面](https://img-blog.csdnimg.cn/20190817133811470.png)
 
 从3.17版本开始默认密码不再是admin123，密码是随机生成。首次登录页面会显示admin用户的密码在/nexus-data/admin.password
 
@@ -96,7 +95,7 @@ OpenJDK 64-Bit Server VM warning: Cannot open file ../sonatype-work/nexus3/log/j
 
 登录后界面如下
 
-![Nexus登录后界面](https://raw.githubusercontent.com/JourWon/image/master/Maven私服Nexus安装与使用/Nexus登录后界面.png)
+![Nexus登录后界面](https://img-blog.csdnimg.cn/20190817133754553.png)
 
 
 
@@ -127,13 +126,13 @@ Apache Snapshots：Apache专用快照仓库(3.x去除了)
 ## 配置阿里云公共仓库
 Nexus的maven-group的默认查找方式为：maven-releases --> maven-snapshots --> maven-central，我们在中间再加一个阿里云仓库，加快访问速度。
 
-![配置阿里云公共仓库1](https://raw.githubusercontent.com/JourWon/image/master/Maven私服Nexus安装与使用/配置阿里云公共仓库1.png)
+![配置阿里云公共仓库1](https://img-blog.csdnimg.cn/20190817133735217.png)
 
 
 
 选择proxy类型
 
-![配置阿里云公共仓库2](https://raw.githubusercontent.com/JourWon/image/master/Maven私服Nexus安装与使用/配置阿里云公共仓库2.png)
+![配置阿里云公共仓库2](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL01hdmVuJUU3JUE3JTgxJUU2JTlDJThETmV4dXMlRTUlQUUlODklRTglQTMlODUlRTQlQjglOEUlRTQlQkQlQkYlRTclOTQlQTgvJUU5JTg1JThEJUU3JUJEJUFFJUU5JTk4JUJGJUU5JTg3JThDJUU0JUJBJTkxJUU1JTg1JUFDJUU1JTg1JUIxJUU0JUJCJTkzJUU1JUJBJTkzMi5wbmc)
 
 信息填写如下
 
@@ -141,13 +140,13 @@ Nexus的maven-group的默认查找方式为：maven-releases --> maven-snapshots
 >阿里云远程maven仓库地址：http://maven.aliyun.com/nexus/content/groups/public/
 >其他选项：默认即可
 
-![配置阿里云公共仓库3](https://raw.githubusercontent.com/JourWon/image/master/Maven私服Nexus安装与使用/配置阿里云公共仓库3.png)
+![配置阿里云公共仓库3](https://img-blog.csdnimg.cn/20190817133710529.png)
 
 
 
 修改maven-public中的仓库引用及顺序：
 
-![配置阿里云公共仓库4](https://raw.githubusercontent.com/JourWon/image/master/Maven私服Nexus安装与使用/配置阿里云公共仓库4.png)
+![配置阿里云公共仓库4](https://img-blog.csdnimg.cn/20190817133642520.png)
 
 至此，配置完毕！我们在maven使用maven-public仓库地址的时候，会按照如下顺序访问：本地仓库 --> 私服maven-releases --> 私服maven-snapshots --> 远程阿里云maven仓库 --> 远程中央仓库。
 
@@ -195,7 +194,7 @@ maven配置私服下载有两种方式
 
 镜像的URL可以从页面中的copy按钮直接复制
 
-![镜像的URL](C:\Users\JourW\Desktop\镜像的URL.png)
+![镜像的URL](https://img-blog.csdnimg.cn/20190817133618460.png)
 
 
 
@@ -347,4 +346,4 @@ mvn deploy
 
 ## 上传第三方jar包
 
-![上传第三方jar包](https://raw.githubusercontent.com/JourWon/image/master/Maven私服Nexus安装与使用/上传第三方jar包.png)
+![上传第三方jar包](https://img-blog.csdnimg.cn/20190817133520480.png)

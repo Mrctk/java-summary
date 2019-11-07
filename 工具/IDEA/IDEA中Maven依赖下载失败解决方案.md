@@ -1,17 +1,16 @@
 # IDEA中Maven依赖下载失败解决方案
-
 > 使用IDEA进行Maven项目开发时，时不时会遇到pom.xml报错的情况，其中很大概率是因为Maven依赖的jar包下载失败，找来找去也没有找到是什么问题，困扰了很多程序猿，这里给出IDEA中Maven依赖下载失败解决方案，给大家参考，实测有用。
 
-[TOC]
+[toc]
+
+
 
 ## 首先检查网络有没有问题，确定网络没有问题，请看下一步
-
+------
 
 
 ## 多次点击重新导入Maven依赖的按钮
-
-![重新导入Maven依赖](https://raw.githubusercontent.com/JourWon/image/master/IDEA中Maven依赖下载失败解决方案/重新导入Maven依赖.png)
-
+![重新导入Maven依赖](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0lERUElRTQlQjglQURNYXZlbiVFNCVCRSU5RCVFOCVCNSU5NiVFNCVCOCU4QiVFOCVCRCVCRCVFNSVBNCVCMSVFOCVCNCVBNSVFOCVBNyVBMyVFNSU4NiVCMyVFNiU5NiVCOSVFNiVBMSU4OC8lRTklODclOEQlRTYlOTYlQjAlRTUlQUYlQkMlRTUlODUlQTVNYXZlbiVFNCVCRSU5RCVFOCVCNSU5Ni5wbmc)
 重新导入Maven依赖有两种方式，如上图所示。如果多次点击重新导入依赖按钮依然报错，请看下一步
 
 
@@ -19,17 +18,14 @@
 ## 设置自动导入Maven依赖
 
 Settings -> Build,Execution,Deployment -> Build Tools -> Maven -> Importing，如下图
-
-![自动导入Maven工程](https://raw.githubusercontent.com/JourWon/image/master/IDEA中Maven依赖下载失败解决方案/自动导入Maven工程.png)
+![自动导入Maven工程](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0lERUElRTQlQjglQURNYXZlbiVFNCVCRSU5RCVFOCVCNSU5NiVFNCVCOCU4QiVFOCVCRCVCRCVFNSVBNCVCMSVFOCVCNCVBNSVFOCVBNyVBMyVFNSU4NiVCMyVFNiU5NiVCOSVFNiVBMSU4OC8lRTglODclQUElRTUlOEElQTglRTUlQUYlQkMlRTUlODUlQTVNYXZlbiVFNSVCNyVBNSVFNyVBOCU4Qi5wbmc)
 
 这样设置后，如果Maven仓库存在依赖的话，IDEA会自动导入到项目中，如果没有用，看下一步
 
 
 
 ## 在IDEA中找到Maven的配置文件的地址，然后检查配置的远程仓库或者镜像有没有问题
-
-![Maven配置.png](https://raw.githubusercontent.com/JourWon/image/master/IDEA中Maven依赖下载失败解决方案/Maven配置.png)
-
+![Maven配置.png](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0lERUElRTQlQjglQURNYXZlbiVFNCVCRSU5RCVFOCVCNSU5NiVFNCVCOCU4QiVFOCVCRCVCRCVFNSVBNCVCMSVFOCVCNCVBNSVFOCVBNyVBMyVFNSU4NiVCMyVFNiU5NiVCOSVFNiVBMSU4OC9NYXZlbiVFOSU4NSU4RCVFNyVCRCVBRS5wbmc)
 如上图所示，我的配置在`C:\develop\Maven\apache-maven-3.5.3\conf\settings.xml`
 
 我配置的是阿里云仓库，没有什么问题，如果配置的是Maven私服Nexus的话，需要检查配置的路径和私服网络有没有问题
@@ -47,7 +43,6 @@ Settings -> Build,Execution,Deployment -> Build Tools -> Maven -> Importing，�
 
 
 ## 如果上面几步都没有解决问题，可以使用以下脚本删除Mvaen中的lastUpdated文件
-
 如果你的电脑是Windows系统，新建cleanLastUpdated.bat文件
 
 > 注意：记得将脚本cleanLastUpdated.bat文件的仓库路径改为自己Maven仓库的路径
@@ -70,9 +65,7 @@ pause
 
 
 ## Maven仓库依赖存在依旧报错
-
-![Maven仓库依赖存在依旧报错](https://raw.githubusercontent.com/JourWon/image/master/IDEA中Maven依赖下载失败解决方案/Maven仓库依赖存在依旧报错.png)
-
+![Maven仓库依赖存在依旧报错](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0lERUElRTQlQjglQURNYXZlbiVFNCVCRSU5RCVFOCVCNSU5NiVFNCVCOCU4QiVFOCVCRCVCRCVFNSVBNCVCMSVFOCVCNCVBNSVFOCVBNyVBMyVFNSU4NiVCMyVFNiU5NiVCOSVFNiVBMSU4OC9NYXZlbiVFNCVCQiU5MyVFNSVCQSU5MyVFNCVCRSU5RCVFOCVCNSU5NiVFNSVBRCU5OCVFNSU5QyVBOCVFNCVCRSU5RCVFNiU5NyVBNyVFNiU4QSVBNSVFOSU5NCU5OS5wbmc)
 我的依赖问题到这一步才得到解决，好累，不过问题终于解决了！
 
 有两种解决方式：

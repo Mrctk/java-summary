@@ -1,12 +1,12 @@
-# Executor类创建四种常见线程池
+# Executors类创建四种常见线程池
 
-[TOC]
+[toc]
 
 
 
 ## 线程池架构
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-线程池/线程池架构图.jpg)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191014094502445.jpg)
 
 上图是线程池的架构图。Java里面线程池的顶级接口是Executor，Executor并不是一个线程
 

@@ -1,8 +1,10 @@
 # Redis总结
 
-![Redis Logo](https://raw.githubusercontent.com/JourWon/image/master/Redis总结/Redis图标.jpg)
+![Redis Logo](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL1JlZGlzJUU2JTgwJUJCJUU3JUJCJTkzL1JlZGlzJUU1JTlCJUJFJUU2JUEwJTg3LmpwZw)
 
-[TOC]
+[toc]
+
+
 
 ## Redis简介
 
@@ -107,7 +109,7 @@ Redis 服务器是一个事件驱动程序。
 
 Redis 基于 Reactor 模式开发了自己的网络事件处理器，使用 I/O 多路复用程序来同时监听多个套接字，并将到达的事件传送给文件事件分派器，分派器会根据套接字产生的事件类型调用相应的事件处理器。
 
-![文件事件](https://raw.githubusercontent.com/JourWon/image/master/Redis总结/文件事件.png)
+![文件事件](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL1JlZGlzJUU2JTgwJUJCJUU3JUJCJTkzLyVFNiU5NiU4NyVFNCVCQiVCNiVFNCVCQSU4QiVFNCVCQiVCNi5wbmc)
 
 ### 时间事件
 
@@ -130,7 +132,7 @@ Redis 基于 Reactor 模式开发了自己的网络事件处理器，使用 I/O 
 
 服务器需要不断监听文件事件的套接字才能得到待处理的文件事件，但是不能一直监听，否则时间事件无法在规定的时间内执行，因此监听时间应该根据距离现在最近的时间事件来决定。
 
-![事件处理流程](https://raw.githubusercontent.com/JourWon/image/master/Redis总结/事件处理流程.png)
+![事件处理流程](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL1JlZGlzJUU2JTgwJUJCJUU3JUJCJTkzLyVFNCVCQSU4QiVFNCVCQiVCNiVFNSVBNCU4NCVFNyU5MCU4NiVFNiVCNSU4MSVFNyVBOCU4Qi5wbmc)
 
 
 
@@ -177,7 +179,7 @@ Sentinel（哨兵）可以监听集群中的服务器，并在主服务器进入
 
 随着负载不断上升，主服务器可能无法很快地更新所有从服务器，或者重新连接和重新同步从服务器将导致系统超载。为了解决这个问题，可以创建一个中间层来分担主服务器的复制工作。中间层的服务器是最上层服务器的从服务器，又是最下层服务器的主服务器。
 
-![主从链](https://raw.githubusercontent.com/JourWon/image/master/Redis总结/主从链.png)
+![主从链](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL1JlZGlzJUU2JTgwJUJCJUU3JUJCJTkzLyVFNCVCOCVCQiVFNCVCQiU4RSVFOSU5MyVCRS5wbmc)
 
 
 
@@ -197,7 +199,7 @@ Sentinel（哨兵）可以监听集群中的服务器，并在主服务器进入
 
 Redis 没有关系型数据库中的表这一概念来将同种类型的数据存放在一起，而是使用命名空间的方式来实现这一功能。键名的前面部分存储命名空间，后面部分的内容存储 ID，通常使用 : 来进行分隔。例如下面的 HASH 的键名为 article:92617，其中 article 为命名空间，ID 为 92617。
 
-![文章信息](https://raw.githubusercontent.com/JourWon/image/master/Redis总结/文章信息.png)
+![文章信息](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL1JlZGlzJUU2JTgwJUJCJUU3JUJCJTkzLyVFNiU5NiU4NyVFNyVBQiVBMCVFNCVCRiVBMSVFNiU4MSVBRi5wbmc)
 
 ### 点赞功能
 
@@ -205,10 +207,10 @@ Redis 没有关系型数据库中的表这一概念来将同种类型的数据�
 
 为了节约内存，规定一篇文章发布满一周之后，就不能再对它进行投票，而文章的已投票集合也会被删除，可以为文章的已投票集合设置一个一周的过期时间就能实现这个规定。
 
-![点赞功能](https://raw.githubusercontent.com/JourWon/image/master/Redis总结/点赞功能.png)
+![点赞功能](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL1JlZGlzJUU2JTgwJUJCJUU3JUJCJTkzLyVFNyU4MiVCOSVFOCVCNSU5RSVFNSU4QSU5RiVFOCU4MyVCRC5wbmc)
 
 ### 对文章进行排序
 
 为了按发布时间和点赞数进行排序，可以建立一个文章发布时间的有序集合和一个文章点赞数的有序集合。（下图中的 score 就是这里所说的点赞数；下面所示的有序集合分值并不直接是时间和点赞数，而是根据时间和点赞数间接计算出来的）
 
-![对文章进行排序](https://raw.githubusercontent.com/JourWon/image/master/Redis总结/对文章进行排序.png)
+![对文章进行排序](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL1JlZGlzJUU2JTgwJUJCJUU3JUJCJTkzLyVFNSVBRiVCOSVFNiU5NiU4NyVFNyVBQiVBMCVFOCVCRiU5QiVFOCVBMSU4QyVFNiU4RSU5MiVFNSVCQSU4Ri5wbmc)

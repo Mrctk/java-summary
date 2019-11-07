@@ -1,6 +1,8 @@
 # 常用Git命令
 
-[TOC]
+[toc]
+
+
 
 ## Git简介
 
@@ -9,12 +11,10 @@
 * Git与常用的版本控制工具 CVS, Subversion 等不同，它采用了分布式版本库的方式，不必服务器端软件支持。
 
 
-
 有关Git的详细介绍可以参考[Git简介](https://blog.csdn.net/ThinkWon/article/details/94346816)
-
 经常使用 Git ，但是很多命令还是记不住。一般来说，日常使用只要记住下图7个命令就可以了。但要熟练掌握，恐怕要记住40~60个命令，所以整理了一份常用Git命令清单。
 
-![Git工作流程](https://raw.githubusercontent.com/JourWon/image/master/git/Git%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.png)
+![Git工作流程](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL2dpdC9HaXQlRTUlQjclQTUlRTQlQkQlOUMlRTYlQjUlODElRTclQTglOEIucG5n)
 
 * Workspace：工作区
 * Index / Stage：暂存区
@@ -307,17 +307,16 @@ $ git archive
 
 ## 附：Git常用命令速查表
 
-![Git常用命令速查表](https://raw.githubusercontent.com/JourWon/image/master/git/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E8%A1%A8.jpg)
+![Git常用命令速查表](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL2dpdC9HaXQlRTUlQjglQjglRTclOTQlQTglRTUlOTElQkQlRTQlQkIlQTQlRTklODAlOUYlRTYlOUYlQTUlRTglQTElQTguanBn)
 
 
 ## 附：Git指令速查表
-![Git指令速查表1](https://raw.githubusercontent.com/JourWon/image/master/git/Git%E6%8C%87%E4%BB%A4%E9%80%9F%E6%9F%A5%E8%A1%A81.jpg)
-![Git指令速查表2](https://raw.githubusercontent.com/JourWon/image/master/git/Git%E6%8C%87%E4%BB%A4%E9%80%9F%E6%9F%A5%E8%A1%A82.jpg)
+![Git指令速查表1](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL2dpdC9HaXQlRTYlOEMlODclRTQlQkIlQTQlRTklODAlOUYlRTYlOUYlQTUlRTglQTElQTgxLmpwZw)
+![Git指令速查表2](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL2dpdC9HaXQlRTYlOEMlODclRTQlQkIlQTQlRTklODAlOUYlRTYlOUYlQTUlRTglQTElQTgyLmpwZw)
 
 
 
 ## 附：资料链接
-
 [Git 常用命令总结](https://blog.csdn.net/tomatozaitian/article/details/73515849)
 [Git常用命令，很全很详细讲解的也不错](https://blog.csdn.net/afei__/article/details/51476529)
 [Git详细使用教程](https://blog.csdn.net/tgbus18990140382/article/details/52886786)

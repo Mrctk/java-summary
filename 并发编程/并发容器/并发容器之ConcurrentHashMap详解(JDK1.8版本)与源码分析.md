@@ -1,11 +1,10 @@
 # 并发容器之ConcurrentHashMap详解(JDK1.8版本)与源码分析
 
-[TOC]
+[toc]
 
 
 
 ## ConcurrentHashMap简介 ##
-
 在使用HashMap时在多线程情况下扩容会出现CPU接近100%的情况，因为hashmap并不是线程安全的，通常我们可以使用在java体系中古老的hashtable类，该类基本上所有的方法都采用synchronized进行线程安全的控制，可想而知，在高并发的情况下，每次只有一个线程能够获取对象监视器锁，这样的并发性能的确不令人满意。另外一种方式通过Collections的`Map<K,V> synchronizedMap(Map<K,V> m)`将hashmap包装成一个线程安全的map。比如SynchronzedMap的put方法源码为：
 
 ```java
@@ -156,14 +155,14 @@ static final class TreeBin<K,V> extends Node<K,V> {
 
 3. **setTabAt**
 
-    ```java
+```java
 // 该方法用来设置table数组中索引为i的元素
 static final <K,V> void setTabAt(Node<K,V>[] tab, int i, Node<K,V> v) {
 		U.putObjectVolatile(tab, ((long)i << ASHIFT) + ABASE, v);
 }
-    ```
+```
 
-
+​    
 
 ## 重点方法讲解 ##
 
@@ -340,7 +339,7 @@ final V putVal(K key, V value, boolean onlyIfAbsent) {
 
 put方法的代码量有点长，我们按照上面的分解的步骤一步步来看。**从整体而言，为了解决线程安全的问题，ConcurrentHashMap使用了synchronzied和CAS的方式**。在之前了解过HashMap以及1.8版本之前的ConcurrenHashMap都应该知道ConcurrentHashMap结构图，为了方面下面的讲解这里先直接给出，如果对这有疑问的话，可以在网上随便搜搜即可。
 
-![ConcurrentHashMap散列桶数组结构示意图](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发容器/ConcurrentHashMap散列桶数组结构示意图.png)
+![ConcurrentHashMap散列桶数组结构示意图](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItJUU1JUI5JUI2JUU1JThGJTkxJUU1JUFFJUI5JUU1JTk5JUE4L0NvbmN1cnJlbnRIYXNoTWFwJUU2JTk1JUEzJUU1JTg4JTk3JUU2JUExJUI2JUU2JTk1JUIwJUU3JUJCJTg0JUU3JUJCJTkzJUU2JTlFJTg0JUU3JUE0JUJBJUU2JTg0JThGJUU1JTlCJUJFLnBuZw)
 
 
 如图（图片摘自网络），ConcurrentHashMap是一个哈希桶数组，如果不出现哈希冲突的时候，每个元素均匀的分布在哈希桶数组中。当出现哈希冲突的时候，是**标准的链地址的解决方式**，将hash值相同的节点构成链表的形式，称为“拉链法”，另外，在1.8版本中为了防止拉链过长，当链表的长度大于8的时候会将链表转换成红黑树。table数组中的每个元素实际上是单链表的头结点或者红黑树的根节点。当插入键值对时首先应该定位到要插入的桶，即插入table数组的索引i处。那么，怎样计算得出索引i呢？当然是根据key的hashCode值。
@@ -669,7 +668,7 @@ private final void transfer(Node<K,V>[] tab, Node<K,V>[] nextTab) {
 3. 如果这个位置是TreeBin节点（fh<0），也做一个反序处理，并且判断是否需要untreefi，把处理的结果分别放在nextTable的i和i+n的位置上
 4. 遍历过所有的节点以后就完成了复制工作，这时让nextTable作为新的table，并且更新sizeCtl为新容量的0.75倍 ，完成扩容。设置为新容量的0.75倍代码为 `sizeCtl = (n << 1) - (n >>> 1)`，仔细体会下是不是很巧妙，n<<1相当于n右移一位表示n的两倍即2n，n>>>1左右一位相当于n除以2即0.5n,然后两者相减为2n-0.5n=1.5n，是不是刚好等于新容量的0.75倍即2n*0.75=1.5n。最后用一个示意图来进行总结（图片摘自网络）：
 
-![ConcurrentHashMap扩容示意图](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发容器/ConcurrentHashMap扩容示意图.png)
+![ConcurrentHashMap扩容示意图](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItJUU1JUI5JUI2JUU1JThGJTkxJUU1JUFFJUI5JUU1JTk5JUE4L0NvbmN1cnJlbnRIYXNoTWFwJUU2JTg5JUE5JUU1JUFFJUI5JUU3JUE0JUJBJUU2JTg0JThGJUU1JTlCJUJFLnBuZw)
 
 
 

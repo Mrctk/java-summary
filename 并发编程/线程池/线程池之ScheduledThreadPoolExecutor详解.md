@@ -1,15 +1,15 @@
 # 线程池之ScheduledThreadPoolExecutor详解
 
-[TOC]
+[toc]
 
 
 
-## ScheduledThreadPoolExecutor简介 ##
+## ScheduledThreadPoolExecutor简介
 
 ScheduledThreadPoolExecutor可以用来在给定延时后执行异步任务或者周期性执行任务，相对于任务调度的Timer来说，其功能更加强大，Timer只能使用一个后台线程执行任务，而ScheduledThreadPoolExecutor则可以通过构造函数来指定后台线程的个数。ScheduledThreadPoolExecutor类的UML图如下：
 
 
-![ScheduledThreadPoolExecutor类的UML图.png](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-线程池/ScheduledThreadPoolExecutor类的UML图.png )
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191014095717277.png)
 
 1. 从UML图可以看出，ScheduledThreadPoolExecutor继承了`ThreadPoolExecutor`，也就是说ScheduledThreadPoolExecutor拥有execute()和submit()提交异步任务的基础功能，关于ThreadPoolExecutor[可以看这篇文章]( https://blog.csdn.net/ThinkWon/article/details/102541900 )。但是，ScheduledThreadPoolExecutor类实现了`ScheduledExecutorService`，该接口定义了ScheduledThreadPoolExecutor能够延时执行任务和周期执行任务的功能；
 2. ScheduledThreadPoolExecutor也两个重要的内部类：**DelayedWorkQueue**和**ScheduledFutureTask**。可以看出DelayedWorkQueue实现了BlockingQueue接口，也就是一个阻塞队列，ScheduledFutureTask则是继承了FutureTask类，也表示该类用于返回异步任务的结果。这两个关键类，下面会具体详细来看。

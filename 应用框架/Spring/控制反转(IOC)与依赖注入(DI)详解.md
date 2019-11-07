@@ -255,7 +255,7 @@ ApplicationContext 可以称之为 **“高级容器”**。因为他比 BeanFac
 
 为了更直观的展示 “低级容器” 和 “高级容器” 的关系，这里通过常用的 ClassPathXmlApplicationContext 类，来展示整个容器的层级 UML 关系。
 
-![img](https://raw.githubusercontent.com/JourWon/image/master/Spring/控制反转(IoC)与依赖注入(DI)详解/低级容器和高级容器的关系.png)
+![img](https://img-blog.csdnimg.cn/20191105111441363.png)
 
 有点复杂？ 先不要慌，我来解释一下。
 

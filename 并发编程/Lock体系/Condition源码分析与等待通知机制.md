@@ -1,12 +1,14 @@
 # Condition源码分析与等待通知机制
 
-[TOC]
+[toc]
+
+
 
 ## Condition简介 ##
 
 任何一个java对象都天然继承于Object类，在线程间实现通信的往往会应用到Object的几个方法，比如wait()，wait(long timeout)，wait(long timeout, int nanos)与notify()，notifyAll()几个方法实现等待/通知机制，同样的， 在java Lock体系下依然会有同样的方法实现等待/通知机制。从整体上来看**Object的wait和notify/notify是与对象监视器配合完成线程间的等待/通知机制，而Condition与Lock配合完成等待通知机制，前者是java底层级别的，后者是语言级别的，具有更高的可控制性和扩展性**。两者除了在使用方式上不同外，在**功能特性**上还是有很多的不同：
 
-![Object的监视器方法与Condition接口的对比](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-Lock体系/Object的监视器方法与Condition接口的对比.png)
+![Object的监视器方法与Condition接口的对比](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItTG9jayVFNCVCRCU5MyVFNyVCMyVCQi9PYmplY3QlRTclOUElODQlRTclOUIlOTElRTglQTclODYlRTUlOTklQTglRTYlOTYlQjklRTYlQjMlOTUlRTQlQjglOEVDb25kaXRpb24lRTYlOEUlQTUlRTUlOEYlQTMlRTclOUElODQlRTUlQUYlQjklRTYlQUYlOTQucG5n)
 
 
 
@@ -49,16 +51,16 @@ public static void main(String[] args) {
 ```
 这段代码没有任何实际意义，甚至很臭，只是想说明下我们刚才所想的。新建了10个线程，没有线程先获取锁，然后调用condition.await方法释放锁将当前线程加入到等待队列中，通过debug控制当走到第10个线程的时候查看`firstWaiter`即等待队列中的头结点，debug模式下情景图如下：
 
-![debug模式下情景图](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-Lock体系/debug模式下情景图.png)
+![debug模式下情景图](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItTG9jayVFNCVCRCU5MyVFNyVCMyVCQi9kZWJ1ZyVFNiVBOCVBMSVFNSVCQyU4RiVFNCVCOCU4QiVFNiU4MyU4NSVFNiU5OSVBRiVFNSU5QiVCRS5wbmc)
 
 从这个图我们可以很清楚的看到这样几点：1. 调用condition.await方法后线程依次尾插入到等待队列中，如图队列中的线程引用依次为Thread-0,Thread-1,Thread-2....Thread-8；2. 等待队列是一个单向队列。通过我们的猜想然后进行实验验证，我们可以得出等待队列的示意图如下图所示：
 
-![等待队列的示意图](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-Lock体系/等待队列的示意图.png)
+![等待队列的示意图](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItTG9jayVFNCVCRCU5MyVFNyVCMyVCQi8lRTclQUQlODklRTUlQkUlODUlRTklOTglOUYlRTUlODglOTclRTclOUElODQlRTclQTQlQkElRTYlODQlOEYlRTUlOUIlQkUucG5n)
 
 
 同时还有一点需要注意的是：我们可以多次调用lock.newCondition()方法创建多个condition对象，也就是一个lock可以持有多个等待队列。而在之前利用Object的方式实际上是指在**对象Object对象监视器上只能拥有一个同步队列和一个等待队列，而并发包中的Lock拥有一个同步队列和多个等待队列**。示意图如下：
 
-![AQS持有多个Condition.png](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-Lock体系/AQS持有多个Condition.png)
+![AQS持有多个Condition.png](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItTG9jayVFNCVCRCU5MyVFNyVCMyVCQi9BUVMlRTYlOEMlODElRTYlOUMlODklRTUlQTQlOUElRTQlQjglQUFDb25kaXRpb24ucG5n)
 
 如图所示，ConditionObject是AQS的内部类，因此每个ConditionObject能够访问到AQS提供的方法，相当于每个Condition都拥有所属同步器的引用。
 
@@ -153,7 +155,7 @@ while (!isOnSyncQueue(node)) {
 
 很显然，当线程第一次调用condition.await()方法时，会进入到这个while()循环中，然后通过LockSupport.park(this)方法使得当前线程进入等待状态，那么要想退出这个await方法第一个前提条件自然而然的是要先退出这个while循环，出口就只剩下两个地方：**1. 逻辑走到break退出while循环；2. while循环中的逻辑判断为false**。再看代码出现第1种情况的条件是当前等待的线程被中断后代码会走到break退出，第二种情况是当前节点被移动到了同步队列中（即另外线程调用的condition的signal或者signalAll方法），while中逻辑判断为false后结束while循环。**总结下**，就是**当前线程被中断或者调用condition.signal/condition.signalAll方法，当前节点移动到了同步队列后** ，这是当前线程退出await方法的前提条件。当退出while循环后就会调用`acquireQueued(node, savedState)`，这个方法在介绍AQS的底层实现时说过了，若感兴趣的话可以去[看这篇文章](https://blog.csdn.net/ThinkWon/article/details/102469112)，该方法的作用是在**自旋过程中线程不断尝试获取同步状态，直至成功（线程获取到lock）**。这样也说明了**退出await方法必须是已经获得了condition引用（关联）的lock**。到目前为止，开头的三个问题我们通过阅读源码的方式已经完全找到了答案，也对await方法的理解加深。await方法示意图如下图：
 
-![await方法示意图](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-Lock体系/await方法示意图.png)
+![await方法示意图](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItTG9jayVFNCVCRCU5MyVFNyVCMyVCQi9hd2FpdCVFNiU5NiVCOSVFNiVCMyU5NSVFNyVBNCVCQSVFNiU4NCU4RiVFNSU5QiVCRS5wbmc)
 
 
 
@@ -249,7 +251,7 @@ final boolean transferForSignal(Node node) {
 
 关键逻辑请看注释，这段代码主要做了两件事情1.将头结点的状态更改为CONDITION；2.调用enq方法，将该节点尾插入到同步队列中，关于enq方法请看AQS的底层实现[这篇文章](https://blog.csdn.net/ThinkWon/article/details/102469112)。现在我们可以得出结论：**调用condition的signal的前提条件是当前线程已经获取了lock，该方法会使得等待队列中的头节点即等待时间最长的那个节点移入到同步队列，而移入到同步队列后才有机会使得等待线程被唤醒，即从await方法中的LockSupport.park(this)方法中返回，从而才有机会使得调用await方法的线程成功退出**。signal执行示意图如下图：
 
-![signal执行示意图](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-Lock体系/signal执行示意图.png)
+![signal执行示意图](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItTG9jayVFNCVCRCU5MyVFNyVCMyVCQi9zaWduYWwlRTYlODklQTclRTglQTElOEMlRTclQTQlQkElRTYlODQlOEYlRTUlOUIlQkUucG5n)
 
 
 
@@ -277,7 +279,7 @@ private void doSignalAll(Node first) {
 
 文章开篇提到等待/通知机制，通过使用condition提供的await和signal/signalAll方法就可以实现这种机制，而这种机制能够解决最经典的问题就是“生产者与消费者问题”，关于“生产者消费者问题”之后会用单独的一篇文章进行讲解，这也是面试的高频考点。await和signal和signalAll方法就像一个开关控制着线程A（等待方）和线程B（通知方）。它们之间的关系可以用下面一个图来表现得更加贴切：
 
-![condition下的等待通知机制.png](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-Lock体系/condition下的等待通知机制.png)
+![condition下的等待通知机制.png](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItTG9jayVFNCVCRCU5MyVFNyVCMyVCQi9jb25kaXRpb24lRTQlQjglOEIlRTclOUElODQlRTclQUQlODklRTUlQkUlODUlRTklODAlOUElRTclOUYlQTUlRTYlOUMlQkElRTUlODglQjYucG5n)
 
 
 如图，**线程awaitThread先通过lock.lock()方法获取锁成功后调用了condition.await方法进入等待队列，而另一个线程signalThread通过lock.lock()方法获取锁成功后调用了condition.signal或者signalAll方法，使得线程awaitThread能够有机会移入到同步队列中，当其他线程释放lock后使得线程awaitThread能够有机会获取lock，从而使得线程awaitThread能够从await方法中退出执行后续操作。如果awaitThread获取lock失败会直接进入到同步队列**。

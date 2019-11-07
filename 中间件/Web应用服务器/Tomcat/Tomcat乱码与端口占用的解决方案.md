@@ -8,19 +8,19 @@ Tomcat 服务器是一个免费的开放源代码的 Web 应用服务器，属�
 
 ## 问题一：Tomcat的startup.bat启动后出现乱码
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Tomcat/Tomcat服务器下载、安装与环境变量配置/Tomcat启动界面.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/201910181147003.png)
 
 
 
 找到Tomcat文件下的conf目录，修改logging.properties文件中java.util.logging.ConsoleHandler.encoding对应的值为GBK
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Tomcat/Tomcat常见问题汇总/修改编码为GBK.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/2019101811471528.png)
 
 
 
 重启Tomcat，你看到的启动页面是这样的话，说明乱码问题已经解决
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Tomcat/Tomcat常见问题汇总/修改编码后的启动界面.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191018114727446.png)
 
 
 
@@ -29,7 +29,7 @@ Tomcat 服务器是一个免费的开放源代码的 Web 应用服务器，属�
 
 启动Tomcat出现一闪而退的现象，其实还是可以看到Tomcat终端输出的日志，这时你需要迅速截图捕获异常，太南了。
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Tomcat/Tomcat常见问题汇总/端口占用.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191018114743594.png)
 
 
 
@@ -71,7 +71,7 @@ Tomcat 服务器是一个免费的开放源代码的 Web 应用服务器，属�
 
 在Tomcat目录找到conf目录中的server.xml配置文件，在Connector标签中修改Tomcat启动端口
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Tomcat/Tomcat常见问题汇总/修改server配置文件启动端口.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191018114800883.png)
 
 ```xml
 <Connector port="9080" protocol="HTTP/1.1"

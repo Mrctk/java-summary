@@ -2,13 +2,15 @@
 
 [toc]
 
+
+
 Tomcat 服务器是一个免费的开放源代码的 Web 应用服务器，属于轻量级应用服务器，在中小型系统和并发访问用户不是很多的场合下被普遍使用，是开发和调试 JSP 程序的首选。十分有必要了解Tomcat目录结构。
 
 ## 目录结构
 
 解压Tomcat后的目录结构如下图
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Tomcat/Tomcat目录结构/Tomcat目录结构.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191018094115826.png)
 
 
 各目录及文件说明
@@ -40,7 +42,7 @@ Tomcat 服务器是一个免费的开放源代码的 Web 应用服务器，属�
 
 用于存放 Tomcat的启动、停止等批处理脚本和Shell脚本
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Tomcat/Tomcat目录结构/bin目录.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191018094104456.png)
 
 
 
@@ -48,7 +50,7 @@ Tomcat 服务器是一个免费的开放源代码的 Web 应用服务器，属�
 
 用于存放 Tomcat的相关配置文件
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Tomcat/Tomcat目录结构/conf目录.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191018094054132.png)
 
 
 
@@ -56,7 +58,7 @@ Tomcat 服务器是一个免费的开放源代码的 Web 应用服务器，属�
 
 Tomcat服务器依赖库目录，包含 Tomcat服务器运行环境依赖lar包
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Tomcat/Tomcat目录结构/lib目录.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/2019101809404349.png)
 
 
 
@@ -64,7 +66,7 @@ Tomcat服务器依赖库目录，包含 Tomcat服务器运行环境依赖lar包
 
 Tomcat默认的Web应用部署目录
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Tomcat/Tomcat目录结构/webapps目录.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191018094030999.png)
 
 
 
@@ -72,6 +74,6 @@ Tomcat默认的Web应用部署目录
 
 存放tomcat在运行过程中产生的临时文件
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Tomcat/Tomcat目录结构/temp目录.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191018094016732.png)
 
 

@@ -1,6 +1,6 @@
-## Redis数据类型
+# Redis数据类型
 
-[TOC]
+[toc]
 
 
 
@@ -16,7 +16,7 @@ Redis主要有5种数据类型，包括String，List，Set，Zset，Hash，满�
 
 ### STRING
 
-![string](https://raw.githubusercontent.com/JourWon/image/master/Redis总结/string.png)
+![string](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL1JlZGlzJUU2JTgwJUJCJUU3JUJCJTkzL3N0cmluZy5wbmc)
 
 ```shell
 > set hello world
@@ -31,7 +31,7 @@ OK
 
 ### LIST
 
-![list](https://raw.githubusercontent.com/JourWon/image/master/Redis总结/list.png)
+![list](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL1JlZGlzJUU2JTgwJUJCJUU3JUJCJTkzL2xpc3QucG5n)
 
 ```shell
 > rpush list-key item
@@ -59,7 +59,7 @@ OK
 
 ### SET
 
-![set](https://raw.githubusercontent.com/JourWon/image/master/Redis总结/set.png)
+![set](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL1JlZGlzJUU2JTgwJUJCJUU3JUJCJTkzL3NldC5wbmc)
 
 ```shell
 > sadd set-key item
@@ -93,7 +93,7 @@ OK
 
 ### HASH
 
-![hash](https://raw.githubusercontent.com/JourWon/image/master/Redis总结/hash.png)
+![hash](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL1JlZGlzJUU2JTgwJUJCJUU3JUJCJTkzL2hhc2gucG5n)
 
 ```shell
 > hset hash-key sub-key1 value1
@@ -124,7 +124,7 @@ OK
 
 ### ZSET
 
-![zset](https://raw.githubusercontent.com/JourWon/image/master/Redis总结/zset.png)
+![zset](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL1JlZGlzJUU2JTgwJUJCJUU3JUJCJTkzL3pzZXQucG5n)
 
 ```shell
 > zadd zset-key 728 member1

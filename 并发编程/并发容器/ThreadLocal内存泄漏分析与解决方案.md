@@ -1,6 +1,6 @@
 # ThreadLocal内存泄漏分析与解决方案
 
-[TOC]
+[toc]
 
 
 
@@ -10,7 +10,7 @@ threadLocal是为了解决**对象不能被多线程共享访问**的问题，�
 
 关于threadLocal，threadLocalMap更多的细节可以看[这篇文章](https://blog.csdn.net/ThinkWon/article/details/102508381)，给出了很详细的各个方面的知识（很多也是面试高频考点）。threadLocal，threadLocalMap，entry之间的关系如下图所示：
 
-![threadLocal引用示意图](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发容器/threadLocal引用示意图.png)
+![threadLocal引用示意图](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItJUU1JUI5JUI2JUU1JThGJTkxJUU1JUFFJUI5JUU1JTk5JUE4L3RocmVhZExvY2FsJUU1JUJDJTk1JUU3JTk0JUE4JUU3JUE0JUJBJUU2JTg0JThGJUU1JTlCJUJFLnBuZw)
 
 上图中，实线代表强引用，虚线代表的是弱引用，如果threadLocal外部强引用被置为null(threadLocalInstance=null)的话，threadLocal实例就没有一条引用链路可达，很显然在gc(垃圾回收)的时候势必会被回收，因此entry就存在key为null的情况，无法通过一个Key为null去访问到该entry的value。同时，就存在了这样一条引用链：threadRef->currentThread->threadLocalMap->entry->valueRef->valueMemory，导致在垃圾回收的时候进行可达性分析的时候,value可达从而不会被回收掉，但是该value永远不能被访问到，这样就存在了**内存泄漏**。当然，如果线程执行结束后，threadLocal，threadRef会断掉，因此threadLocal，threadLocalMap，entry都会被回收掉。可是，在实际使用中我们都是会用线程池去维护我们的线程，比如在Executors.newFixedThreadPool()时创建线程的时候，为了复用线程是不会结束的，所以threadLocal内存泄漏就值得我们关注。
 
@@ -108,7 +108,7 @@ private boolean cleanSomeSlots(int i, int n) {
 
 	主要用于**扫描控制（scan control），从while中是通过n来进行条件判断的说明n就是用来控制扫描趟数（循环次数）的**。在扫描过程中，如果没有遇到脏entry就整个扫描过程持续log2(n)次，log2(n)的得来是因为`n >>>= 1`，每次n右移一位相当于n除以2。如果在扫描过程中遇到脏entry的话就会令n为当前hash表的长度（`n=len`），再扫描log2(n)趟，注意此时n增加无非就是多增加了循环次数从而通过nextIndex往后搜索的范围扩大，示意图如下
 
-![cleanSomeSlots示意图.png](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发容器/cleanSomeSlots示意图.png)
+![cleanSomeSlots示意图.png](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItJUU1JUI5JUI2JUU1JThGJTkxJUU1JUFFJUI5JUU1JTk5JUE4L2NsZWFuU29tZVNsb3RzJUU3JUE0JUJBJUU2JTg0JThGJUU1JTlCJUJFLnBuZw)
 
 按照n的初始值，搜索范围为黑线，当遇到了脏entry，此时n变成了哈希数组的长度（n取值增大），搜索范围log2(n)增大，红线表示。如果在整个搜索过程没遇到脏entry的话，搜索结束，采用这种方式的主要是用于时间效率上的平衡。
 
@@ -187,7 +187,7 @@ private int expungeStaleEntry(int staleSlot) {
 现在对cleanSomeSlot方法做一下总结，其方法执行示意图如下：
 
 
-![cleanSomeSlots示意图.png](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发容器/cleanSomeSlots示意图.png)
+![cleanSomeSlots示意图.png](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItJUU1JUI5JUI2JUU1JThGJTkxJUU1JUFFJUI5JUU1JTk5JUE4L2NsZWFuU29tZVNsb3RzJUU3JUE0JUJBJUU2JTg0JThGJUU1JTlCJUJFLnBuZw)
 
 
 如图所示，cleanSomeSlot方法主要有这样几点：
@@ -199,7 +199,7 @@ private int expungeStaleEntry(int staleSlot) {
 
 下面，以一个例子更清晰的来说一下，假设当前table数组的情况如下图。
 
-![cleanSomeSlots执行情景图.png](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发容器/cleanSomeSlots执行情景图.png)
+![cleanSomeSlots执行情景图.png](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItJUU1JUI5JUI2JUU1JThGJTkxJUU1JUFFJUI5JUU1JTk5JUE4L2NsZWFuU29tZVNsb3RzJUU2JTg5JUE3JUU4JUExJThDJUU2JTgzJTg1JUU2JTk5JUFGJUU1JTlCJUJFLnBuZw)
 
 
 1. 如图当前n等于hash表的size即n=10，i=1,在第一趟搜索过程中通过nextIndex,i指向了索引为2的位置，此时table[2]为null，说明第一趟未发现脏entry,则第一趟结束进行第二趟的搜索。
@@ -310,7 +310,7 @@ int slotToExpunge = staleSlot;
 1.1后向环形查找找到可覆盖的entry 
 该情形如下图所示。
 
-![向前环形搜索到脏entry，向后环形查找到可覆盖的entry的情况.png](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发容器/向前环形搜索到脏entry，向后环形查找到可覆盖的entry的情况.png)
+![向前环形搜索到脏entry，向后环形查找到可覆盖的entry的情况.png](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItJUU1JUI5JUI2JUU1JThGJTkxJUU1JUFFJUI5JUU1JTk5JUE4LyVFNSU5MCU5MSVFNSU4OSU4RCVFNyU4RSVBRiVFNSVCRCVBMiVFNiU5MCU5QyVFNyVCNCVBMiVFNSU4OCVCMCVFOCU4NCU4RmVudHJ5JUVGJUJDJThDJUU1JTkwJTkxJUU1JTkwJThFJUU3JThFJUFGJUU1JUJEJUEyJUU2JTlGJUE1JUU2JTg5JUJFJUU1JTg4JUIwJUU1JThGJUFGJUU4JUE2JTg2JUU3JTlCJTk2JUU3JTlBJTg0ZW50cnklRTclOUElODQlRTYlODMlODUlRTUlODYlQjUucG5n)
 		
 
 如图，slotToExpunge初始状态和staleSlot相同，当前向环形搜索遇到脏entry时，在第1行代码中slotToExpunge会更新为当前脏entry的索引i，直到遇到哈希桶（table[i]）为null的时候，前向搜索过程结束。在接下来的for循环中进行后向环形查找，若查找到了可覆盖的entry，第2,3,4行代码先覆盖当前位置的entry，然后再与staleSlot位置上的脏entry进行交换。交换之后脏entry就更换到了i处，最后使用cleanSomeSlots方法从slotToExpunge为起点开始进行清理脏entry的过程
@@ -319,7 +319,7 @@ int slotToExpunge = staleSlot;
 
 1.2 后向环形查找未找到可覆盖的entry 
 该情形如下图所示。
-![前向环形搜索到脏entry,向后环形未搜索可覆盖entry.png](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发容器/前向环形搜索到脏entry,向后环形未搜索可覆盖entry.png)
+![前向环形搜索到脏entry,向后环形未搜索可覆盖entry.png](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItJUU1JUI5JUI2JUU1JThGJTkxJUU1JUFFJUI5JUU1JTk5JUE4LyVFNSU4OSU4RCVFNSU5MCU5MSVFNyU4RSVBRiVFNSVCRCVBMiVFNiU5MCU5QyVFNyVCNCVBMiVFNSU4OCVCMCVFOCU4NCU4RmVudHJ5LCVFNSU5MCU5MSVFNSU5MCU4RSVFNyU4RSVBRiVFNSVCRCVBMiVFNiU5QyVBQSVFNiU5MCU5QyVFNyVCNCVBMiVFNSU4RiVBRiVFOCVBNiU4NiVFNyU5QiU5NmVudHJ5LnBuZw)
 如图，slotToExpunge初始状态和staleSlot相同，当前向环形搜索遇到脏entry时，在第1行代码中slotToExpunge会更新为当前脏entry的索引i，直到遇到哈希桶（table[i]）为null的时候，前向搜索过程结束。在接下来的for循环中进行后向环形查找，若没有查找到了可覆盖的entry，哈希桶（table[i]）为null的时候，后向环形查找过程结束。那么接下来在8,9行代码中，将插入的新entry直接放在staleSlot处即可，最后使用cleanSomeSlots方法从slotToExpunge为起点开始进行清理脏entry的过程
 
 
@@ -328,13 +328,13 @@ int slotToExpunge = staleSlot;
 
 2.1后向环形查找找到可覆盖的entry 
 该情形如下图所示。
-		![前向未搜索到脏entry，后向环形搜索到可覆盖的entry.png](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发容器/前向未搜索到脏entry，后向环形搜索到可覆盖的entry.png)
+		![前向未搜索到脏entry，后向环形搜索到可覆盖的entry.png](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItJUU1JUI5JUI2JUU1JThGJTkxJUU1JUFFJUI5JUU1JTk5JUE4LyVFNSU4OSU4RCVFNSU5MCU5MSVFNiU5QyVBQSVFNiU5MCU5QyVFNyVCNCVBMiVFNSU4OCVCMCVFOCU4NCU4RmVudHJ5JUVGJUJDJThDJUU1JTkwJThFJUU1JTkwJTkxJUU3JThFJUFGJUU1JUJEJUEyJUU2JTkwJTlDJUU3JUI0JUEyJUU1JTg4JUIwJUU1JThGJUFGJUU4JUE2JTg2JUU3JTlCJTk2JUU3JTlBJTg0ZW50cnkucG5n)
 如图，slotToExpunge初始状态和staleSlot相同，当前向环形搜索直到遇到哈希桶（table[i]）为null的时候，前向搜索过程结束，若在整个过程未遇到脏entry，slotToExpunge初始状态依旧和staleSlot相同。在接下来的for循环中进行后向环形查找，若遇到了脏entry，在第7行代码中更新slotToExpunge为位置i。若查找到了可覆盖的entry，第2,3,4行代码先覆盖当前位置的entry，然后再与staleSlot位置上的脏entry进行交换，交换之后脏entry就更换到了i处。如果在整个查找过程中都还没有遇到脏entry的话，会通过第5行代码，将slotToExpunge更新当前i处，最后使用cleanSomeSlots方法从slotToExpunge为起点开始进行清理脏entry的过程。
 
 2.2后向环形查找未找到可覆盖的entry 
 该情形如下图所示。
 
-![前向环形未搜索到脏entry,后向环形查找未查找到可覆盖的entry.png](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发容器/前向环形未搜索到脏entry,后向环形查找未查找到可覆盖的entry.png)
+![前向环形未搜索到脏entry,后向环形查找未查找到可覆盖的entry.png](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItJUU1JUI5JUI2JUU1JThGJTkxJUU1JUFFJUI5JUU1JTk5JUE4LyVFNSU4OSU4RCVFNSU5MCU5MSVFNyU4RSVBRiVFNSVCRCVBMiVFNiU5QyVBQSVFNiU5MCU5QyVFNyVCNCVBMiVFNSU4OCVCMCVFOCU4NCU4RmVudHJ5LCVFNSU5MCU4RSVFNSU5MCU5MSVFNyU4RSVBRiVFNSVCRCVBMiVFNiU5RiVBNSVFNiU4OSVCRSVFNiU5QyVBQSVFNiU5RiVBNSVFNiU4OSVCRSVFNSU4OCVCMCVFNSU4RiVBRiVFOCVBNiU4NiVFNyU5QiU5NiVFNyU5QSU4NGVudHJ5LnBuZw)
 		
 
 如图，slotToExpunge初始状态和staleSlot相同，当前向环形搜索直到遇到哈希桶（table[i]）为null的时候，前向搜索过程结束，若在整个过程未遇到脏entry，slotToExpunge初始状态依旧和staleSlot相同。在接下来的for循环中进行后向环形查找，若遇到了脏entry，在第7行代码中更新slotToExpunge为位置i。若没有查找到了可覆盖的entry，哈希桶（table[i]）为null的时候，后向环形查找过程结束。那么接下来在8,9行代码中，将插入的新entry直接放在staleSlot处即可。另外，如果发现slotToExpunge被重置，则第10行代码if判断为true,就使用cleanSomeSlots方法从slotToExpunge为起点开始进行清理脏entry的过程。
@@ -342,7 +342,7 @@ int slotToExpunge = staleSlot;
 
 下面用一个实例来有个直观的感受，示例代码就不给出了，代码debug时table状态如下图所示：
 
-![情况示意图.png](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发容器/情况示意图.png)
+![情况示意图.png](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItJUU1JUI5JUI2JUU1JThGJTkxJUU1JUFFJUI5JUU1JTk5JUE4LyVFNiU4MyU4NSVFNSU4NiVCNSVFNyVBNCVCQSVFNiU4NCU4RiVFNSU5QiVCRS5wbmc)
 
 如图所示，当前的staleSolt为i=4，首先先进行前向搜索脏entry，当i=3的时候遇到脏entry，slotToExpung更新为3，当i=2的时候tabel[2]为null，因此前向搜索脏entry的过程结束。然后进行后向环形查找，知道i=7的时候遇到table[7]为null，结束后向查找过程，并且在该过程并没有找到可以覆盖的entry。最后只能在staleSlot（4）处插入新entry，然后从slotToExpunge（3）为起点进行cleanSomeSlots进行脏entry的清理。是不是上面的1.2的情况。
 

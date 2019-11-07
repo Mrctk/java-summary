@@ -41,7 +41,7 @@ Tomcat有Tomcat7，Tomcat8和Tomcat9，目前企业使用较多的是Tomcat8，�
 - Windows Service Installer：Windows安装包，32位和64位版本的Windows系统都适用
 
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Tomcat/Tomcat服务器下载、安装与环境变量配置/Tomcat8下载页面.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191018115241748.png)
 
 
 
@@ -51,13 +51,13 @@ Tomcat有Tomcat7，Tomcat8和Tomcat9，目前企业使用较多的是Tomcat8，�
 
 我的zip包放在`C:\develop\Tomcat`
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Tomcat/Tomcat服务器下载、安装与环境变量配置/Tomcat压缩包.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/2019101811525592.png)
 
 
 
 然后解压到当前文件夹既可
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Tomcat/Tomcat服务器下载、安装与环境变量配置/解压Tomcat压缩包.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191018115307699.png)
 
 
 
@@ -65,7 +65,7 @@ Tomcat有Tomcat7，Tomcat8和Tomcat9，目前企业使用较多的是Tomcat8，�
 
 解压Tomcat后的目录结构如下图
 
-![](C:\Users\JourW\Desktop\Tomcat\Tomcat目录结构\Tomcat目录结构.png)
+![](https://img-blog.csdnimg.cn/20191107140613108.png)
 
 具体目录文件作用可参考[Tomcat目录结构](https://blog.csdn.net/ThinkWon/article/details/102619466)，说明写的非常详细哦
 
@@ -75,17 +75,17 @@ Tomcat有Tomcat7，Tomcat8和Tomcat9，目前企业使用较多的是Tomcat8，�
 
 在Tomcat的bin目录里双击运行startup.bat文件，如果出现如下的界面，说明你的Tomcat服务器已经成功跑起来了，为自己点赞。
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Tomcat/Tomcat服务器下载、安装与环境变量配置/Tomcat启动界面.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191018115321833.png)
 
 
 
 然后在浏览器地址栏输入`127.0.0.1:8080`或者`localhost:8080`即可进入Tomcat主界面
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Tomcat/Tomcat服务器下载、安装与环境变量配置/Tomcat主界面.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191018115334140.png)
 
 
 
-但是有些小伙伴在启动Tomcat时也会遇到各种各样的问题，比如Tomcat的startup.bat启动后出现乱码，端口占用，启动后闪退等问题，具体可以参考[Tomcat常见问题汇总](https://blog.csdn.net/ThinkWon/article/details/102622824)
+但是有些小伙伴在启动Tomcat时也会遇到各种各样的问题，比如Tomcat的startup.bat启动后出现乱码，端口占用，启动后闪退等问题，具体可以参考[Tomcat乱码与端口占用的解决方案](https://blog.csdn.net/ThinkWon/article/details/102622824)
 
 
 
@@ -97,25 +97,25 @@ Tomcat的环境变量配置跟JDK的环境变量配置几乎一样，只是修�
 
 在`此电脑`右键`属性`
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Tomcat/Tomcat服务器下载、安装与环境变量配置/右键此电脑.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191018115349225.png)
 
 
 
 单击"高级系统设置"，然后单击"环境变量"。
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Tomcat/Tomcat服务器下载、安装与环境变量配置/环境变量.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191018115401168.png)
 
 
 
 新建->变量名"CATALINA_HOME"，变量值"C:\develop\Tomcat\apache-tomcat-8.5.47"（即Tomcat的安装路径） 
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Tomcat/Tomcat服务器下载、安装与环境变量配置/新建环境变量.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191018115411695.png)
 
 
 
 在系统变量找到变量名"Path"，点击编辑，然后点击"新建"，然后输入上"%CATALINA_HOME%\bin"，点击"确定"，再点击"确定"。
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Tomcat/Tomcat服务器下载、安装与环境变量配置/新增Path变量.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191018115423954.png)
 
 
 
@@ -123,4 +123,4 @@ Tomcat的环境变量配置跟JDK的环境变量配置几乎一样，只是修�
 
 如果输出如下则说明配置成功
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Tomcat/Tomcat服务器下载、安装与环境变量配置/配置好环境变量启动Tomcat.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191018115437188.png)

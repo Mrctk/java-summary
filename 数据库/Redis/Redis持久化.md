@@ -1,6 +1,6 @@
-## Redis持久化
+# Redis持久化
 
-[TOC]
+[toc]
 
 
 
@@ -8,7 +8,7 @@ Redis 是内存型数据库，为了之后重用数据（比如重启机器、�
 
 Redis 提供了RDB和AOF两种持久化方式。默认是只开启RDB，当Redis重启时，它会优先使用AOF文件来还原数据集。
 
-### RDB 持久化(快照持久化)
+## RDB 持久化(快照持久化)
 
 RDB 持久化：将某个时间点的所有数据都存放到硬盘上。
 
@@ -45,7 +45,7 @@ save 60 10000
 
 
 
-### AOF 持久化
+## AOF 持久化
 
 AOF 持久化：将写命令添加到 AOF 文件（Append Only File）的末尾。
 
@@ -79,7 +79,7 @@ appendonly yes
 
 虽然AOF持久化非常灵活地提供了多种不同的选项来满足不同应用程序对数据安全的不同要求，但AOF持久化也有缺陷——AOF文件的体积太大。
 
-### 重写/压缩AOF
+## 重写/压缩AOF
 
 AOF虽然在某个角度可以将数据丢失降低到最小而且对性能影响也很小，但是极端的情况下，体积不断增大的AOF文件很可能会用完硬盘空间。另外，如果AOF体积过大，那么还原操作执行时间就可能会非常长。
 
@@ -87,7 +87,7 @@ AOF虽然在某个角度可以将数据丢失降低到最小而且对性能影�
 
 **文件重写流程：**
 
-![文件重写流程](https://raw.githubusercontent.com/JourWon/image/master/Redis总结/文件重写流程.png)
+![文件重写流程](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL1JlZGlzJUU2JTgwJUJCJUU3JUJCJTkzLyVFNiU5NiU4NyVFNCVCQiVCNiVFOSU4NyU4RCVFNSU4NiU5OSVFNiVCNSU4MSVFNyVBOCU4Qi5wbmc)
 和快照持久化可以通过设置save选项来自动执行BGSAVE一样，AOF持久化设置以下参数
 
 ```
@@ -107,7 +107,7 @@ auto-aof-rewrite-min-size 64mb
 
 
 
-### Redis 4.0 对持久化机制的优化
+## Redis 4.0 对持久化机制的优化
 
 Redis 4.0 开始支持 RDB 和 AOF 的混合持久化（默认关闭，可以通过配置项 `aof-use-rdb-preamble` 开启）。
 
@@ -115,7 +115,7 @@ Redis 4.0 开始支持 RDB 和 AOF 的混合持久化（默认关闭，可以通
 
 
 
-### 如何选择合适的持久化方式
+## 如何选择合适的持久化方式
 
 - 一般来说， 如果想达到足以媲美PostgreSQL的数据安全性，你应该同时使用两种持久化功能。在这种情况下，当 Redis 重启的时候会优先载入AOF文件来恢复原始的数据，因为在通常情况下AOF文件保存的数据集要比RDB文件保存的数据集要完整。
 

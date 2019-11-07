@@ -1,6 +1,8 @@
 # Git简介
 
-[TOC]
+[toc]
+
+
 
 ## 版本控制
 
@@ -82,7 +84,7 @@ SVN是**集中式版本控制系统**，而Git是**分布式版本控制系统**
 
  Git 的工作流程图如下：
 
-![Git 的工作流程图](https://raw.githubusercontent.com/JourWon/image/master/Git简介/Git 的工作流程图.png)
+![Git 的工作流程图](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0dpdCVFNyVBRSU4MCVFNCVCQiU4Qi9HaXQlMjAlRTclOUElODQlRTUlQjclQTUlRTQlQkQlOUMlRTYlQjUlODElRTclQTglOEIlRTUlOUIlQkUucG5n)
 
 
 
@@ -94,7 +96,7 @@ SVN是**集中式版本控制系统**，而Git是**分布式版本控制系统**
 
 Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。
 
-![Git工作流程](https://raw.githubusercontent.com/JourWon/image/master/git/Git%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.png)
+![Git工作流程](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL2dpdC9HaXQlRTUlQjclQTUlRTQlQkQlOUMlRTYlQjUlODElRTclQTglOEIucG5n)
 
 **Workspace**： 工作区，就是你平时存放项目代码的地方
 
@@ -112,29 +114,29 @@ Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的�
 
 一开始的时候，master分支是一条线，Git用master指向最新的提交，再用HEAD指向master，就能确定当前分支，以及当前分支的提交点：
 
-![分支1](https://raw.githubusercontent.com/JourWon/image/master/Git简介/分支1.png)
+![分支1](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0dpdCVFNyVBRSU4MCVFNCVCQiU4Qi8lRTUlODglODYlRTYlOTQlQUYxLnBuZw)
 
 每次提交，master分支都会向前移动一步，这样随着不断提交，master分支的线也越来越长。
 
 当我们创建新的分支，例如dev时，Git新建了一个指针叫dev，指向master相同的提交，再把HEAD指向dev，就表示当前分支在dev上：
 
-![分支2](https://raw.githubusercontent.com/JourWon/image/master/Git简介/分支2.png)
+![分支2](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0dpdCVFNyVBRSU4MCVFNCVCQiU4Qi8lRTUlODglODYlRTYlOTQlQUYyLnBuZw)
 
 Git创建一个分支很快，因为除了增加一个dev指针，改改HEAD的指向，工作区的文件都没有任何变化！
 
  不过切换到了dev分，对工作区的修改和提交就是针对dev分支了，比如新提交一次后，dev指针往前移动一步，而master指针不变：
 
-![分支3](https://raw.githubusercontent.com/JourWon/image/master/Git简介/分支3.png)
+![分支3](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0dpdCVFNyVBRSU4MCVFNCVCQiU4Qi8lRTUlODglODYlRTYlOTQlQUYzLnBuZw)
 
 假如我们在dev上的工作完成了，就可以把dev合并到master上。Git怎么合并呢？最简单的方法，就是直接把master指向dev的当前提交，就完成了合并：
 
-![分支4](https://raw.githubusercontent.com/JourWon/image/master/Git简介/分支4.png)
+![分支4](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0dpdCVFNyVBRSU4MCVFNCVCQiU4Qi8lRTUlODglODYlRTYlOTQlQUY0LnBuZw)
 
 所以Git合并分支也很快！就改改指针，工作区内容也不变！
 
 合并完分支后，甚至可以删除dev分支。删除dev分支就是把dev指针给删掉，删掉后就剩下了一条master分支：
 
-![分支5](https://raw.githubusercontent.com/JourWon/image/master/Git简介/分支5.png)
+![分支5](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0dpdCVFNyVBRSU4MCVFNCVCQiU4Qi8lRTUlODglODYlRTYlOTQlQUY1LnBuZw)
 
 
 
@@ -166,7 +168,7 @@ Git创建一个分支很快，因为除了增加一个dev指针，改改HEAD的�
 
 Github支持两种同步方式“https”和“ssh”。如果使用https很简单基本不需要配置就可以使用，但是每次提交代码和下载代码时都需要输入用户名和密码。而且如果是公司配置的私有git服务器一般不提供https方式访问。
 
-![GitHub官网](https://raw.githubusercontent.com/JourWon/image/master/Git简介/GitHub官网.png)
+![GitHub官网](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0dpdCVFNyVBRSU4MCVFNCVCQiU4Qi9HaXRIdWIlRTUlQUUlOTglRTclQkQlOTEucG5n)
 
 
 
@@ -175,7 +177,6 @@ Github支持两种同步方式“https”和“ssh”。如果使用https很简�
 在工程中，并不是所有文件都需要保存到版本库中的，例如“target”目录及目录下的文件就可以忽略。
 
 Git忽略文件详解可参考[Git忽略文件.gitignore详解](https://blog.csdn.net/ThinkWon/article/details/101447866)
-
 
 
 ## 常用Git命令

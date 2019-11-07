@@ -2,7 +2,7 @@
 
 在传统的Java应用中，bean的生命周期很简单。使用Java关键字new进行bean实例化，然后该bean就可以使用了。一旦该bean不再被使用，则由Java自动进行垃圾回收。相比之下，Spring容器中的bean的生命周期就显得相对复杂多了。**正确理解Spring bean的生命周期非常重要，因为你或许要利用Spring提供的扩展点来自定义bean的创建过程**。下图展示了bean装载到Spring应用上下文中的一个典型的生命周期过程。
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Spring/Spring容器中bean的生命周期/Spring容器中bean的生命周期.png)
+![](https://img-blog.csdnimg.cn/201911012343410.png)
 
 bean在Spring容器中从创建到销毁经历了若干阶段，每一阶段都可以针对Spring如何管理bean进行个性化定制。
 

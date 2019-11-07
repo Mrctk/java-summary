@@ -1,8 +1,6 @@
 # 业务复杂=if else？刚来的大神竟然用策略+工厂彻底干掉了他们！
 
-![](https://img-blog.csdnimg.cn/20191105212234795.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly90aGlua3dvbi5ibG9nLmNzZG4ubmV0,size_16,color_FFFFFF,t_70)
-
-
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191105212234795.png)
 
 [toc]
 
@@ -14,7 +12,7 @@
 
 一旦代码中if-else过多，就会大大的影响其可读性和可维护性。
 
-![](https://img-blog.csdnimg.cn/20191105212253832.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly90aGlua3dvbi5ibG9nLmNzZG4ubmV0,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191105212253832.png)
 
 - 首先可读性，不言而喻，过多的if-else代码和嵌套，会使阅读代码的人很难理解到底是什么意思。尤其是那些没有注释的代码。
 

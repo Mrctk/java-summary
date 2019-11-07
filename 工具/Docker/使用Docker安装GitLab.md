@@ -1,6 +1,8 @@
 # 使用Docker安装GitLab
 
-[TOC]
+[toc]
+
+
 
 > 注意：确保安装docker成功
 
@@ -27,7 +29,7 @@ GitLab 是一个用于仓库管理系统的开源项目，使用Git作为代码�
 docker search gitlab
 ```
 
-![搜索GitLab版本](https://raw.githubusercontent.com/JourWon/image/master/使用Docker安装GitLab/搜索GitLab版本.png)
+![搜索GitLab版本](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyLyVFNCVCRCVCRiVFNyU5NCVBOERvY2tlciVFNSVBRSU4OSVFOCVBMyU4NUdpdExhYi8lRTYlOTAlOUMlRTclQjQlQTJHaXRMYWIlRTclODklODglRTYlOUMlQUMucG5n)
 
 我这里下载官方版gitlab，如果需要汉化版的请自行下载汉化版gitlab
 
@@ -37,7 +39,7 @@ docker search gitlab
 docker images
 ```
 
-![GitLab镜像](https://raw.githubusercontent.com/JourWon/image/master/使用Docker安装GitLab/GitLab镜像.png)
+![GitLab镜像](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyLyVFNCVCRCVCRiVFNyU5NCVBOERvY2tlciVFNSVBRSU4OSVFOCVBMyU4NUdpdExhYi9HaXRMYWIlRTklOTUlOUMlRTUlODMlOEYucG5n)
 
 这里可以看到镜像还是比较大的，官方版的镜像有1.8G，汉化版的也有1.6G
 
@@ -55,13 +57,12 @@ docker run -d  -p 443:443 -p 80:80 --name gitlab --restart always -v /opt/gitlab
 # -d：后台运行
 # -p：将容器内部端口向外映射，第一个参数是宿主机端口，第二个参数容器端口
 # --name：命名容器名称
-# --restart always在容器退出时总是重启容器
 # -v：将容器内配置、日志、数据文件等文件夹挂载到宿主机指定目录
 ```
 
 通常会将 GitLab 的配置 (etc) 、 日志 (log) 、数据 (data) 放到容器之外， 便于日后升级， 因此请先准备这三个目录。分别是/opt/gitlab/config，/opt/gitlab/log，/opt/gitlab/data
 
-![GitLab宿主机目录](https://raw.githubusercontent.com/JourWon/image/master/使用Docker安装GitLab/GitLab宿主机目录.png)
+![GitLab宿主机目录](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyLyVFNCVCRCVCRiVFNyU5NCVBOERvY2tlciVFNSVBRSU4OSVFOCVBMyU4NUdpdExhYi9HaXRMYWIlRTUlQUUlQkYlRTQlQjglQkIlRTYlOUMlQkElRTclOUIlQUUlRTUlQkQlOTUucG5n)
 
 
 
@@ -71,8 +72,7 @@ GitLab首次启动较慢，请耐心等待，执行如下命令查看容器是�
 docker ps
 ```
 
-![GitLab容器](https://raw.githubusercontent.com/JourWon/image/master/使用Docker安装GitLab/GitLab容器.png)
-
+![GitLab容器](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyLyVFNCVCRCVCRiVFNyU5NCVBOERvY2tlciVFNSVBRSU4OSVFOCVBMyU4NUdpdExhYi9HaXRMYWIlRTUlQUUlQjklRTUlOTklQTgucG5n)
 
 
 ### 配置GitLab
@@ -110,13 +110,13 @@ $ docker restart gitlab
 
 首次打开GitLab网址的页面如下，我们需要设置root用户的密码，我这里设置为root123456
 
-![首次打开GitLab网址](https://raw.githubusercontent.com/JourWon/image/master/使用Docker安装GitLab/首次打开GitLab网址.png)
+![首次打开GitLab网址](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyLyVFNCVCRCVCRiVFNyU5NCVBOERvY2tlciVFNSVBRSU4OSVFOCVBMyU4NUdpdExhYi8lRTklQTYlOTYlRTYlQUMlQTElRTYlODklOTMlRTUlQkMlODBHaXRMYWIlRTclQkQlOTElRTUlOUQlODAucG5n)
 
 ### GitLab首页
 
-![GitLab首页](https://raw.githubusercontent.com/JourWon/image/master/使用Docker安装GitLab/GitLab首页.png)
+![GitLab首页](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyLyVFNCVCRCVCRiVFNyU5NCVBOERvY2tlciVFNSVBRSU4OSVFOCVBMyU4NUdpdExhYi9HaXRMYWIlRTklQTYlOTYlRTklQTElQjUucG5n)
 
-至此，GitLab私有远程仓库已经安装成功！👏👏
+至此，GitLab私有远程仓库已经安装成功！??
 
 
 
@@ -134,10 +134,10 @@ $ docker restart gitlab
 
 4. 然后滚动到页面最底端，点击【Save】保存按钮，将配置保存起来。
 
-![取消注册功能](https://raw.githubusercontent.com/JourWon/image/master/使用Docker安装GitLab/取消注册功能.png)
+![取消注册功能](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyLyVFNCVCRCVCRiVFNyU5NCVBOERvY2tlciVFNSVBRSU4OSVFOCVBMyU4NUdpdExhYi8lRTUlOEYlOTYlRTYlQjYlODglRTYlQjMlQTglRTUlODYlOEMlRTUlOEElOUYlRTglODMlQkQucG5n)
 
 
 
 退出登录，查看效果
 
-![取消注册功能后的登录页面](https://raw.githubusercontent.com/JourWon/image/master/使用Docker安装GitLab/取消注册功能后的登录页面.png)
+![取消注册功能后的登录页面](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyLyVFNCVCRCVCRiVFNyU5NCVBOERvY2tlciVFNSVBRSU4OSVFOCVBMyU4NUdpdExhYi8lRTUlOEYlOTYlRTYlQjYlODglRTYlQjMlQTglRTUlODYlOEMlRTUlOEElOUYlRTglODMlQkQlRTUlOTAlOEUlRTclOUElODQlRTclOTklQkIlRTUlQkQlOTUlRTklQTElQjUlRTklOUQlQTIucG5n)

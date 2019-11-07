@@ -1,6 +1,6 @@
 # FutureTask详解
 
-[TOC]
+[toc]
 
 
 
@@ -27,7 +27,7 @@ private static final int INTERRUPTED  = 6;
 
      
 
-![在这里插入图片描述](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-线程池/FutureTask状态迁移图.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191014100137705.png)
 
 
 由于FutureTask具有这三种状态，因此执行FutureTask的get方法和cancel方法，当前处于不同的状态对应的结果也是大不相同。这里对get方法和cancel方法做个总结：
@@ -46,8 +46,7 @@ private static final int INTERRUPTED  = 6;
 
 对Future的get()方法和cancel()方法用下图进行总结
 
-![在这里插入图片描述](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-线程池/FutureTask的get和cancel的执行示意图.png)
-
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191014100114847.png)
 
 
 ## FutureTask的基本使用 ##

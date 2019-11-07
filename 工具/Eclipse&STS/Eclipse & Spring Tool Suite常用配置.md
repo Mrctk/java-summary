@@ -1,6 +1,6 @@
 # Eclipse & Spring Tool Suite常用配置
 
-Eclipse 是一个开放源代码的、基于Java的可扩展开发平台。Eclipse 是Java开发人员常用的开发工具，虽然现在很多人转向使用IDEA，但是Eclipse给我们还是留下了一段美好的回忆。
+Eclipse 是一个开放源代码的、基于Java的可扩展开发平台。Eclipse是Java开发人员常用的开发工具，虽然现在很多人转向使用IDEA，但是Eclipse给我们还是留下了一段美好的回忆。
 
 在基于Eclipse的基础上，Spring提供了针对Spring开发的Spring Tool Suite集成开发工具，通过该工具，可以很轻易地生成一个Spring的工程，比如web工程，最令人兴奋的是工程里的配置文件都会自动为你生成，你再也不用操心配置文件的格式及各种配置文件了。
 
@@ -8,15 +8,15 @@ Spring Tool Suite的官方下载地址是：[https://spring.io/tools](https://sp
 
 本博客以Spring Tool Suite4为基础，分享自己开发中的常用配置。
 
+[toc]
 
 
-[TOC]
 
 ## 配置jdk
 
 默认情况下，MyEclipse会自动关联环境变量中配置的JDK，如果我们安装了多个版本的JDK，也可以手工进行配置，方法如下： “Window”–“Preferences”–“Java”–“Installed JREs”–“Add”–“Standard VM”–选择jdk安装目录。
 
-![配置jdk](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/配置jdk.png)
+![配置jdk](https://img-blog.csdnimg.cn/20190919160829837.png)
 
  
 
@@ -30,7 +30,7 @@ Spring Tool Suite的官方下载地址是：[https://spring.io/tools](https://sp
 
 点击Apply,点击OK
 
-![修改编码格式](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/修改编码格式.png)
+![修改编码格式](https://img-blog.csdnimg.cn/2019091916085662.png)
 
  
 
@@ -38,7 +38,7 @@ Spring Tool Suite的官方下载地址是：[https://spring.io/tools](https://sp
 
 在MyEclipse项目文件上右键,选择Properties,在Resource选择修改编码格式
 
-![修改属性文件的编码](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/修改属性文件的编码.png)
+![修改属性文件的编码](https://img-blog.csdnimg.cn/20190919160918301.png)
 
  
 
@@ -46,7 +46,7 @@ Spring Tool Suite的官方下载地址是：[https://spring.io/tools](https://sp
 
 MyEclipse中新建jsp文件的编码格式。windows -> preferences -> web -> jsp files把右边encoding的值改为ISO 10646/Unicode(UTF-8),然后应用。ok，此后新建jsp文件的内容就是UTF-8编码的了。
 
-![修改新建jsp编码格式](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/修改新建jsp编码格式.png)
+![修改新建jsp编码格式](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0VjbGlwc2UlMjZTVFMlRTklODUlOEQlRTclQkQlQUUvJUU0JUJGJUFFJUU2JTk0JUI5JUU2JTk2JUIwJUU1JUJCJUJBanNwJUU3JUJDJTk2JUU3JUEwJTgxJUU2JUEwJUJDJUU1JUJDJThGLnBuZw?x-oss-process=image/format,png)
 
  
 
@@ -54,7 +54,7 @@ MyEclipse中新建jsp文件的编码格式。windows -> preferences -> web -> js
 
 Window -> Preferences -> General -> Appearance -> Content Assist -> Colors and Fornts，只需修改 Basic 里面的 Text Font 就可以了
 
-![设置代码的字体类型和大小](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/设置代码的字体类型和大小.png)
+![设置代码的字体类型和大小](https://img-blog.csdnimg.cn/20190919160944244.png)
 
  
 
@@ -62,9 +62,9 @@ Window -> Preferences -> General -> Appearance -> Content Assist -> Colors and F
 
 MyEclipse默认的新建内容并不满足需求，好多内容还需要到other中去找，不过我们可以自定义新建菜单项中的内容，方法如下： Window–>Preferences–“Customize Prespective…”–“Shortcuts”–选择你需要的新建项即可。
 
-![设置新建菜单项1](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/设置新建菜单项1.png)
+![设置新建菜单项1](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0VjbGlwc2UlMjZTVFMlRTklODUlOEQlRTclQkQlQUUvJUU4JUFFJUJFJUU3JUJEJUFFJUU2JTk2JUIwJUU1JUJCJUJBJUU4JThGJTlDJUU1JThEJTk1JUU5JUExJUI5MS5wbmc?x-oss-process=image/format,png)
 
-![img](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/设置新建菜单项2.png)
+![设置新建菜单项2](https://img-blog.csdnimg.cn/2019091916100272.png)
 
 
 
@@ -72,9 +72,9 @@ MyEclipse默认的新建内容并不满足需求，好多内容还需要到other
 
 首先安装好maven插件，然后配置maven仓库
 
-![安装maven插件1](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/安装maven插件1.png)
+![安装maven插件1](https://img-blog.csdnimg.cn/20190919161020957.png)
 
-![安装maven插件2](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/安装maven插件2.png)
+![安装maven插件2](https://img-blog.csdnimg.cn/2019091916103176.png)
 
  
 
@@ -82,9 +82,9 @@ MyEclipse默认的新建内容并不满足需求，好多内容还需要到other
 
 在help -> Install New Software
 
-![安装svn插件1](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/安装svn插件1.png)
+![安装svn插件1](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0VjbGlwc2UlMjZTVFMlRTklODUlOEQlRTclQkQlQUUvJUU1JUFFJTg5JUU4JUEzJTg1c3ZuJUU2JThGJTkyJUU0JUJCJUI2MS5wbmc?x-oss-process=image/format,png)
 
-![安装svn插件2](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/安装svn插件2.png)
+![安装svn插件2](https://img-blog.csdnimg.cn/20190919161046790.png)
 
 然后一路next，重启STS后可以找到SVN资源库
 
@@ -100,7 +100,7 @@ Help -> Install New Software...
 
 输入Update Site地址：https://p3c.alibaba.com/plugin/eclipse/update 回车，然后勾选Ali-CodeAnalysis，再一直点Next Next...按提示走下去就好。 然后就是提示重启了，安装完毕。
 
-![安装阿里p3c插件](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/安装阿里p3c插件.png)
+![安装阿里p3c插件](https://img-blog.csdnimg.cn/20190919161103418.png)
 
 注意：有同学反映插件扫描会触发很多 "JPA Java Change Event Handler (Waiting)" 的任务，这个是Eclipse的一个bug，因为插件在扫描的时候会对文件进行标记，所以触发了JPA的任务。卸载JPA插件，或者尝试升级到最新版的Eclipse。附：JPA project Change Event Handler问题解决
 
@@ -120,7 +120,7 @@ M2_HOME=C:\develop\Maven\apache-maven-3.5.3
 
 -Dmaven.multiModuleProjectDirectory=$M2_HOME
 
-![运行maven命令时报错](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/运行maven命令时报错.png)
+![运行maven命令时报错](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0VjbGlwc2UlMjZTVFMlRTklODUlOEQlRTclQkQlQUUvJUU4JUJGJTkwJUU4JUExJThDbWF2ZW4lRTUlOTElQkQlRTQlQkIlQTQlRTYlOTclQjYlRTYlOEElQTUlRTklOTQlOTkucG5n?x-oss-process=image/format,png)
 
  
 
@@ -158,7 +158,7 @@ XSD 类型约束文件
 
  
 
-![添加离线约束](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/添加离线约束.png)
+![添加离线约束](https://img-blog.csdnimg.cn/20190919161129829.png)
 
  
 
@@ -186,7 +186,7 @@ ${type_declaration}
 
 
 
-![设置在创建新类时自动生成注释](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/设置在创建新类时自动生成注释.png)
+![设置在创建新类时自动生成注释](https://img-blog.csdnimg.cn/20190919161155668.png)
 
 
 
@@ -203,7 +203,7 @@ ${type_declaration}
 
 
 
-![给方法和重写方法生成注释](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/给方法和重写方法生成注释.png)
+![给方法和重写方法生成注释](https://img-blog.csdnimg.cn/2019091916121061.png)
 
  
 
@@ -222,7 +222,7 @@ ${type_declaration}
 
 
 
-![自动生成文档注释](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/自动生成文档注释.png)
+![自动生成文档注释](https://img-blog.csdnimg.cn/20190919161241122.png)
 
  
 
@@ -230,7 +230,7 @@ ${type_declaration}
 
 默认MyEclipse会对workspace中的项目进行验证，验证的内容包括jsp内容、xml内容，等等，验证过程很消耗内存，所以建议关闭验证功能。关闭方法如下： “Window”–“Preferences”–“Validation”–“Disable All”。
 
-![关闭验证](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/关闭验证.png)
+![关闭验证](https://img-blog.csdnimg.cn/20190919161257992.png)
 
  
 
@@ -238,7 +238,7 @@ ${type_declaration}
 
 Spring Tool Suite不需要进行此处理，只需要设置properties文件的编码为UTF-8
 
-![Spring Boot中读取属性配置文件出现中文乱码1](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/Spring Boot中读取属性配置文件出现中文乱码1.png)
+![Spring Boot中读取属性配置文件出现中文乱码1](https://img-blog.csdnimg.cn/2019091916132864.png)
 
  
 
@@ -266,19 +266,19 @@ jp.gr.java_conf.ussiy.app.propedit_5.3.3 ，直接将该文件夹复制到 Eclip
 
 双击properties文件默认就会用PropEditor打开了。
 
-![Spring Boot中读取属性配置文件出现中文乱码2](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/Spring Boot中读取属性配置文件出现中文乱码2.png)
+![Spring Boot中读取属性配置文件出现中文乱码2](https://img-blog.csdnimg.cn/20190919161339995.png)
 
-![Spring Boot中读取属性配置文件出现中文乱码3](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/Spring Boot中读取属性配置文件出现中文乱码3.png)
+![Spring Boot中读取属性配置文件出现中文乱码3](https://img-blog.csdnimg.cn/20190919161350121.png)
 
  
 
 设置properties文件的编码为UTF-8
 
-![Spring Boot中读取属性配置文件出现中文乱码4](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/Spring Boot中读取属性配置文件出现中文乱码4.png)
+![Spring Boot中读取属性配置文件出现中文乱码4](https://img-blog.csdnimg.cn/20190919161359688.png)
 
  
 
-![Spring Boot中读取属性配置文件出现中文乱码5](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/Spring Boot中读取属性配置文件出现中文乱码5.png)
+![Spring Boot中读取属性配置文件出现中文乱码5](https://img-blog.csdnimg.cn/20190919161411367.png)
 
  
 
@@ -288,11 +288,11 @@ MyEclipse主题太丑？想设置护眼的主题？没问题
 
 Help -> Eclipse Marketplace
 
-![设置漂亮的Eclipse主题1](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/设置漂亮的Eclipse主题1.png)
+![设置漂亮的Eclipse主题1](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0VjbGlwc2UlMjZTVFMlRTklODUlOEQlRTclQkQlQUUvJUU4JUFFJUJFJUU3JUJEJUFFJUU2JUJDJTgyJUU0JUJBJUFFJUU3JTlBJTg0RWNsaXBzZSVFNCVCOCVCQiVFOSVBMiU5ODEucG5n?x-oss-process=image/format,png)
 
 然后一路next，等待ide重启
 
-![设置漂亮的Eclipse主题2](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/设置漂亮的Eclipse主题2.png)
+![设置漂亮的Eclipse主题2](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0VjbGlwc2UlMjZTVFMlRTklODUlOEQlRTclQkQlQUUvJUU4JUFFJUJFJUU3JUJEJUFFJUU2JUJDJTgyJUU0JUJBJUFFJUU3JTlBJTg0RWNsaXBzZSVFNCVCOCVCQiVFOSVBMiU5ODIucG5n?x-oss-process=image/format,png)
 
 
 
@@ -308,7 +308,7 @@ Maven user interface ->open xml page
 
 General->editors->file associations->添加*.xml
 
-![修改xml打开方式](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/修改xml打开方式.png)
+![修改xml打开方式](https://img-blog.csdnimg.cn/20190919161443681.png)
 
  
 
@@ -316,29 +316,29 @@ General->editors->file associations->添加*.xml
 
 可以根据个人喜好使用不同的视图，个人喜欢用Java视图，因为下面那一栏比较长。
 
-![使用Java视图1](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/使用Java视图1.png)
+![使用Java视图1](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0VjbGlwc2UlMjZTVFMlRTklODUlOEQlRTclQkQlQUUvJUU0JUJEJUJGJUU3JTk0JUE4SmF2YSVFOCVBNyU4NiVFNSU5QiVCRTEucG5n?x-oss-process=image/format,png)
 
-![使用Java视图2](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/使用Java视图2.png)
+![使用Java视图2](https://img-blog.csdnimg.cn/2019091916150628.png)
 
 
 
 ### 修改目录显示方式为Hierachical
 
-![修改目录显示方式为Hierachical](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/修改目录显示方式为Hierachical.png)
+![修改目录显示方式为Hierachical](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0VjbGlwc2UlMjZTVFMlRTklODUlOEQlRTclQkQlQUUvJUU0JUJGJUFFJUU2JTk0JUI5JUU3JTlCJUFFJUU1JUJEJTk1JUU2JTk4JUJFJUU3JUE0JUJBJUU2JTk2JUI5JUU1JUJDJThGJUU0JUI4JUJBSGllcmFjaGljYWwucG5n?x-oss-process=image/format,png)
 
  
 
 ### 过滤关闭的工程
 
-![过滤关闭的工程1](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/过滤关闭的工程1.png)
+![过滤关闭的工程1](https://img-blog.csdnimg.cn/20190919161521207.png)
 
-![过滤关闭的工程2](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/过滤关闭的工程2.png)
+![过滤关闭的工程2](https://img-blog.csdnimg.cn/20190919161532123.png)
 
 
 
 ### 通过工作集显示工程
 
-![通过工作集显示工程](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/通过工作集显示工程.png)
+![通过工作集显示工程](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0VjbGlwc2UlMjZTVFMlRTklODUlOEQlRTclQkQlQUUvJUU5JTgwJTlBJUU4JUJGJTg3JUU1JUI3JUE1JUU0JUJEJTlDJUU5JTlCJTg2JUU2JTk4JUJFJUU3JUE0JUJBJUU1JUI3JUE1JUU3JUE4JThCLnBuZw?x-oss-process=image/format,png)
 
  
 
@@ -374,4 +374,4 @@ General->editors->file associations->添加*.xml
 
 同时将【Java Proposals】和【Java Proposals(Task-Focused)】两个项目勾选上
 
-![Eclipse智能提示报错](https://raw.githubusercontent.com/JourWon/image/master/Eclipse%26STS配置/Eclipse智能提示报错.png)
+![Eclipse智能提示报错](https://img-blog.csdnimg.cn/20190919161611136.png)

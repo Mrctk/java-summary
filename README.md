@@ -1,39 +1,27 @@
 # Java知识体系
 
-## Java基础知识
+## 基础知识
 
-### Java简介
+### Java概述
 
-[Java简介](https://blog.csdn.net/ThinkWon/article/details/94353575)
-
-
-
-### Java发展历程
-
-[Java发展历程](https://blog.csdn.net/ThinkWon/article/details/94353653)
-
-
-
-### Java语言特点
-
-[Java语言特点](https://blog.csdn.net/ThinkWon/article/details/94354013)
+| 序号 | 内容                  | 链接地址                                                 |
+| ---- | --------------------- | -------------------------------------------------------- |
+| 1    | Java简介              | https://blog.csdn.net/ThinkWon/article/details/94353575  |
+| 2    | Java发展历程          | https://blog.csdn.net/ThinkWon/article/details/94353653  |
+| 3    | Java语言特点          | https://blog.csdn.net/ThinkWon/article/details/94354013  |
+| 4    | JDK安装与环境变量配置 | https://blog.csdn.net/ThinkWon/article/details/94353907  |
+| 5    | JVM、JRE和JDK的关系   | https://thinkwon.blog.csdn.net/article/details/101369973 |
 
 
 
-### JDK安装与环境变量配置
-
-[JDK安装与环境变量配置](https://blog.csdn.net/ThinkWon/article/details/94353907)
-
-
-
-### Java基础语法
+### 基础语法
 
 大部分已完成
 
 | 序号 | 内容                      | 链接地址                                                 |
 | ---- | ------------------------- | -------------------------------------------------------- |
 | 1    | Java标识符                | https://blog.csdn.net/ThinkWon/article/details/101637454 |
-| 2    | Java关键字（Java 8版本）  | https://blog.csdn.net/ThinkWon/article/details/101642385 |
+| 2    | Java关键字(Java 8版本)    | https://blog.csdn.net/ThinkWon/article/details/101642385 |
 | 3    | Java注释                  | https://blog.csdn.net/ThinkWon/article/details/101643185 |
 | 4    | Java访问修饰符            | https://blog.csdn.net/ThinkWon/article/details/101643412 |
 | 5    | Java分隔符                | https://blog.csdn.net/ThinkWon/article/details/101643617 |
@@ -55,6 +43,8 @@
 | 21   | Properties类简介          | https://blog.csdn.net/ThinkWon/article/details/100667783 |
 | 22   | XML简介                   | https://blog.csdn.net/ThinkWon/article/details/100642425 |
 | 23   | YML简介                   | https://blog.csdn.net/ThinkWon/article/details/100642870 |
+| 24   | Java8新特性-Lambda表达式  | https://thinkwon.blog.csdn.net/article/details/100642932 |
+| 25   | Java基础语法              | https://thinkwon.blog.csdn.net/article/details/94354151  |
 
 
 
@@ -77,6 +67,10 @@ Java的枚举类型用法介绍
 抽象、继承、封装、多态
 
 接口、抽象类、内部类
+
+| 序号 | 内容           | 链接地址                                                 |
+| ---- | -------------- | -------------------------------------------------------- |
+| 1    | 什么是面向对象 | https://thinkwon.blog.csdn.net/article/details/100667386 |
 
 
 
@@ -218,9 +212,9 @@ JUnit
 
 ### Eclipse & STS
 
-| 序号 | 内容                            | 链接地址                                                 |
-| ---- | ------------------------------- | -------------------------------------------------------- |
-| 1    | Eclipse & Spring Tool Suite配置 | https://blog.csdn.net/ThinkWon/article/details/101025543 |
+| 序号 | 内容                                | 链接地址                                                 |
+| ---- | ----------------------------------- | -------------------------------------------------------- |
+| 1    | Eclipse & Spring Tool Suite常用配置 | https://blog.csdn.net/ThinkWon/article/details/101025543 |
 
 
 
@@ -274,12 +268,12 @@ JUnit
 
 ### 基础知识
 
-| 序号 | 内容                       | 链接地址                                                 |
-| ---- | -------------------------- | -------------------------------------------------------- |
-| 1    | 并发编程的优缺点           | https://blog.csdn.net/ThinkWon/article/details/102020811 |
-| 2    | 线程的状态和基本操作       | https://blog.csdn.net/ThinkWon/article/details/102027115 |
-| 3    | 进程和线程的区别（超详细） | https://blog.csdn.net/ThinkWon/article/details/102021274 |
-| 4    | 创建线程的四种方式         | https://blog.csdn.net/ThinkWon/article/details/102021143 |
+| 序号 | 内容                     | 链接地址                                                 |
+| ---- | ------------------------ | -------------------------------------------------------- |
+| 1    | 并发编程的优缺点         | https://blog.csdn.net/ThinkWon/article/details/102020811 |
+| 2    | 线程的状态和基本操作     | https://blog.csdn.net/ThinkWon/article/details/102027115 |
+| 3    | 进程和线程的区别(超详细) | https://blog.csdn.net/ThinkWon/article/details/102021274 |
+| 4    | 创建线程的四种方式       | https://blog.csdn.net/ThinkWon/article/details/102021143 |
 
 
 
@@ -296,11 +290,11 @@ JUnit
 
 ### 并发关键字
 
-| 序号 | 内容                    | 链接地址                                                 |
-| ---- | ----------------------- | -------------------------------------------------------- |
-| 1    | 并发关键字-synchronized | https://blog.csdn.net/ThinkWon/article/details/102243189 |
-| 2    | 并发关键字-volatile     | https://blog.csdn.net/ThinkWon/article/details/102243670 |
-| 3    | 并发关键字-final        | https://blog.csdn.net/ThinkWon/article/details/102244477 |
+| 序号 | 内容                        | 链接地址                                                 |
+| ---- | --------------------------- | -------------------------------------------------------- |
+| 1    | Java并发关键字-synchronized | https://blog.csdn.net/ThinkWon/article/details/102243189 |
+| 2    | Java并发关键字-volatile     | https://blog.csdn.net/ThinkWon/article/details/102243670 |
+| 3    | Java并发关键字-final        | https://blog.csdn.net/ThinkWon/article/details/102244477 |
 
 
 
@@ -319,10 +313,10 @@ JUnit
 | 序号 | 内容                                              | 链接地址                                                 |
 | ---- | ------------------------------------------------- | -------------------------------------------------------- |
 | 1    | Lock简介与初识AQS                                 | https://blog.csdn.net/ThinkWon/article/details/102468837 |
-| 2    | AQS详解与源码分析                                 | https://blog.csdn.net/ThinkWon/article/details/102469112 |
+| 2    | AQS(AbstractQueuedSynchronizer)详解与源码分析     | https://blog.csdn.net/ThinkWon/article/details/102469112 |
 | 3    | ReentrantLock(重入锁)实现原理与公平锁非公平锁区别 | https://blog.csdn.net/ThinkWon/article/details/102469388 |
 | 4    | 读写锁ReentrantReadWriteLock源码分析              | https://blog.csdn.net/ThinkWon/article/details/102469598 |
-| 5    | Java并发之Condition源码分析与等待通知机制         | https://blog.csdn.net/ThinkWon/article/details/102469889 |
+| 5    | Condition源码分析与等待通知机制                   | https://blog.csdn.net/ThinkWon/article/details/102469889 |
 | 6    | LockSupport详解                                   | https://blog.csdn.net/ThinkWon/article/details/102469993 |
 
 
@@ -348,7 +342,7 @@ JUnit
 | 序号 | 内容                                    | 链接地址                                                 |
 | ---- | --------------------------------------- | -------------------------------------------------------- |
 | 1    | 线程池ThreadPoolExecutor详解            | https://blog.csdn.net/ThinkWon/article/details/102541900 |
-| 2    | Executor类创建四种常见线程池            | https://blog.csdn.net/ThinkWon/article/details/102541990 |
+| 2    | Executors类创建四种常见线程池           | https://blog.csdn.net/ThinkWon/article/details/102541990 |
 | 3    | 线程池之ScheduledThreadPoolExecutor详解 | https://blog.csdn.net/ThinkWon/article/details/102542299 |
 | 4    | FutureTask详解                          | https://blog.csdn.net/ThinkWon/article/details/102542404 |
 
@@ -356,26 +350,26 @@ JUnit
 
 ### 原子操作类
 
-| 序号 | 内容               | 链接地址                                                 |
-| ---- | ------------------ | -------------------------------------------------------- |
-| 1    | Java原子操作类总结 | https://blog.csdn.net/ThinkWon/article/details/102556910 |
+| 序号 | 内容           | 链接地址                                                 |
+| ---- | -------------- | -------------------------------------------------------- |
+| 1    | 原子操作类总结 | https://blog.csdn.net/ThinkWon/article/details/102556910 |
 
 
 
 ### 并发工具
 
-| 序号 | 内容                                          | 链接地址                                                 |
-| ---- | --------------------------------------------- | -------------------------------------------------------- |
-| 1    | Java并发工具类之CountDownLatch与CyclicBarrier | https://blog.csdn.net/ThinkWon/article/details/102556958 |
-| 2    | Java并发工具之Semaphore与Exchanger            | https://blog.csdn.net/ThinkWon/article/details/102557034 |
+| 序号 | 内容                                    | 链接地址                                                 |
+| ---- | --------------------------------------- | -------------------------------------------------------- |
+| 1    | 并发工具之CountDownLatch与CyclicBarrier | https://blog.csdn.net/ThinkWon/article/details/102556958 |
+| 2    | 并发工具之Semaphore与Exchanger          | https://blog.csdn.net/ThinkWon/article/details/102557034 |
 
 
 
 ### 并发实践
 
-| 序号 | 内容                                | 链接地址                                                 |
-| ---- | ----------------------------------- | -------------------------------------------------------- |
-| 1    | 并发实践-实现生产者消费者的三种方式 | https://blog.csdn.net/ThinkWon/article/details/102557126 |
+| 序号 | 内容                       | 链接地址                                                 |
+| ---- | -------------------------- | -------------------------------------------------------- |
+| 1    | 实现生产者消费者的三种方式 | https://blog.csdn.net/ThinkWon/article/details/102557126 |
 
 
 
@@ -385,9 +379,9 @@ JUnit
 
 ### 数据结构
 
-| 序号 | 内容           | 链接地址                                                 |
-| ---- | -------------- | -------------------------------------------------------- |
-| 1    | 红黑树详细分析 | https://blog.csdn.net/ThinkWon/article/details/102571535 |
+| 序号 | 内容                                 | 链接地址                                                 |
+| ---- | ------------------------------------ | -------------------------------------------------------- |
+| 1    | 红黑树详细分析(图文详解)，看了都说好 | https://blog.csdn.net/ThinkWon/article/details/102571535 |
 
 
 
@@ -663,6 +657,15 @@ Linux操作系统：SUSE Linux、CentOS
 
 ### Spring
 
+| 序号 | 内容                                                   | 链接地址                                                 |
+| ---- | ------------------------------------------------------ | -------------------------------------------------------- |
+| 1    | Spring简介、设计理念、优缺点、应用场景                 | https://blog.csdn.net/ThinkWon/article/details/102810748 |
+| 2    | Spring模块组成(框架组成、整体架构、体系架构、体系结构) | https://blog.csdn.net/ThinkWon/article/details/102810819 |
+| 3    | Spring容器中bean的生命周期                             | https://blog.csdn.net/ThinkWon/article/details/102866432 |
+| 4    | 控制反转(IOC)与依赖注入(DI)详解                        | https://blog.csdn.net/ThinkWon/article/details/102912332 |
+
+
+
 ### Spring MVC
 
 
@@ -775,25 +778,17 @@ MyCat
 
 #### Tomcat
 
-Windows环境Tomcat服务器下载、安装与环境变量配置
+待整理：Tomcat各组件作用	Tomcat集群	Tomcat面试题
 
-CentOS环境Tomcat服务器下载、安装与环境变量配置
-
-Tomcat目录结构
-
-Tomcat与JDK版本对应关系
-
-Tomcat总体架构
-
-Tomcat各组件作用
-
-Tomcat请求处理流程
-
-Tomcat集群
-
-Tomcat性能优化
-
-Tomcat面试题
+| 序号 | 内容                                             | 链接地址                                                 |
+| ---- | ------------------------------------------------ | -------------------------------------------------------- |
+| 1    | Win10安装Tomcat服务器与配置环境变量              | https://blog.csdn.net/ThinkWon/article/details/102622905 |
+| 2    | Linux(CentOS7)安装Tomcat与设置Tomcat为开机启动项 | https://blog.csdn.net/ThinkWon/article/details/102717537 |
+| 3    | Tomcat与JDK版本对应关系，Tomcat各版本特性        | https://blog.csdn.net/ThinkWon/article/details/102622738 |
+| 4    | Tomcat目录结构                                   | https://blog.csdn.net/ThinkWon/article/details/102619466 |
+| 5    | Tomcat乱码与端口占用的解决方案                   | https://blog.csdn.net/ThinkWon/article/details/102622824 |
+| 6    | Tomcat系统架构与请求处理流程                     | https://blog.csdn.net/ThinkWon/article/details/102676442 |
+| 7    | 史上最强Tomcat8性能优化                          | https://blog.csdn.net/ThinkWon/article/details/102744033 |
 
 
 

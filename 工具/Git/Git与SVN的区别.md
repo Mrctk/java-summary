@@ -10,7 +10,7 @@ SVN是**集中式版本控制系统**，版本库是集中放在中央服务器�
 
 下图就是标准的集中式版本控制工具管理方式：
 
- ![集中式版本控制工具管理方式](https://raw.githubusercontent.com/JourWon/image/master/Git简介/集中式版本控制工具管理方式.png)
+ ![集中式版本控制工具管理方式](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0dpdCVFNyVBRSU4MCVFNCVCQiU4Qi8lRTklOUIlODYlRTQlQjglQUQlRTUlQkMlOEYlRTclODklODglRTYlOUMlQUMlRTYlOEUlQTclRTUlODglQjYlRTUlQjclQTUlRTUlODUlQjclRTclQUUlQTElRTclOTAlODYlRTYlOTYlQjklRTUlQkMlOEYucG5n)
 
 集中管理方式在一定程度上看到其他开发人员在干什么，而管理员也可以很轻松掌握每个人的开发权限。
 
@@ -27,9 +27,7 @@ Git是**分布式版本控制系统**，它没有中央服务器，每个人的�
 
 下图就是分布式版本控制工具管理方式：
 
-![分布式版本控制工具管理方式](https://raw.githubusercontent.com/JourWon/image/master/Git简介/分布式版本控制工具管理方式.png)
-
-
+![分布式版本控制工具管理方式](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0dpdCVFNyVBRSU4MCVFNCVCQiU4Qi8lRTUlODglODYlRTUlQjglODMlRTUlQkMlOEYlRTclODklODglRTYlOUMlQUMlRTYlOEUlQTclRTUlODglQjYlRTUlQjclQTUlRTUlODUlQjclRTclQUUlQTElRTclOTAlODYlRTYlOTYlQjklRTUlQkMlOEYucG5n)
 
 ## Git与SVN的区别
 
@@ -43,8 +41,6 @@ Git 与 SVN 区别点：
 4. Git没有一个全局的版本号，而SVN有：目前为止这是跟SVN相比GIT缺少的最大的一个特征。
 5. Git的内容完整性要优于SVN：Git的内容存储使用的是SHA-1哈希算法。这能确保代码内容的完整性，确保在遇到磁盘故障和网络问题时降低对版本库的破坏。
 
-
-
 ## Git 与其他版本管理系统的区别
 
 Git 在保存和对待各种信息的时候与其它版本控制系统有很大差异，尽管操作起来的命令形式非常相近，理解这些差异将有助于防止你使用中的困惑。
@@ -57,7 +53,7 @@ Git 在保存和对待各种信息的时候与其它版本控制系统有很大�
 
 具体原理如下图所示，理解起来其实很简单，每个我们对提交更新一个文件之后，系统记录都会记录这个文件做了哪些更新，以增量符号Δ(Delta)表示。下图来源于Git官网。
 
-![文件变更列表的方式存储信息](https://raw.githubusercontent.com/JourWon/image/master/Git简介/文件变更列表的方式存储信息.png)
+![文件变更列表的方式存储信息](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0dpdCVFNyVBRSU4MCVFNCVCQiU4Qi8lRTYlOTYlODclRTQlQkIlQjYlRTUlOEYlOTglRTYlOUIlQjQlRTUlODglOTclRTglQTElQTglRTclOUElODQlRTYlOTYlQjklRTUlQkMlOEYlRTUlQUQlOTglRTUlODIlQTglRTQlQkYlQTElRTYlODElQUYucG5n)
 
 
 
@@ -71,5 +67,5 @@ Git 在保存和对待各种信息的时候与其它版本控制系统有很大�
 
 Git 不按照以上方式对待或保存数据。 反之，Git 更像是把数据看作是对小型文件系统的一组快照。 每次你提交更新，或在 Git 中保存项目状态时，它主要对当时的全部文件制作一个快照并保存这个快照的索引。 为了高效，如果文件没有修改，Git 不再重新存储该文件，而是只保留一个链接指向之前存储的文件。 Git 对待数据更像是一个 **快照流**。下图来源于Git官网。
 
-![快照流方式存储信息](https://raw.githubusercontent.com/JourWon/image/master/Git简介/快照流方式存储信息.png)
+![快照流方式存储信息](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0dpdCVFNyVBRSU4MCVFNCVCQiU4Qi8lRTUlQkYlQUIlRTclODUlQTclRTYlQjUlODElRTYlOTYlQjklRTUlQkMlOEYlRTUlQUQlOTglRTUlODIlQTglRTQlQkYlQTElRTYlODElQUYucG5n)
 

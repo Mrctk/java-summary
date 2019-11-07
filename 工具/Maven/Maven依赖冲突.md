@@ -1,5 +1,9 @@
 # Maven依赖冲突
 
+[toc]
+
+
+
 **依赖的原则**主要是为了解决模块之间jar包冲突问题。
 我们分两种情况说明一下：
 
@@ -7,13 +11,13 @@
 
 例如：当我们工程Animal依赖Cat，Cat又依赖Action，每个单独工程中Action依赖log4j-1.2.17，Cat依赖log4j-1.2.14，那我们的Animal工程要依赖于哪个版本呢？其实Maven为我们提供了内置的原则，就是路径最短者优先，我们的Animal工程最终依赖的是log4j-1.2.14
 
-![路径最短者优先](https://raw.githubusercontent.com/JourWon/image/master/Maven简介/路径最短者优先.jpg)
+![路径最短者优先](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL01hdmVuJUU3JUFFJTgwJUU0JUJCJThCLyVFOCVCNyVBRiVFNSVCRSU4NCVFNiU5QyU4MCVFNyU5RiVBRCVFOCU4MCU4NSVFNCVCQyU5OCVFNSU4NSU4OC5qcGc)
 
 ## 路径相同先声明优先
 
 例如：当我们工程Animal同时依赖Cat，又依赖Action，每个单独工程中Action依赖log4j-1.2.17，Cat依赖log4j-1.2.14，这时候依赖的路径是相同的，那我们的Animal工程最终依赖的是哪个版本呢？
 
-![路径相同先声明优先](https://raw.githubusercontent.com/JourWon/image/master/Maven简介/路径相同先声明优先.jpg)
+![路径相同先声明优先](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL01hdmVuJUU3JUFFJTgwJUU0JUJCJThCLyVFOCVCNyVBRiVFNSVCRSU4NCVFNyU5QiVCOCVFNSU5MCU4QyVFNSU4NSU4OCVFNSVBMyVCMCVFNiU5OCU4RSVFNCVCQyU5OCVFNSU4NSU4OC5qcGc)
 
 这个时候我们要看这两个jar文件在pom文件声明的先后顺序，优先声明者先依赖。
 

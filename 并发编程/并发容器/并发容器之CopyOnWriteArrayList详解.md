@@ -116,7 +116,7 @@ setArray(newElements);
 假设COW的变化如下图所示：
 
 
-![最终一致性的分析.png](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发容器/最终一致性的分析.png)
+![最终一致性的分析.png](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItJUU1JUI5JUI2JUU1JThGJTkxJUU1JUFFJUI5JUU1JTk5JUE4LyVFNiU5QyU4MCVFNyVCQiU4OCVFNCVCOCU4MCVFOCU4NyVCNCVFNiU4MCVBNyVFNyU5QSU4NCVFNSU4OCU4NiVFNiU5RSU5MC5wbmc)
 
 
 

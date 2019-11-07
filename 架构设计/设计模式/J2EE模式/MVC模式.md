@@ -14,7 +14,7 @@ MVC 模式代表 Model-View-Controller（模型-视图-控制器） 模式。这
 
 *MVCPatternDemo*，我们的演示类使用 *StudentController* 来演示 MVC 模式的用法。
 
-![MVC模式](https://raw.githubusercontent.com/JourWon/image/master/设计模式/MVC模式.jpg)
+![MVC模式](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyLyVFOCVBRSVCRSVFOCVBRSVBMSVFNiVBOCVBMSVFNSVCQyU4Ri9NVkMlRTYlQTglQTElRTUlQkMlOEYuanBn)
 
 
 

@@ -1,6 +1,8 @@
 # Maven简介
 
-[TOC]
+[toc]
+
+
 
 ## 前言
 
@@ -75,7 +77,7 @@ POM(Project Object Model)项目对象模型，一个项目所有的配置都放�
 
 Maven通过pom.xml文件来管理依赖和管理项目的构建生命周期，而项目构建的生命周期是依靠一个个的插件完成的。
 
-![项目对象模型](https://raw.githubusercontent.com/JourWon/image/master/Maven简介/项目对象模型.png)
+![项目对象模型](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL01hdmVuJUU3JUFFJTgwJUU0JUJCJThCLyVFOSVBMSVCOSVFNyU5QiVBRSVFNSVBRiVCOSVFOCVCMSVBMSVFNiVBOCVBMSVFNSU5RSU4Qi5wbmc)
 
 
 
@@ -105,7 +107,7 @@ Maven仓库
 
 Maven官方提供的远程仓库，里面拥有最全的jar包资源，Maven首先从本地仓库中寻找项目所需的jar包，若本地仓库没有，再到Maven的中央仓库下载所需jar包。地址是：http://repo1.maven.org/maven2/。
 
-![Maven仓库](https://raw.githubusercontent.com/JourWon/image/master/Maven简介/Maven仓库.png)
+![Maven仓库](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL01hdmVuJUU3JUFFJTgwJUU0JUJCJThCL01hdmVuJUU0JUJCJTkzJUU1JUJBJTkzLnBuZw)
 
 
 
@@ -156,7 +158,7 @@ org\springframework\spring-core\4.3.4.RELEASE\spring-core-4.3.4.RELEASE.jar
 
 传递性依赖机制能够大大的简化依赖声明，而且大部分情况下我们只需要关心项目的直接依赖是什么，而**不用考虑这些直接依赖会引入什么传递性依赖**，但是当出现冲突了，则需要很清楚传递性依赖是从什么依赖路径引入的。
 
-![依赖传递](https://raw.githubusercontent.com/JourWon/image/master/Maven简介/依赖传递1.jpg)
+![依赖传递](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL01hdmVuJUU3JUFFJTgwJUU0JUJCJThCLyVFNCVCRSU5RCVFOCVCNSU5NiVFNCVCQyVBMCVFOSU4MCU5MjEuanBn)
 
 WebMavenDemo项目依赖JavaMavenService1，JavaMavenService1项目依赖JavaMavenService2
 
@@ -165,7 +167,7 @@ pom.xml文件配置好依赖关系后，必须首先mvn install后，依赖的ja
 - WebMavenDemo的pom.xml文件想能编译通过，JavaMavenService1必须mvn install
 - JavaMavenService的pom.xml文件想能编译通过，JavaMavenService2必须mvn install
 
-![依赖传递](https://raw.githubusercontent.com/JourWon/image/master/Maven简介/依赖传递2.jpg)
+![依赖传递](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL01hdmVuJUU3JUFFJTgwJUU0JUJCJThCLyVFNCVCRSU5RCVFOCVCNSU5NiVFNCVCQyVBMCVFOSU4MCU5MjIuanBn)
 
 为JavaMavenService2中增加了一个spring-core.jar包后，会惊喜的发现依赖的两个项目都自动的增加了这个jar包，这就是依赖的传递性。
 
@@ -183,7 +185,7 @@ Maven依赖规则和怎么解决依赖冲突问题可以参考[Maven依赖冲突
 
 依赖范围就是控制依赖在不同阶段的作用。**不同的依赖会使用不同的classpath**，在Maven中依赖的域有这几个：import、provided、runtime、compile、system、test。默认取值为compile。
 
-![依赖范围](https://raw.githubusercontent.com/JourWon/image/master/Maven简介/依赖范围.png)
+![依赖范围](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL01hdmVuJUU3JUFFJTgwJUU0JUJCJThCLyVFNCVCRSU5RCVFOCVCNSU5NiVFOCU4QyU4MyVFNSU5QiVCNC5wbmc)
 
 
 

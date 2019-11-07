@@ -1,10 +1,10 @@
 # 线程池之ThreadPoolExecutor详解
 
-[TOC]
+[toc]
 
 
 
-## 为什么要使用线程池 ##
+## 为什么要使用线程池
 
  在实际使用中，线程是很占用系统资源的，如果对线程管理不善很容易导致系统问题。因此，在大多数并发框架中都会使用**线程池**来管理线程，使用线程池管理线程主要有如下好处：
 
@@ -97,7 +97,7 @@ public void execute(Runnable command) {
 
 ThreadPoolExecutor的execute方法执行逻辑请见注释。下图为ThreadPoolExecutor的execute方法的执行示意图：
 
-![execute执行过程示意图](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-线程池/execute执行过程示意图.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191014094022708.png)
 
 execute方法执行逻辑有这样几种情况：
 
@@ -125,7 +125,7 @@ execute方法执行逻辑有这样几种情况：
 
 当一个并发任务提交给线程池，线程池分配线程去执行任务的过程如下图所示：
 
-![线程池执行流程图.jpg](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-线程池/线程池执行流程图.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191014094005404.png)
 
 从图可以看出，线程池执行所提交的任务过程主要有这样几个阶段：
 

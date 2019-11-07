@@ -8,12 +8,12 @@
 
 在针对并发编程中，Doug Lea大师为我们提供了大量实用，高性能的工具类，针对这些代码进行研究会让我们队并发编程的掌握更加透彻也会大大提升我们队并发编程技术的热爱。这些代码在java.util.concurrent包下。如下图，即为concurrent包的目录结构图。
 
-![concurrent目录结构.png](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-Lock体系/concurrent目录结构.png)
+![concurrent目录结构.png](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItTG9jayVFNCVCRCU5MyVFNyVCMyVCQi9jb25jdXJyZW50JUU3JTlCJUFFJUU1JUJEJTk1JUU3JUJCJTkzJUU2JTlFJTg0LnBuZw)
 
 
 其中包含了两个子包：atomic以及lock，另外在concurrent下的阻塞队列以及executors,这些就是concurrent包中的精华，之后会一一进行学习。而这些类的实现主要是依赖于volatile以及CAS（关于volatile可以看[这篇文章](https://blog.csdn.net/ThinkWon/article/details/102243670)，关于CAS可以看[这篇文章](https://blog.csdn.net/ThinkWon/article/details/102243189)），从整体上来看concurrent包的整体实现图如下图所示：
 
-![concurrent包实现整体示意图.png](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-Lock体系/concurrent包实现整体示意图.png)
+![concurrent包实现整体示意图.png](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItTG9jayVFNCVCRCU5MyVFNyVCMyVCQi9jb25jdXJyZW50JUU1JThDJTg1JUU1JUFFJTlFJUU3JThFJUIwJUU2JTk1JUI0JUU0JUJEJTkzJUU3JUE0JUJBJUU2JTg0JThGJUU1JTlCJUJFLnBuZw)
 
 
 
@@ -138,11 +138,11 @@ protected final boolean tryAcquire(int acquires) {
 
 AQS可重写的方法如下图（摘自《Java并发编程的艺术》一书）：
 
-![AQS可重写的方法.png](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-Lock体系/AQS可重写的方法.png)
+![AQS可重写的方法.png](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItTG9jayVFNCVCRCU5MyVFNyVCMyVCQi9BUVMlRTUlOEYlQUYlRTklODclOEQlRTUlODYlOTklRTclOUElODQlRTYlOTYlQjklRTYlQjMlOTUucG5n)
 
 在实现同步组件时AQS提供的模板方法如下图：
 
-![AQS提供的模板方法.png](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-Lock体系/AQS提供的模板方法.png)
+![AQS提供的模板方法.png](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItTG9jayVFNCVCRCU5MyVFNyVCMyVCQi9BUVMlRTYlOEYlOTAlRTQlQkUlOUIlRTclOUElODQlRTYlQTglQTElRTYlOUQlQkYlRTYlOTYlQjklRTYlQjMlOTUucG5n)
 
 
 AQS提供的模板方法可以分为3类：
@@ -267,7 +267,7 @@ public class MutextDemo {
 
 执行情况：
 
-![mutex的执行情况.png](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-Lock体系/mutex的执行情况.png)
+![mutex的执行情况.png](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItTG9jayVFNCVCRCU5MyVFNyVCMyVCQi9tdXRleCVFNyU5QSU4NCVFNiU4OSVBNyVFOCVBMSU4QyVFNiU4MyU4NSVFNSU4NiVCNS5wbmc)
 
 上面的这个例子实现了独占锁的语义，在同一个时刻只允许一个线程占有锁。MutexDemo新建了10个线程，分别睡眠3s。从执行情况也可以看出来当前Thread-6正在执行占有锁而其他Thread-7，Thread-8等线程处于WAIT状态。按照推荐的方式，Mutex定义了一个**继承AQS的静态内部类Sync**，并且重写了AQS的tryAcquire等等方法，而对state的更新也是利用了setState()，getState()，compareAndSetState()这三个方法。在实现实现lock接口中的方法也只是调用了AQS提供的模板方法（因为Sync继承AQS）。从这个例子就可以很清楚的看出来，**在同步组件的实现上主要是利用了AQS，而AQS“屏蔽”了同步状态的修改，线程排队等底层实现，通过AQS的模板方法可以很方便的给同步组件的实现者进行调用。而针对用户来说，只需要调用同步组件提供的方法来实现并发编程即可**。同时在新建一个同步组件时需要把握的**两个关键点**是：
 1. 实现同步组件时推荐定义继承AQS的静态内存类，并重写需要的protected修饰的方法；

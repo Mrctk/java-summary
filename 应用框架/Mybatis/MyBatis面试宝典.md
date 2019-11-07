@@ -2,7 +2,9 @@
 
 [TOC]
 
-> 整理好的MyBatis面试题库，史上最全的MyBatis面试题，MyBatis面试宝典，特此分享给大家
+
+
+>整理好的MyBatis面试题库，史上最全的MyBatis面试题，MyBatis面试宝典，特此分享给大家
 
 ## MyBatis是什么？
 
@@ -85,7 +87,7 @@ ORM（Object Relational Mapping），对象关系映射，是一种为了解决�
 
 在学习 MyBatis 程序之前，需要了解一下 MyBatis 工作原理，以便于理解程序。MyBatis 的工作原理如下图
 
-![MyBatis工作原理](https://raw.githubusercontent.com/JourWon/image/master/MyBatis框架总结/MyBatis工作原理.png)
+![MyBatis工作原理](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL015QmF0aXMlRTYlQTElODYlRTYlOUUlQjYlRTYlODAlQkIlRTclQkIlOTMvTXlCYXRpcyVFNSVCNyVBNSVFNCVCRCU5QyVFNSU4RSU5RiVFNyU5MCU4Ni5wbmc)
 
 
 
@@ -109,8 +111,7 @@ ORM（Object Relational Mapping），对象关系映射，是一种为了解决�
 
 ## MyBatis的功能架构是怎样的
 
-![Mybatis功能框架](https://raw.githubusercontent.com/JourWon/image/master/MyBatis框架总结/MyBatis功能架构.png)
-
+![Mybatis功能框架](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL015QmF0aXMlRTYlQTElODYlRTYlOUUlQjYlRTYlODAlQkIlRTclQkIlOTMvTXlCYXRpcyVFNSU4QSU5RiVFOCU4MyVCRCVFNiU5RSVCNiVFNiU5RSU4NC5wbmc)
 我们把Mybatis的功能架构分为三层：
 
 - API接口层：提供给外部使用的接口API，开发人员通过这些本地API来操纵数据库。接口层一接收到调用请求就会调用数据处理层来完成具体的数据处理。
@@ -120,8 +121,7 @@ ORM（Object Relational Mapping），对象关系映射，是一种为了解决�
 
 
 ## MyBatis的框架架构设计是怎么样的
-
-![Mybatis框架架构](https://raw.githubusercontent.com/JourWon/image/master/MyBatis框架总结/MyBatis框架架构.png)
+![Mybatis框架架构](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL015QmF0aXMlRTYlQTElODYlRTYlOUUlQjYlRTYlODAlQkIlRTclQkIlOTMvTXlCYXRpcyVFNiVBMSU4NiVFNiU5RSVCNiVFNiU5RSVCNiVFNiU5RSU4NC5wbmc)
 
 这张图从上往下看。MyBatis的初始化，会从mybatis-config.xml配置文件，解析构造成Configuration这个类，就是图中的红框。
 
@@ -132,8 +132,6 @@ ORM（Object Relational Mapping），对象关系映射，是一种为了解决�
 (3)SQL执行：将最终得到的SQL和参数拿到数据库进行执行，得到操作数据库的结果。
 
 (4)结果映射：将操作数据库的结果按照映射的配置进行转换，可以转换成HashMap、JavaBean或者基本数据类型，并将最终结果返回。
-
-
 
 ## MyBatis编程步骤是什么样的？
 
@@ -193,8 +191,6 @@ Hibernate 是一个强大、方便、高效、复杂、间接、全自动化的�
 
 \#{}是占位符，预编译处理；${}是拼接符，字符串替换，没有预编译处理。
 
-
-
 Mybatis在处理#{}时，#{}传入参数是以字符串传入，会将SQL中的#{}替换为?号，调用PreparedStatement的set方法来赋值。
 
 Mybatis在处理${}时，是原值传入，就是把${}替换成变量的值，相当于JDBC中的Statement编译
@@ -211,12 +207,11 @@ Mybatis在处理${}时，是原值传入，就是把${}替换成变量的值，�
 
 **SQL预编译**
 
-1. 定义
-
-   SQL 预编译指的是数据库驱动在发送 SQL 语句和参数给 DBMS 之前对 SQL 语句进行编译，这样 DBMS 执行 SQL 时，就不需要重新编译。
+1. 定义：
+SQL 预编译指的是数据库驱动在发送 SQL 语句和参数给 DBMS 之前对 SQL 语句进行编译，这样 DBMS 执行 SQL 时，就不需要重新编译。
 
 2. 为什么需要预编译
-     JDBC 中使用对象 PreparedStatement 来抽象预编译语句，使用预编译。预编译阶段可以优化 SQL 的执行。预编译之后的 SQL 多数情况下可以直接执行，DBMS 不需要再次编译，越复杂的SQL，编译的复杂度将越大，预编译阶段可以合并多次操作为一个操作。同时预编译语句对象可以重复利用。把一个 SQL 预编译后产生的 PreparedStatement 对象缓存下来，下次对于同一个SQL，可以直接使用这个缓存的 PreparedState 对象。Mybatis默认情况下，将对所有的 SQL 进行预编译。
+JDBC 中使用对象 PreparedStatement 来抽象预编译语句，使用预编译。预编译阶段可以优化 SQL 的执行。预编译之后的 SQL 多数情况下可以直接执行，DBMS 不需要再次编译，越复杂的SQL，编译的复杂度将越大，预编译阶段可以合并多次操作为一个操作。同时预编译语句对象可以重复利用。把一个 SQL 预编译后产生的 PreparedStatement 对象缓存下来，下次对于同一个SQL，可以直接使用这个缓存的 PreparedState 对象。Mybatis默认情况下，将对所有的 SQL 进行预编译。
 
 
 

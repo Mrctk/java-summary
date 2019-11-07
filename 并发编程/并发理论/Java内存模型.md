@@ -2,7 +2,9 @@
 
 Java 内存模型试图屏蔽各种硬件和操作系统的内存访问差异，以实现让 Java 程序在各种平台下都能达到一致的内存访问效果。
 
-[TOC]
+[toc]
+
+
 
 ## Java内存模型（JMM）的介绍
 
@@ -37,7 +39,7 @@ Java 内存模型试图屏蔽各种硬件和操作系统的内存访问差异，
 
 我们知道CPU的处理速度和主存的读写速度不是一个量级的（CPU的处理速度快很多），为了平衡这种巨大的差距，每个CPU都会有缓存。因此，共享变量会先放在主存中，每个线程都有属于自己的工作内存，并且会把位于主存中的共享变量拷贝到自己的工作内存，之后的读写操作均使用位于工作内存的变量副本，并在某个时刻将工作内存的变量副本写回到主存中去。JMM就从抽象层次定义了这种方式，并且JMM决定了一个线程对共享变量的写入何时对其他线程是可见的。
 
-![JMM内存模型的抽象结构示意图](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发理论/JMM内存结构抽象结构示意图.png)
+![JMM内存模型的抽象结构示意图](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItJUU1JUI5JUI2JUU1JThGJTkxJUU3JTkwJTg2JUU4JUFFJUJBL0pNTSVFNSU4NiU4NSVFNSVBRCU5OCVFNyVCQiU5MyVFNiU5RSU4NCVFNiU4QSVCRCVFOCVCMSVBMSVFNyVCQiU5MyVFNiU5RSU4NCVFNyVBNCVCQSVFNiU4NCU4RiVFNSU5QiVCRS5wbmc)
 
 如图为JMM抽象示意图，线程A和线程B之间要完成通信的话，要经历如下两步：
 
@@ -58,13 +60,13 @@ Java 内存模型试图屏蔽各种硬件和操作系统的内存访问差异，
 
 加入高速缓存带来了一个新的问题：缓存一致性。如果多个缓存共享同一块主内存区域，那么多个缓存的数据可能会不一致，需要一些协议来解决这个问题。
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发理论/942ca0d2-9d5c-45a4-89cb-5fd89b61913f.png)
+![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItJUU1JUI5JUI2JUU1JThGJTkxJUU3JTkwJTg2JUU4JUFFJUJBLzk0MmNhMGQyLTlkNWMtNDVhNC04OWNiLTVmZDg5YjYxOTEzZi5wbmc)
 
 所有的变量都存储在主内存中，每个线程还有自己的工作内存，工作内存存储在高速缓存或者寄存器中，保存了该线程使用的变量的主内存副本拷贝。
 
 线程只能直接操作工作内存中的变量，不同线程之间的变量值传递需要通过主内存来完成。
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发理论/15851555-5abc-497d-ad34-efed10f43a6b.png)
+![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItJUU1JUI5JUI2JUU1JThGJTkxJUU3JTkwJTg2JUU4JUFFJUJBLzE1ODUxNTU1LTVhYmMtNDk3ZC1hZDM0LWVmZWQxMGY0M2E2Yi5wbmc)
 
 
 
@@ -72,7 +74,7 @@ Java 内存模型试图屏蔽各种硬件和操作系统的内存访问差异，
 
 Java 内存模型定义了 8 个操作来完成主内存和工作内存的交互操作。
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发理论/8b7ebbad-9604-4375-84e3-f412099d170c.png)
+![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItJUU1JUI5JUI2JUU1JThGJTkxJUU3JTkwJTg2JUU4JUFFJUJBLzhiN2ViYmFkLTk2MDQtNDM3NS04NGUzLWY0MTIwOTlkMTcwYy5wbmc)
 
 1. lock（锁定）：作用于主内存中的变量，它把一个变量标识为一个线程独占的状态；
 2. unlock（解锁）：作用于主内存中的变量，它把一个处于锁定状态的变量释放出来，释放后的变量才可以被其他线程锁定
@@ -97,11 +99,11 @@ Java 内存模型保证了 read、load、use、assign、store、write、lock 和
 
 下图演示了两个线程同时对 cnt 进行操作，load、assign、store 这一系列操作整体上看不具备原子性，那么在 T1 修改 cnt 并且还没有将修改后的值写入主内存，T2 依然可以读入旧值。可以看出，这两个线程虽然执行了两次自增运算，但是主内存中 cnt 的值最后为 1 而不是 2。因此对 int 类型读写操作满足原子性只是说明 load、assign、store 这些单个操作具备原子性。
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发理论/2797a609-68db-4d7b-8701-41ac9a34b14f.jpg)
+![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItJUU1JUI5JUI2JUU1JThGJTkxJUU3JTkwJTg2JUU4JUFFJUJBLzI3OTdhNjA5LTY4ZGItNGQ3Yi04NzAxLTQxYWM5YTM0YjE0Zi5qcGc)
 
 AtomicInteger 能保证多个线程修改的原子性。
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发理论/dd563037-fcaa-4bd8-83b6-b39d93a12c77.jpg)
+![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItJUU1JUI5JUI2JUU1JThGJTkxJUU3JTkwJTg2JUU4JUFFJUJBL2RkNTYzMDM3LWZjYWEtNGJkOC04M2I2LWIzOWQ5M2ExMmM3Ny5qcGc)
 
 使用 AtomicInteger 重写之前线程不安全的代码之后得到以下线程安全实现：
 
@@ -265,11 +267,11 @@ synchronized 关键字同样可以保证有序性，它保证每个时刻只有�
 
 JMM内存屏障分为四类见下图
 
-![内存屏障分类表](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发关键字/内存屏障分类表.png)
+![内存屏障分类表](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItJUU1JUI5JUI2JUU1JThGJTkxJUU1JTg1JUIzJUU5JTk0JUFFJUU1JUFEJTk3LyVFNSU4NiU4NSVFNSVBRCU5OCVFNSVCMSU4RiVFOSU5QSU5QyVFNSU4OCU4NiVFNyVCMSVCQiVFOCVBMSVBOC5wbmc)
 
 Java编译器会在生成指令系列时在适当的位置会插入内存屏障指令来禁止特定类型的处理器重排序。为了实现volatile的内存语义，JMM会限制特定类型的编译器和处理器重排序，JMM会针对编译器制定volatile重排序规则表：
 
-![volatile重排序规则表](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发关键字/volatile重排序规则表.png)
+![volatile重排序规则表](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItJUU1JUI5JUI2JUU1JThGJTkxJUU1JTg1JUIzJUU5JTk0JUFFJUU1JUFEJTk3L3ZvbGF0aWxlJUU5JTg3JThEJUU2JThFJTkyJUU1JUJBJThGJUU4JUE3JTg0JUU1JTg4JTk5JUU4JUExJUE4LnBuZw)
 
 "NO"表示禁止重排序。为了实现volatile内存语义时，编译器在生成字节码时，会在指令序列中插入内存屏障来禁止特定类型的**处理器重排序**。对于编译器来说，发现一个最优布置来最小化插入屏障的总数几乎是不可能的，为此，JMM采取了保守策略：
 
@@ -290,9 +292,9 @@ Java编译器会在生成指令系列时在适当的位置会插入内存屏障�
 
 下面以两个示意图进行理解，图片摘自相当好的一本书《Java并发编程的艺术》。
 
-![volatile写插入内存屏障示意图](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发关键字/volatile写插入内存屏障示意图.png)
+![volatile写插入内存屏障示意图](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItJUU1JUI5JUI2JUU1JThGJTkxJUU1JTg1JUIzJUU5JTk0JUFFJUU1JUFEJTk3L3ZvbGF0aWxlJUU1JTg2JTk5JUU2JThGJTkyJUU1JTg1JUE1JUU1JTg2JTg1JUU1JUFEJTk4JUU1JUIxJThGJUU5JTlBJTlDJUU3JUE0JUJBJUU2JTg0JThGJUU1JTlCJUJFLnBuZw)
 
-![volatile读插入内存屏障示意图](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发关键字/volatile读插入内存屏障示意图.png)
+![volatile读插入内存屏障示意图](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItJUU1JUI5JUI2JUU1JThGJTkxJUU1JTg1JUIzJUU5JTk0JUFFJUU1JUFEJTk3L3ZvbGF0aWxlJUU4JUFGJUJCJUU2JThGJTkyJUU1JTg1JUE1JUU1JTg2JTg1JUU1JUFEJTk4JUU1JUIxJThGJUU5JTlBJTlDJUU3JUE0JUJBJUU2JTg0JThGJUU1JTlCJUJFLnBuZw)
 
 
 
@@ -312,7 +314,7 @@ Java编译器会在生成指令系列时在适当的位置会插入内存屏障�
 
 在一个线程内，在程序前面的操作先行发生于后面的操作。
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发理论/874b3ff7-7c5c-4e7a-b8ab-a82a3e038d20.png)
+![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItJUU1JUI5JUI2JUU1JThGJTkxJUU3JTkwJTg2JUU4JUFFJUJBLzg3NGIzZmY3LTdjNWMtNGU3YS1iOGFiLWE4MmEzZTAzOGQyMC5wbmc)
 
 ### 2. 管程锁定规则
 
@@ -320,7 +322,7 @@ Java编译器会在生成指令系列时在适当的位置会插入内存屏障�
 
 一个 unlock 操作先行发生于后面对同一个锁的 lock 操作。
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发理论/8996a537-7c4a-4ec8-a3b7-7ef1798eae26.png)
+![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItJUU1JUI5JUI2JUU1JThGJTkxJUU3JTkwJTg2JUU4JUFFJUJBLzg5OTZhNTM3LTdjNGEtNGVjOC1hM2I3LTdlZjE3OThlYWUyNi5wbmc)
 
 ### 3. volatile 变量规则
 
@@ -328,7 +330,7 @@ Java编译器会在生成指令系列时在适当的位置会插入内存屏障�
 
 对一个 volatile 变量的写操作先行发生于后面对这个变量的读操作。
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发理论/942f33c9-8ad9-4987-836f-007de4c21de0.png)
+![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItJUU1JUI5JUI2JUU1JThGJTkxJUU3JTkwJTg2JUU4JUFFJUJBLzk0MmYzM2M5LThhZDktNDk4Ny04MzZmLTAwN2RlNGMyMWRlMC5wbmc)
 
 ### 4. 线程启动规则
 
@@ -336,7 +338,7 @@ Java编译器会在生成指令系列时在适当的位置会插入内存屏障�
 
 Thread 对象的 start() 方法调用先行发生于此线程的每一个动作。
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发理论/6270c216-7ec0-4db7-94de-0003bce37cd2.png)
+![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItJUU1JUI5JUI2JUU1JThGJTkxJUU3JTkwJTg2JUU4JUFFJUJBLzYyNzBjMjE2LTdlYzAtNGRiNy05NGRlLTAwMDNiY2UzN2NkMi5wbmc)
 
 ### 5. 线程加入规则
 
@@ -344,7 +346,7 @@ Thread 对象的 start() 方法调用先行发生于此线程的每一个动作�
 
 Thread 对象的结束先行发生于 join() 方法返回。
 
-![](https://raw.githubusercontent.com/JourWon/image/master/Java并发编程-并发理论/233f8d89-31d7-413f-9c02-042f19c46ba1.png)
+![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvdXJXb24vaW1hZ2UvbWFzdGVyL0phdmElRTUlQjklQjYlRTUlOEYlOTElRTclQkMlOTYlRTclQTglOEItJUU1JUI5JUI2JUU1JThGJTkxJUU3JTkwJTg2JUU4JUFFJUJBLzIzM2Y4ZDg5LTMxZDctNDEzZi05YzAyLTA0MmYxOWM0NmJhMS5wbmc)
 
 ### 6. 线程中断规则
 
