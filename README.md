@@ -1,5 +1,9 @@
 # Java知识体系
 
+本人从事Java开发已多年，平时有记录问题解决方案和总结知识点的习惯，整理了一下有关Java的知识体系，这不是最终版，会不定期的更新。也算是记录自己在从事编程工作的成长足迹，通过博客可以促进博主与阅读者的共同进步，结交更多志同道合的朋友。特此分享给大家，本人见识有限，写的博客难免有错误或者疏忽的地方，还望各位大佬指点，在此表示感激不尽。
+
+
+
 ## 基础知识
 
 ### Java概述
@@ -17,6 +21,20 @@
 ### 基础语法
 
 大部分已完成
+
+待整理：
+
+Java开发必会的反编译知识（附支持对Lambda进行反编译的工具）
+
+一文读懂什么是Java中的自动拆装箱
+
+Java的枚举类型用法介绍
+
+
+
+类、枚举、接口、数组、可变参数
+
+泛型、序列化
 
 | 序号 | 内容                      | 链接地址                                                 |
 | ---- | ------------------------- | -------------------------------------------------------- |
@@ -48,23 +66,13 @@
 
 
 
-Java开发必会的反编译知识（附支持对Lambda进行反编译的工具）
-
-一文读懂什么是Java中的自动拆装箱
-
-Java的枚举类型用法介绍
-
-
-
-类、枚举、接口、数组
-
-泛型、序列化
-
-
-
 ### 面向对象
 
-抽象、继承、封装、多态
+待整理：
+
+抽象
+
+继承、封装、多态
 
 接口、抽象类、内部类
 
@@ -78,10 +86,6 @@ Java的枚举类型用法介绍
 
 迭代器、增强for、泛型
 
-LinkedList、HashSet、Collection集合体系
-
-Map、可变参数、Collections、Arrays
-
 | 序号 | 内容                          | 链接地址                                                 |
 | ---- | ----------------------------- | -------------------------------------------------------- |
 | 1    | Java集合框架总结              | https://blog.csdn.net/ThinkWon/article/details/98844796  |
@@ -94,6 +98,8 @@ Map、可变参数、Collections、Arrays
 
 
 ### IO流
+
+待整理：
 
 File、递归
 
@@ -143,15 +149,13 @@ String、StringBuffer、StringBuilder、正则表达式
 
 Number、Radom、Math、System、包装类
 
-Arrays
+Arrays、Collections
 
 
 
 ### 常用工具类库
 
-Lombok、HtttpClient、OkHttp、Json
-
-commons-lang3
+待整理：OkHttp、commons-lang3
 
 | 序号 | 内容                                                       | 链接地址                                                 |
 | ---- | ---------------------------------------------------------- | -------------------------------------------------------- |
@@ -194,8 +198,6 @@ JUnit
 | 7    | Log4j2的Filters配置详解                                      | https://blog.csdn.net/ThinkWon/article/details/101627162 |
 | 8    | Log4j2的Policy触发策略与Strategy滚动策略配置详解             | https://blog.csdn.net/ThinkWon/article/details/101628222 |
 | 9    | Log4j2的Loggers配置详解                                      | https://blog.csdn.net/ThinkWon/article/details/101628736 |
-
-
 
 
 
@@ -300,6 +302,8 @@ JUnit
 
 ### Lock体系
 
+待整理：
+
 公平锁 & 非公平锁
 
 乐观锁 & 悲观锁
@@ -318,8 +322,6 @@ JUnit
 | 4    | 读写锁ReentrantReadWriteLock源码分析              | https://blog.csdn.net/ThinkWon/article/details/102469598 |
 | 5    | Condition源码分析与等待通知机制                   | https://blog.csdn.net/ThinkWon/article/details/102469889 |
 | 6    | LockSupport详解                                   | https://blog.csdn.net/ThinkWon/article/details/102469993 |
-
-
 
 
 
@@ -385,7 +387,7 @@ JUnit
 
 
 
-```text
+```sh
 1、数组
 2、栈
 3、队列
@@ -401,8 +403,6 @@ JUnit
 
 字段是不是数据结构
 ```
-
-
 
 
 
@@ -447,8 +447,6 @@ JUnit
 
 
 
-
-
 ## 数据库
 
 ### Oracle
@@ -478,12 +476,6 @@ JUnit
 #### 事务
 
 #### 数据备份与还原
-
-
-
-
-
-
 
 
 
@@ -524,8 +516,6 @@ D:\My Project\其他
 ### 类加载机制
 
 ### 编译与反编译
-
-
 
 
 
@@ -623,8 +613,6 @@ D:\My Project\其他
 
 
 
-
-
 常用框架
 
 集成开发工具（IDE）：Eclipse、MyEclipse、Spring Tool Suite（STS）、Intellij IDEA、NetBeans、JBuilder、JCreator
@@ -689,10 +677,6 @@ Linux操作系统：SUSE Linux、CentOS
 | 13   | MyBatis面试宝典                   | https://blog.csdn.net/ThinkWon/article/details/101292950 |
 | 14   | MyBatis实现一对一，一对多关联查询 | https://blog.csdn.net/ThinkWon/article/details/101322334 |
 | 15   | MyBatis缓存                       | https://blog.csdn.net/ThinkWon/article/details/101351212 |
-
-
-
-
 
 是什么，简介，概述
 
